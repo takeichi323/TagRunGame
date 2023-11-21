@@ -3,6 +3,10 @@
 #include "Engine/Audio.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
+
+
+
+
 //コンストラクタ
 Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hModel_(-1), hSound_(-1)
@@ -29,16 +33,9 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-    //1フレームの移動ベクトル
-    XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
-    //オブジェクトの現在地をベクトル型に変換
-    XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
-    Camera::SetPosition(transform_.position_);
-    XMFLOAT3 camTarget;
-    XMStoreFloat3(&camTarget, vPos + vMove);
-    Camera::SetTarget(camTarget);
-
-
+    //カメラ位置
+      CameraPosition();
+    
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_D))
     {
@@ -66,3 +63,17 @@ void Player::Draw()
 void Player::Release()
 {
 }
+
+void Player::CameraPosition()
+{
+    //1フレームの移動ベクトル
+    XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
+    //オブジェクトの現在地をベクトル型に変換
+    XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
+    Camera::SetPosition(transform_.position_);
+    XMFLOAT3 camTarget;
+    XMStoreFloat3(&camTarget, vPos + vMove);
+    Camera::SetTarget(camTarget);
+}
+
+

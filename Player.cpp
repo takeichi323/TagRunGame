@@ -56,7 +56,7 @@ void Player::Draw()
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 
-    
+    //テストコメント
 }
 
 //開放

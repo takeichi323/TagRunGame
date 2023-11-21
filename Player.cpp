@@ -53,11 +53,11 @@ void Player::Update()
 //描画
 void Player::Draw()
 {
-    //コメント手＾スト
+   
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 
-    //テストコメント
+    
 }
 
 //開放

@@ -64,6 +64,7 @@ void Player::Release()
 {
 }
 
+//カメラ位置(一人称)
 void Player::CameraPosition()
 {
     //1フレームの移動ベクトル

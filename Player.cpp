@@ -5,8 +5,18 @@
 #include "Engine/Camera.h"
 
 
+
 #include <mfapi.h>
+#include <mfidl.h>
 #include <mfreadwrite.h>
+#pragma comment(lib, "mfplat.lib")
+#pragma comment(lib, "mfuuid.lib")
+#pragma comment(lib, "mfreadwrite.lib")
+
+
+
+
+
 
 
 
@@ -44,7 +54,7 @@ void Player::Initialize()
     }
     IMFSourceReader* pReader = nullptr;
 
-    hr = MFCreateSourceReaderFromURL(L"ファイルのパス", nullptr, &pReader);
+    hr = MFCreateSourceReaderFromURL(L"TouhokuDenshi_splash.avi", nullptr, &pReader);
     if (FAILED(hr)) {
         // Source Reader の作成に失敗
         // エラー処理

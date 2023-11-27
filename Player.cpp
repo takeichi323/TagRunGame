@@ -44,51 +44,7 @@ void Player::Initialize()
     assert(hSound_ >= 0);
 
 
-    /// <summary>
-    /// ///////////////////////////////////////////
-    /// </summary>
-    HRESULT hr = MFStartup(MF_VERSION);
-    if (FAILED(hr)) {
-        // 初期化に失敗
-        // エラー処理
-    }
-    IMFSourceReader* pReader = nullptr;
-
-    hr = MFCreateSourceReaderFromURL(L"TouhokuDenshi_splash.avi", nullptr, &pReader);
-    if (FAILED(hr)) {
-        // Source Reader の作成に失敗
-        // エラー処理
-    }
-    IMFMediaType* pMediaType = nullptr;
-
-    hr = MFCreateMediaType(&pMediaType);
-    if (SUCCEEDED(hr)) {
-        hr = pMediaType->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Video);
-    }
-
-    hr = pReader->SetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, pMediaType);
-    while (true) {
-        DWORD dwFlags = 0;
-        LONGLONG llTimeStamp = 0;
-        IMFSample* pSample = nullptr;
-
-        hr = pReader->ReadSample(MF_SOURCE_READER_FIRST_VIDEO_STREAM, 0, nullptr, &dwFlags, &llTimeStamp, &pSample);
-        if (FAILED(hr)) {
-            // サンプルの読み取りに失敗または終了
-            break;
-        }
-
-        if (dwFlags & MF_SOURCE_READERF_ENDOFSTREAM) {
-            // ファイルの終端に到達
-            break;
-        }
-
-        // テクスチャにフレームを描画する処理
-    }
-    pReader->Release();
-    pMediaType->Release();
-    MFShutdown();
-    /////////////////////////////////////////////////////////////////
+   
 
 }
 

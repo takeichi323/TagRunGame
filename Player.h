@@ -3,7 +3,9 @@
 
 //◆◆◆を管理するクラス
 class Player : public GameObject
-{
+{   
+    //Player移動速度
+    const float PLAYERMOVE = 0.25;
 
     int hModel_;    //モデル番号
     int hSound_;    //サウンド番号

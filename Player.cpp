@@ -6,12 +6,7 @@
 
 
 
-#include <mfapi.h>
-#include <mfidl.h>
-#include <mfreadwrite.h>
-#pragma comment(lib, "mfplat.lib")
-#pragma comment(lib, "mfuuid.lib")
-#pragma comment(lib, "mfreadwrite.lib")
+
 
 
 
@@ -43,7 +38,8 @@ void Player::Initialize()
     hSound_ = Audio::Load("Jazz 1.wav");
     assert(hSound_ >= 0);
 
-
+    //仮ポジション
+    transform_.position_.y += 0.5;
    
 
 }
@@ -57,15 +53,27 @@ void Player::Update()
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_D))
     {
-        transform_.position_.x += 0.25;
+        transform_.position_.x += PLAYERMOVE;
         Audio::Play(hSound_);
     }
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_A))
     {
-        transform_.position_.x -= 0.25;
+        transform_.position_.x -= PLAYERMOVE;
         Audio::Stop(hSound_);
     }
+    if (Input::IsKey(DIK_W))
+    {
+        transform_.position_.z += PLAYERMOVE;
+       
+    }
+    if (Input::IsKey(DIK_S))
+    {
+        transform_.position_.z -= PLAYERMOVE;
+
+    }
+
+    
 }
 
 //描画

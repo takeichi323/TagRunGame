@@ -5,7 +5,7 @@
 class Player : public GameObject
 {   
     //Player移動速度
-    const float PLAYERMOVE = 0.25;
+    const float PLAYERMOVE = 0.05;
 
     int hModel_;    //モデル番号
     int hSound_;    //サウンド番号

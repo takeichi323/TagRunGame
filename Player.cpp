@@ -49,6 +49,7 @@ void Player::Update()
 {
     //カメラ位置
       CameraPosition();
+      Direction();
     
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_D))
@@ -102,6 +103,12 @@ void Player::CameraPosition()
     XMFLOAT3 camTarget;
     XMStoreFloat3(&camTarget, vPos + vMove);
     Camera::SetTarget(camTarget);
+}
+
+
+void Player::Direction()
+{
+    
 }
 
 

@@ -25,4 +25,6 @@ public:
     void Release() override;
     //プレイヤーのカメラ位置
     void CameraPosition();
+    //プレイヤー向き
+    void Direction();
 };

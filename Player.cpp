@@ -4,18 +4,6 @@
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 
-
-
-
-
-
-
-
-
-
-
-
-
 //コンストラクタ
 Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hModel_(-1), hSound_(-1)

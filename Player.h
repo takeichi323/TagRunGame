@@ -4,6 +4,7 @@
 //ŸŸŸ‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 class Player : public GameObject
 {   
+private:
     //PlayerˆÚ“®‘¬“x
     const float PLAYERMOVE = 0.25;
 

@@ -19,7 +19,7 @@ Player::~Player()
 void Player::Initialize()
 {
     //モデルデータのロード
-    hModel_ = Model::Load("Player.fbx");
+    hModel_ = Model::Load("Pacplayer.fbx");
     assert(hModel_ >= 0);
 
     //サウンドデータのロード
@@ -27,7 +27,8 @@ void Player::Initialize()
     assert(hSound_ >= 0);
 
     //仮ポジション
-    transform_.position_.y += 0.5;
+    //transform_.position_.y += 0.5;
+    transform_.position_ = XMFLOAT3(1.0, 0.5, 1.5);
    
     //全体のマップを確認するためのカメラ位置
     Camera::SetPosition(XMFLOAT3(25, 50, -8));
@@ -41,23 +42,25 @@ void Player::Update()
     //カメラ位置
       //CameraPosition();
     
-    //スペースキーが押されていたら
+   //右移動
     if (Input::IsKey(DIK_D))
     {
         transform_.position_.x += PLAYERMOVE;
         Audio::Play(hSound_);
     }
-    //スペースキーが押されていたら
+   //左移動
     if (Input::IsKey(DIK_A))
     {
         transform_.position_.x -= PLAYERMOVE;
         Audio::Stop(hSound_);
     }
+    //前移動
     if (Input::IsKey(DIK_W))
     {
         transform_.position_.z += PLAYERMOVE;
        
     }
+    //後移動
     if (Input::IsKey(DIK_S))
     {
         transform_.position_.z -= PLAYERMOVE;
@@ -65,6 +68,9 @@ void Player::Update()
     }
 
     
+
+
+
 }
 
 //描画

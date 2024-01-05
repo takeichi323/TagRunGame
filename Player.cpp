@@ -46,13 +46,13 @@ void Player::Update()
     if (Input::IsKey(DIK_D))
     {
         transform_.position_.x += PLAYERMOVE;
-        Audio::Play(hSound_);
+       // Audio::Play(hSound_);
     }
    //ç∂à⁄ìÆ
     if (Input::IsKey(DIK_A))
     {
         transform_.position_.x -= PLAYERMOVE;
-        Audio::Stop(hSound_);
+       // Audio::Stop(hSound_);
     }
     //ëOà⁄ìÆ
     if (Input::IsKey(DIK_W))

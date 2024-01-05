@@ -34,9 +34,9 @@ public:
     void Release() override;
     //プレイヤーのカメラ位置
     void CameraPosition();
-    //プレイヤー向き
-    void Direction();
+    ////プレイヤー向き
+    //void Direction();
 
-    //当たり判定
-    void HitTest();
+    ////当たり判定
+    //void HitTest();
 };

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include"Stage.h"
 #include "Engine/Model.h"
 #include "Engine/Audio.h"
 #include "Engine/Input.h"
@@ -37,22 +38,22 @@ void Player::Initialize()
 void Player::Update()
 {
     //カメラ位置
-      CameraPosition();
-      Direction();
+      //CameraPosition();
+      //Direction();
 
-	  HitTest();
+	/*  HitTest();*/
     
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_D))
     {
         transform_.position_.x += PLAYERMOVE;
-        Audio::Play(hSound_);
+       // Audio::Play(hSound_);
     }
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_A))
     {
         transform_.position_.x -= PLAYERMOVE;
-        Audio::Stop(hSound_);
+       // Audio::Stop(hSound_);
     }
     if (Input::IsKey(DIK_W))
     {
@@ -99,12 +100,12 @@ void Player::CameraPosition()
 }
 
 
-void Player::Direction()
-{
-    
-}
+//void Player::Direction()
+//{
+//    
+//}
 
-void Player::HitTest()
+/*void Player::HitTest()
 {
 	prevPosition_ = transform_.position_;
 	//壁との判定
@@ -170,8 +171,7 @@ void Player::HitTest()
 			transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
 		}
 	}
-
     
-}
+}*/
 
 

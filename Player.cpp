@@ -152,6 +152,7 @@ bool Player::WallHitTest()
 	}
 	//“–‚½‚Á‚Ä‚¢‚È‚¢ê‡false‚ğ•Ô‚·
 	return false;
+	
 }
 
 

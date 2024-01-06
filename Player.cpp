@@ -4,6 +4,7 @@
 #include "Engine/Audio.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
+#include "Engine/Debug.h"
 
 
 //コンストラクタ
@@ -40,6 +41,7 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+	prevPosition_ = transform_.position_;
     //カメラ位置
       //CameraPosition();
       //Direction();
@@ -53,12 +55,7 @@ void Player::Update()
 		XMFLOAT3 originalPosition = transform_.position_;
         transform_.position_.x += PLAYERMOVE;
        // Audio::Play(hSound_);
-		// 壁との当たり判定
-		if (WallHitTest())
-		{
-			// 当たった場合は元の位置に戻す
-			transform_.position_ = originalPosition;
-		}
+		
 	
 		
     }
@@ -69,22 +66,14 @@ void Player::Update()
 		XMFLOAT3 originalPosition = transform_.position_;
         transform_.position_.x -= PLAYERMOVE;
        // Audio::Stop(hSound_);
-		if (WallHitTest())
-		{
-			// 当たった場合は元の位置に戻す
-			transform_.position_ = originalPosition;
-		}
+		
     }
     if (Input::IsKey(DIK_W))
     {
 		// 移動前の位置を保存
 		XMFLOAT3 originalPosition = transform_.position_;
         transform_.position_.z += PLAYERMOVE;
-		if (WallHitTest())
-		{
-			// 当たった場合は元の位置に戻す
-			transform_.position_ = originalPosition;
-		}
+		
        
     }
     if (Input::IsKey(DIK_S))
@@ -92,16 +81,63 @@ void Player::Update()
 		// 移動前の位置を保存
 		XMFLOAT3 originalPosition = transform_.position_;
         transform_.position_.z -= PLAYERMOVE;
-		if (WallHitTest())
-		{
-			// 当たった場合は元の位置に戻す
-			transform_.position_ = originalPosition;
-		}
+		
 
     }
 
-    
+	//壁との判定
+	int checkX1, checkX2;
+	int checkZ1, checkZ2;
+	//右
+	{
+		checkX1 = (int)(transform_.position_.x + 0.3f);
+		checkZ1 = (int)(transform_.position_.z + 0.2f);
 
+		checkX2 = (int)(transform_.position_.x + 0.3f);
+		checkZ2 = (int)(transform_.position_.z - 0.2f);
+		if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
+		{
+			transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
+		}
+	}
+
+	//左
+	{
+		checkX1 = (int)(transform_.position_.x - 0.3f);
+		checkZ1 = (int)(transform_.position_.z + 0.1f);
+		checkX2 = (int)(transform_.position_.x - 0.3f);
+		checkZ2 = (int)(transform_.position_.z - 0.1f);
+
+		if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
+		{
+			transform_.position_.x = (float)((int)prevPosition_.x) + 0.3;
+		}
+
+	}
+
+	//前
+	{
+		checkX = (int)transform_.position_.x;
+		checkZ = (int)(transform_.position_.z + 0.3f);
+
+		if (pStage_->IsWall(checkX, checkZ) == true)
+		{
+			transform_.position_.z = prevPosition_.z;
+		}
+	}
+
+	//後
+	{
+		checkX = (int)transform_.position_.x;
+		checkZ = (int)(transform_.position_.z - 0.3f);
+
+		if (pStage_->IsWall(checkX, checkZ) == true)
+		{
+			transform_.position_.z = prevPosition_.z;
+		}
+	}
+
+	//transform_.rotate_.y = XMConvertToDegrees(angle);
     
 }
 

@@ -117,23 +117,27 @@ void Player::Update()
 
 	//‘O
 	{
-		checkX = (int)transform_.position_.x;
-		checkZ = (int)(transform_.position_.z + 0.3f);
+		checkX1 = (int)(transform_.position_.x + 0.1f);
+		checkZ1 = (int)(transform_.position_.z + 0.3f);
+		checkX2 = (int)(transform_.position_.x - 0.1f);
+		checkZ2 = (int)(transform_.position_.z + 0.3f);
 
-		if (pStage_->IsWall(checkX, checkZ) == true)
+		if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.z = prevPosition_.z;
+			transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
 		}
 	}
 
 	//Œã
 	{
-		checkX = (int)transform_.position_.x;
-		checkZ = (int)(transform_.position_.z - 0.3f);
+		checkX1 = (int)(transform_.position_.x + 0.1f);
+		checkZ1 = (int)(transform_.position_.z - 0.3f);
+		checkX2 = (int)(transform_.position_.x - 0.1f);
+		checkZ2 = (int)(transform_.position_.z - 0.3f);
 
-		if (pStage_->IsWall(checkX, checkZ) == true)
+		if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.z = prevPosition_.z;
+			transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
 		}
 	}
 

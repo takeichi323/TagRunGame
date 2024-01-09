@@ -52,8 +52,8 @@ void Player::Update()
     if (Input::IsKey(DIK_D))
     {
 		// 移動前の位置を保存
-		XMFLOAT3 originalPosition = transform_.position_;
-        transform_.position_.x += PLAYERMOVE;
+		/*XMFLOAT3 originalPosition = transform_.position_;*/
+          fMove.x += PLAYERMOVE;
        // Audio::Play(hSound_);
 		
 	
@@ -63,24 +63,24 @@ void Player::Update()
     if (Input::IsKey(DIK_A))
     {
 		// 移動前の位置を保存
-		XMFLOAT3 originalPosition = transform_.position_;
-        transform_.position_.x -= PLAYERMOVE;
+		/*XMFLOAT3 originalPosition = transform_.position_;*/
+		fMove.x -= PLAYERMOVE;
        // Audio::Stop(hSound_);
 		
     }
     if (Input::IsKey(DIK_W))
     {
 		// 移動前の位置を保存
-		XMFLOAT3 originalPosition = transform_.position_;
-        transform_.position_.z += PLAYERMOVE;
+		/*XMFLOAT3 originalPosition = transform_.position_;*/
+		fMove.z += PLAYERMOVE;
 		
        
     }
     if (Input::IsKey(DIK_S))
     {
 		// 移動前の位置を保存
-		XMFLOAT3 originalPosition = transform_.position_;
-        transform_.position_.z -= PLAYERMOVE;
+		/*XMFLOAT3 originalPosition = transform_.position_;*/
+		fMove.z -= PLAYERMOVE;
 		
 
     }
@@ -142,6 +142,8 @@ void Player::Update()
 	}
 
 	//transform_.rotate_.y = XMConvertToDegrees(angle);
+
+	
     
 }
 

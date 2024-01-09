@@ -18,6 +18,8 @@ private:
 
     int hModel_;    //モデル番号
     int hSound_;    //サウンド番号
+    //速度を一定にするやつ
+    XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
 public:
     //コンストラクタ
     Player(GameObject* parent);

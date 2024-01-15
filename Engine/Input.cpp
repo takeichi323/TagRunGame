@@ -10,7 +10,7 @@ namespace Input
 	LPDIRECTINPUT8			pDInput_;
 
 	//キーボード
-	LPDIRECTINPUTDEVICE8	pKeyDevice_;	//デバイスオブジェクト
+	LPDIRECTINPUTDEVICE8	pKeyDevice_=nullptr;	//デバイスオブジェクト
 	BYTE keyState_[256];					//現在の各キーの状態
 	BYTE prevKeyState_[256];				//前フレームでの各キーの状態
 

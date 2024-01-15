@@ -20,6 +20,8 @@ private:
     int hSound_;    //サウンド番号
     //速度を一定にするやつ
     XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
+    //マウス操作がされたかどうか
+    bool isMouseControl_;
 public:
     //コンストラクタ
     Player(GameObject* parent);
@@ -36,6 +38,10 @@ public:
     void Release() override;
     //プレイヤーのカメラ位置
     void CameraPosition();
+    
+    
+
+   
     
     //壁との当たり判定
     bool WallHitTest();

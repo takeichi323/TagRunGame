@@ -86,60 +86,60 @@ void Player::Update()
     }
 
 	//壁との判定
-	int checkX1, checkX2;
-	int checkZ1, checkZ2;
-	//右
-	{
-		checkX1 = (int)(transform_.position_.x + 0.3f);
-		checkZ1 = (int)(transform_.position_.z + 0.2f);
+	//int checkX1, checkX2;
+	//int checkZ1, checkZ2;
+	////右
+	//{
+	//	checkX1 = (int)(transform_.position_.x + 0.3f);
+	//	checkZ1 = (int)(transform_.position_.z + 0.2f);
 
-		checkX2 = (int)(transform_.position_.x + 0.3f);
-		checkZ2 = (int)(transform_.position_.z - 0.2f);
-		if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
-		{
-			transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
-		}
-	}
+	//	checkX2 = (int)(transform_.position_.x + 0.3f);
+	//	checkZ2 = (int)(transform_.position_.z - 0.2f);
+	//	if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
+	//	{
+	//		transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
+	//	}
+	//}
 
-	//左
-	{
-		checkX1 = (int)(transform_.position_.x - 0.3f);
-		checkZ1 = (int)(transform_.position_.z + 0.1f);
-		checkX2 = (int)(transform_.position_.x - 0.3f);
-		checkZ2 = (int)(transform_.position_.z - 0.1f);
+	////左
+	//{
+	//	checkX1 = (int)(transform_.position_.x - 0.3f);
+	//	checkZ1 = (int)(transform_.position_.z + 0.1f);
+	//	checkX2 = (int)(transform_.position_.x - 0.3f);
+	//	checkZ2 = (int)(transform_.position_.z - 0.1f);
 
-		if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
-		{
-			transform_.position_.x = (float)((int)prevPosition_.x) + 0.3;
-		}
+	//	if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
+	//	{
+	//		transform_.position_.x = (float)((int)prevPosition_.x) + 0.3;
+	//	}
 
-	}
+	//}
 
-	//前
-	{
-		checkX1 = (int)(transform_.position_.x + 0.1f);
-		checkZ1 = (int)(transform_.position_.z + 0.3f);
-		checkX2 = (int)(transform_.position_.x - 0.1f);
-		checkZ2 = (int)(transform_.position_.z + 0.3f);
+	////前
+	//{
+	//	checkX1 = (int)(transform_.position_.x + 0.1f);
+	//	checkZ1 = (int)(transform_.position_.z + 0.3f);
+	//	checkX2 = (int)(transform_.position_.x - 0.1f);
+	//	checkZ2 = (int)(transform_.position_.z + 0.3f);
 
-		if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
-		{
-			transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
-		}
-	}
+	//	if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
+	//	{
+	//		transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
+	//	}
+	//}
 
-	//後
-	{
-		checkX1 = (int)(transform_.position_.x + 0.1f);
-		checkZ1 = (int)(transform_.position_.z - 0.3f);
-		checkX2 = (int)(transform_.position_.x - 0.1f);
-		checkZ2 = (int)(transform_.position_.z - 0.3f);
+	////後
+	//{
+	//	checkX1 = (int)(transform_.position_.x + 0.1f);
+	//	checkZ1 = (int)(transform_.position_.z - 0.3f);
+	//	checkX2 = (int)(transform_.position_.x - 0.1f);
+	//	checkZ2 = (int)(transform_.position_.z - 0.3f);
 
-		if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
-		{
-			transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
-		}
-	}
+	//	if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
+	//	{
+	//		transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
+	//	}
+	//}
 
 	//transform_.rotate_.y = XMConvertToDegrees(angle);
 
@@ -175,8 +175,11 @@ void Player::CameraPosition()
     Camera::SetTarget(camTarget);
 }
 
+
+
 bool Player::WallHitTest()
 {
+
 	// PlayerクラスからStageクラスへの参照を取得
 	Stage* stage = dynamic_cast<Stage*>(GetParent()->FindChildObject("Stage"));
 	//もし取得できた場合

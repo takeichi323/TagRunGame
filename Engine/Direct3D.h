@@ -26,6 +26,10 @@ namespace Direct3D
 	//GPUに命令を出すためのやつ
 	extern ID3D11DeviceContext*    pContext_;
 
+	//ウィンドウハンドル
+	extern HWND hwnd_;
+	
+
 
 	//■シェーダー関連で必要なセット
 	enum SHADER_TYPE{SHADER_3D, SHADER_2D, SHADER_UNLIT, SHADER_BILLBOARD, SHADER_MAX};	//3タイプ（3D用、2D用、当たり判定枠表示用）
@@ -69,11 +73,15 @@ namespace Direct3D
 
 	////////////////////////ここからは関数///////////////////////////////
 
-	//初期化処理
-	//引数：hWnd			ウィンドウハンドル
-	//引数：screenWidth		スクリーンの幅
-	//引数：screenHeight	スクリーンの高さ
-	HRESULT Initialize(HWND hWnd, int screenWidth, int screenHeight);
+	//初期化
+	//引数:ウィンドウ幅(int)
+	//引数:ウィンドウ高さ(int)
+	//引数:ウィンドウハンドル(HWND)
+	//戻値:成否判定の結果(S_OK || E_FAIL)
+	HRESULT Initialize(int screenWidth, int screenHeight, HWND hwnd);
+
+
+
 
 	//シェーダー関連で必要なセット準備
 	void InitShaderBundle();
@@ -108,5 +116,9 @@ namespace Direct3D
 	//Zバッファへの書き込みON/OFF
 	//引数：isWrite	  true=書き込みON／false=書き込みOFF
 	void SetDepthBafferWriteEnable(bool isWrite);
+
+	//ウィンドウの中心を取得:X&Y
+	int GetWindowCenterX();
+	int GetWindowCenterY();
 };
 

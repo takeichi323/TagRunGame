@@ -3,8 +3,11 @@
 #include "Engine/Model.h"
 #include "Engine/Audio.h"
 #include "Engine/Input.h"
+#include "Engine/Direct3D.h"
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
+
+
 
 
 //コンストラクタ
@@ -198,6 +201,34 @@ bool Player::WallHitTest()
 	//当たっていない場合falseを返す
 	return false;
 	
+}
+
+//マウス操作の処理
+void Player::MouseControl()
+{
+	//もしマウス操作がされたら
+	if (isMouseControl_)
+	{
+		//ウィンドウ位置を取得
+		RECT lprc;//RECT:左上隅と右下隅の座標によって四角形を定義
+		GetWindowRect(Direct3D::hwnd_, &lprc);
+
+		//マウスカーソルの位置を取得
+		POINT mouseCursorPosition;//POINT:x 座標と y 座標を定義
+		GetCursorPos(&mouseCursorPosition);
+
+		//マウスカーソルをセットする位置
+		POINT setMoucePos{};
+
+		//Xのウィンドウ中心
+		setMoucePos.x = lprc.left + Direct3D::GetWindowCenterX();
+
+		//Yのウィンドウ中心
+		setMoucePos.y = lprc.left + Direct3D::GetWindowCenterY();
+
+		//マウスカーソルの位置
+		SetCursorPos(setMoucePos.x, setMoucePos.y);
+	}
 }
 
 

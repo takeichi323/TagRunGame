@@ -66,8 +66,19 @@ namespace Input
 	//引数：マウスカーソルの位置
 	void SetMousePosition(int x, int y);
 
-	//そのフレームでのマウスの移動量を取得
-	//戻値：X,Y マウスの移動量　／　Z,ホイールの回転量
+	//フレームでのマウスの移動量を取得:X
+	//戻値:移動量
+	float GetMouseMoveX();
+
+	//フレームでのマウスの移動量を取得:Y
+	//戻値:移動量
+	float GetMouseMoveY();
+
+	//フレームでのマウスの移動量を取得:ホイール
+	//戻値:移動量
+	int GetMouseMoveWheel();
+
+	//フレームでのマウスの移動量を取得:全て
 	XMFLOAT3 GetMouseMove();
 
 

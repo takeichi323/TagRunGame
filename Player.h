@@ -22,6 +22,9 @@ private:
     XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
     //マウス操作がされたかどうか
     bool isMouseControl_;
+
+    //マウス操作の処理
+    void MouseControl();
 public:
     //コンストラクタ
     Player(GameObject* parent);

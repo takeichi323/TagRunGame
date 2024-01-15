@@ -171,6 +171,24 @@ namespace Input
 		mousePos_.y = y;
 	}
 
+	float GetMouseMoveX()
+	{
+		//移動量X取得
+		return (float)mouseState_.lX;
+	}
+
+	float GetMouseMoveY()
+	{
+		//移動量Y取得
+		return (float)mouseState_.lY;
+	}
+
+	int GetMouseMoveWheel()
+	{
+		//移動量Z取得
+		return mouseState_.lZ;
+	}
+
 
 	//そのフレームでのマウスの移動量を取得
 	XMFLOAT3 GetMouseMove()

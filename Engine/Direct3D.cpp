@@ -41,17 +41,28 @@ namespace Direct3D
 	int						screenWidth_ = 0;
 	int						screenHeight_ = 0;
 
+	
+
 
 
 	//初期化処理
-	HRESULT Direct3D::Initialize(HWND hWnd, int screenWidth, int screenHeight)
+	HRESULT Direct3D::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
+
+		//ウィンドウハンドル
+		HWND hwnd_{};
+		//ハンドル設定
+		hwnd_ = hwnd;
 		///////////////////////////いろいろ準備するための設定///////////////////////////////
 		//いろいろな設定項目をまとめた構造体
 		DXGI_SWAP_CHAIN_DESC scDesc;
 
 		//とりあえず全部0
 		ZeroMemory(&scDesc, sizeof(scDesc));
+
+		
+
+		
 
 		//描画先のフォーマット
 		scDesc.BufferDesc.Width = screenWidth;		//画面幅
@@ -64,7 +75,7 @@ namespace Direct3D
 
 		//その他
 		scDesc.Windowed = TRUE;				//ウィンドウモードかフルスクリーンか
-		scDesc.OutputWindow = hWnd;			//ウィンドウハンドル
+		scDesc.OutputWindow = hwnd;			//ウィンドウハンドル
 		scDesc.BufferCount = 1;				//裏画面の枚数
 		scDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;	//画面に描画するために使う
 		scDesc.SampleDesc.Count = 1;		//MSAA（アンチエイリアス）の設定
@@ -510,6 +521,16 @@ namespace Direct3D
 		{
 			pContext_->OMSetRenderTargets(1, &pRenderTargetView_, nullptr);
 		}
+	}
+
+	int GetWindowCenterX()
+	{
+		return screenWidth_ / 2;
+	}
+
+	int GetWindowCenterY()
+	{
+		return screenHeight_ / 2;
 	}
 
 }

@@ -42,15 +42,15 @@ namespace Direct3D
 	int						screenHeight_ = 0;
 
 	
-
+	//ウィンドウハンドル
+	HWND hwnd_{};
 
 
 	//初期化処理
 	HRESULT Direct3D::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 
-		//ウィンドウハンドル
-		HWND hwnd_{};
+		
 		//ハンドル設定
 		hwnd_ = hwnd;
 		///////////////////////////いろいろ準備するための設定///////////////////////////////

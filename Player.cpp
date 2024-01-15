@@ -48,6 +48,8 @@ void Player::Update()
     //カメラ位置
       CameraPosition();
       //Direction();
+	  //マウス操作処理
+	  MouseControl();
 
 	/*  HitTest();*/
     

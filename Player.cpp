@@ -224,7 +224,7 @@ void Player::MouseControl()
 		setMoucePos.x = lprc.left + Direct3D::GetWindowCenterX();
 
 		//Yのウィンドウ中心
-		setMoucePos.y = lprc.left + Direct3D::GetWindowCenterY();
+		setMoucePos.y = lprc.top + Direct3D::GetWindowCenterY();
 
 		//マウスカーソルの位置
 		SetCursorPos(setMoucePos.x, setMoucePos.y);

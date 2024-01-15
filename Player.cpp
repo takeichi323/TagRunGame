@@ -43,7 +43,7 @@ void Player::Update()
 {
 	prevPosition_ = transform_.position_;
     //カメラ位置
-      //CameraPosition();
+      CameraPosition();
       //Direction();
 
 	/*  HitTest();*/
@@ -53,7 +53,7 @@ void Player::Update()
     {
 		// 移動前の位置を保存
 		/*XMFLOAT3 originalPosition = transform_.position_;*/
-          fMove.x += PLAYERMOVE;
+		transform_.position_.x += PLAYERMOVE;
        // Audio::Play(hSound_);
 		
 	
@@ -64,7 +64,7 @@ void Player::Update()
     {
 		// 移動前の位置を保存
 		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		fMove.x -= PLAYERMOVE;
+		transform_.position_.x -= PLAYERMOVE;
        // Audio::Stop(hSound_);
 		
     }
@@ -72,7 +72,7 @@ void Player::Update()
     {
 		// 移動前の位置を保存
 		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		fMove.z += PLAYERMOVE;
+		transform_.position_.z += PLAYERMOVE;
 		
        
     }
@@ -80,7 +80,7 @@ void Player::Update()
     {
 		// 移動前の位置を保存
 		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		fMove.z -= PLAYERMOVE;
+		transform_.position_.z -= PLAYERMOVE;
 		
 
     }

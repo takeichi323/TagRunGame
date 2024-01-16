@@ -6,8 +6,17 @@
 #include "Engine/Direct3D.h"
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
+#include "Engine/Transform.h"
 
 
+
+
+//定数
+static const float MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED = 0.1f;				//マウスのX軸移動の速さ
+static const float MOUSE_CURSOR_VERTICAL_MOVE_SPEED = 0.01f;				//マウスのY軸移動の速さ
+static const XMVECTOR CAMERA_TARGET_POSITION = XMVectorSet(0, 0, 5, 0);		//カメラの焦点
+
+using namespace DirectX;
 
 
 //コンストラクタ
@@ -46,10 +55,13 @@ void Player::Update()
 {
 	prevPosition_ = transform_.position_;
     //カメラ位置
-      CameraPosition();
+     // CameraPosition();
       //Direction();
 	  //マウス操作処理
 	  MouseControl();
+
+	  //カメラ処理
+	  CameraMove();
 
 	/*  HitTest();*/
     
@@ -168,17 +180,17 @@ void Player::Release()
 }
 
 //カメラ位置(一人称)
-void Player::CameraPosition()
-{
-    //1フレームの移動ベクトル
-   // XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
-    //オブジェクトの現在地をベクトル型に変換
-    XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
-    Camera::SetPosition(transform_.position_);
-    XMFLOAT3 camTarget;
-    XMStoreFloat3(&camTarget, vPos + vMove);
-    Camera::SetTarget(camTarget);
-}
+//void Player::CameraPosition()
+//{
+//    //1フレームの移動ベクトル
+//   // XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
+//    //オブジェクトの現在地をベクトル型に変換
+//    XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
+//    Camera::SetPosition(transform_.position_);
+//    XMFLOAT3 camTarget;
+//    XMStoreFloat3(&camTarget, vPos + vMove);
+//    Camera::SetTarget(camTarget);
+//}
 
 
 
@@ -204,6 +216,14 @@ bool Player::WallHitTest()
 	return false;
 	
 }
+
+XMFLOAT3 Player::XMVectorToXMFLOAT3(const XMVECTOR& vector)
+{
+	XMFLOAT3 result;
+	XMStoreFloat3(&result, vector);
+	return result;
+}
+
 
 //マウス操作の処理
 void Player::MouseControl()
@@ -231,6 +251,48 @@ void Player::MouseControl()
 		//マウスカーソルの位置
 		SetCursorPos(setMoucePos.x, setMoucePos.y);
 	}
+}
+
+void Player::CameraMove()
+{
+	//マウスが動いた場合
+	if (isMouseControl_)
+	{
+		//マウスとカメラの連動
+		transform_.rotate_.y += Input::GetMouseMoveX() * MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED;
+		cameraHeight_ += Input::GetMouseMoveY() * MOUSE_CURSOR_VERTICAL_MOVE_SPEED;
+
+		//カメラの位置設定
+	    //カメラポジション
+		XMFLOAT3 camPos = transform_.position_;
+
+		
+
+		
+
+		//カメラ焦点位置
+		XMVECTOR camTar = CAMERA_TARGET_POSITION;
+		//プレイヤーの向く方向にカメラの焦点位置回転
+		camTar = XMVector3TransformCoord(camTar, playerAngleYMatrix_);
+
+		// XMFLOAT3型からXMVECTOR型に変換
+		XMVECTOR VectorcamPos = XMLoadFloat3(&camPos);
+		// XMVECTOR型同士の足し算
+		XMVECTOR CameraPositionFocus = XMVectorAdd(VectorcamPos, camTar);
+
+		//カメラ位置と焦点を設定変更
+		Camera::SetPosition(camPos);
+		Camera::SetTarget(CameraPositionFocus);
+
+
+
+
+
+
+	   
+		
+	}
+
 }
 
 

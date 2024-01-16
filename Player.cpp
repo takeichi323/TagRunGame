@@ -284,6 +284,8 @@ void Player::CameraMove()
 		Camera::SetPosition(camPos);
 		Camera::SetTarget(CameraPositionFocus);
 
+		//SetTarget‚ªXMFLOAT‚È‚Ì‚ÅcamTar‚ðXMFLOATŒ^‚É‚·‚é
+
 
 
 

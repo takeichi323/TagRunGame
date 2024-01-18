@@ -62,6 +62,7 @@ void Player::Update()
 
 	  //カメラ処理
 	  CameraMove();
+	  
 
 	/*  HitTest();*/
     
@@ -266,10 +267,6 @@ void Player::CameraMove()
 	    //カメラポジション
 		XMFLOAT3 camPos = transform_.position_;
 
-		
-
-		
-
 		//カメラ焦点位置
 		XMVECTOR camTar = CAMERA_TARGET_POSITION;
 		//プレイヤーの向く方向にカメラの焦点位置回転
@@ -279,10 +276,14 @@ void Player::CameraMove()
 		XMVECTOR VectorcamPos = XMLoadFloat3(&camPos);
 		// XMVECTOR型同士の足し算
 		XMVECTOR CameraPositionFocus = XMVectorAdd(VectorcamPos, camTar);
+		XMFLOAT3 result{};
+		// XMVECTOR型をXMFLOAT3型に変換
+		XMStoreFloat3(&result, CameraPositionFocus);
+
 
 		//カメラ位置と焦点を設定変更
 		Camera::SetPosition(camPos);
-		Camera::SetTarget(CameraPositionFocus);
+		Camera::SetTarget(result);
 
 		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
 

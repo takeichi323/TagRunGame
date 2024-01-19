@@ -53,7 +53,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	HWND hWnd = InitApp(hInstance, screenWidth, screenHeight, nCmdShow);
 
 	//Direct3D€”õ
-	Direct3D::Initialize(hWnd, screenWidth, screenHeight);
+	Direct3D::Initialize( screenWidth,  screenHeight, hWnd);
 
 	//ƒJƒƒ‰‚ğ€”õ
 	Camera::Initialize();

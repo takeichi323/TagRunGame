@@ -10,7 +10,7 @@ namespace Input
 	LPDIRECTINPUT8			pDInput_;
 
 	//キーボード
-	LPDIRECTINPUTDEVICE8	pKeyDevice_;	//デバイスオブジェクト
+	LPDIRECTINPUTDEVICE8	pKeyDevice_=nullptr;	//デバイスオブジェクト
 	BYTE keyState_[256];					//現在の各キーの状態
 	BYTE prevKeyState_[256];				//前フレームでの各キーの状態
 
@@ -169,6 +169,24 @@ namespace Input
 	{
 		mousePos_.x = x;
 		mousePos_.y = y;
+	}
+
+	float GetMouseMoveX()
+	{
+		//移動量X取得
+		return (float)mouseState_.lX;
+	}
+
+	float GetMouseMoveY()
+	{
+		//移動量Y取得
+		return (float)mouseState_.lY;
+	}
+
+	int GetMouseMoveWheel()
+	{
+		//移動量Z取得
+		return mouseState_.lZ;
 	}
 
 

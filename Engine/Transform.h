@@ -1,7 +1,17 @@
 #pragma once
 #include <DirectXMath.h>
 
+#ifndef TRANSFORM_H
+#define TRANSFORM_H
+#endif
+
 using namespace DirectX;
+
+
+//ƒ}ƒNƒ
+#define vecX m128_f32[0]		//XMVECTORŒ^‚Ì¬•ªx
+#define vecY m128_f32[1]		//XMVECTORŒ^‚Ì¬•ªy
+#define vecZ m128_f32[2]		//XMVECTORŒ^‚Ì¬•ªz
 
 
 //-----------------------------------------------------------

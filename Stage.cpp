@@ -70,6 +70,14 @@ void Stage::Draw()
 	}
 }
 
+bool Stage::IsWall(int x, int z)
+{
+	if (table_[x][z] == TYPE_WALL)
+		return true;
+	else
+		return false;
+}
+
 //ŠJ•ú
 void Stage::Release()
 {
@@ -80,10 +88,4 @@ void Stage::Release()
 	delete[] table_;
 }
 
-bool Stage::IsWall(int x, int z)
-{
-	if (table_[x][z] == TYPE_WALL)
-		return true;
-	else
-		return false;
-}
+

@@ -11,6 +11,7 @@
 
 
 
+
 //定数
 static const float MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED = 0.1f;				//マウスのX軸移動の速さ
 static const float MOUSE_CURSOR_VERTICAL_MOVE_SPEED = 0.01f;				//マウスのY軸移動の速さ
@@ -53,7 +54,6 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-	prevPosition_ = transform_.position_;
     //カメラ位置
      // CameraPosition();
       //Direction();
@@ -62,50 +62,9 @@ void Player::Update()
 
 	  //カメラ処理
 	  CameraMove();
-	  
-
-	/*  HitTest();*/
-    
-    //スペースキーが押されていたら
-    if (Input::IsKey(DIK_D))
-    {
-		// 移動前の位置を保存
-		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		transform_.position_.x += PLAYERMOVE;
-       // Audio::Play(hSound_);
-		
-	
-		
-    }
-    //スペースキーが押されていたら
-    if (Input::IsKey(DIK_A))
-    {
-		// 移動前の位置を保存
-		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		transform_.position_.x -= PLAYERMOVE;
-       // Audio::Stop(hSound_);
-		
-    }
-    if (Input::IsKey(DIK_W))
-    {
-		// 移動前の位置を保存
-		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		transform_.position_.z += PLAYERMOVE;
-		
-       
-    }
-    if (Input::IsKey(DIK_S))
-    {
-		// 移動前の位置を保存
-		/*XMFLOAT3 originalPosition = transform_.position_;*/
-		transform_.position_.z -= PLAYERMOVE;
-		
-
-    }
-
-	
-	
-    
+	  //プレイヤー移動処理
+	  PlayerKeyMove();
+	/*  HitTest();*/   
 }
 
 //描画
@@ -149,6 +108,7 @@ bool Player::WallHitTest()
 	
 }
 
+//型変換のために必要な関数
 XMFLOAT3 Player::XMVectorToXMFLOAT3(const XMVECTOR& vector)
 {
 	XMFLOAT3 result;
@@ -217,16 +177,34 @@ void Player::CameraMove()
 		Camera::SetTarget(result);
 
 		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
-
-
-
-
-
-
-	   
 		
 	}
 
+}
+
+void Player::PlayerKeyMove()
+{
+	
+	if (Input::IsKey(DIK_D))
+	{	
+		transform_.position_.x += PLAYERMOVE;
+		// Audio::Play(hSound_);
+	}
+	
+	if (Input::IsKey(DIK_A))
+	{
+		transform_.position_.x -= PLAYERMOVE;
+		// Audio::Stop(hSound_);
+	}
+	if (Input::IsKey(DIK_W))
+	{
+		transform_.position_.z += PLAYERMOVE;
+	}
+	if (Input::IsKey(DIK_S))
+	{
+		transform_.position_.z -= PLAYERMOVE;
+	}
+	
 }
 
 

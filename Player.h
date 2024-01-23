@@ -37,6 +37,9 @@ private:
     //カメラの移動処理
     void CameraMove();
 
+    //プレイヤー初期位置
+    void PlayerInitialPosition();
+
     
 
     //プレイヤーキー移動処理

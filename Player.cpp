@@ -53,19 +53,13 @@ void Player::Initialize()
 
 //更新
 void Player::Update()
-{
-    //カメラ位置
-     // CameraPosition();
-      //Direction();
-	 
+{ 
 	  //マウス操作処理
 	  MouseControl();
-
 	  //カメラ処理
 	  CameraMove();
 	  //プレイヤー移動処理
 	  PlayerKeyMove();
-	/*  HitTest();*/   
 	 
 }
 
@@ -182,9 +176,13 @@ void Player::CameraMove()
 		Camera::SetTarget(result);
 
 		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
-
-		
 	}
+}
+
+//プレイヤー初期位置
+void Player::PlayerInitialPosition()
+{
+
 
 }
 

@@ -57,6 +57,7 @@ void Player::Update()
     //カメラ位置
      // CameraPosition();
       //Direction();
+	 
 	  //マウス操作処理
 	  MouseControl();
 
@@ -65,6 +66,7 @@ void Player::Update()
 	  //プレイヤー移動処理
 	  PlayerKeyMove();
 	/*  HitTest();*/   
+	 
 }
 
 //描画
@@ -123,13 +125,17 @@ void Player::MouseControl()
 	//もしマウス操作がされたら
 	if (isMouseControl_)
 	{
+		
 		//ウィンドウ位置を取得
 		RECT lprc;//RECT:左上隅と右下隅の座標によって四角形を定義
 		GetWindowRect(Direct3D::hwnd_, &lprc);
 
 		//マウスカーソルの位置を取得
-		POINT mouseCursorPosition;//POINT:x 座標と y 座標を定義
-		GetCursorPos(&mouseCursorPosition);
+		POINT mouseCursorPosition{};//POINT:x 座標と y 座標を定義
+		mouseCursorPosition.x = lprc.left + Direct3D::GetWindowCenterX();
+		mouseCursorPosition.y = lprc.top + Direct3D::GetWindowCenterY();
+
+		SetCursorPos(mouseCursorPosition.x,mouseCursorPosition.y);
 
 		//マウスカーソルをセットする位置
 		POINT setMoucePos{};
@@ -171,16 +177,18 @@ void Player::CameraMove()
 		// XMVECTOR型をXMFLOAT3型に変換
 		XMStoreFloat3(&result, CameraPositionFocus);
 
-
 		//カメラ位置と焦点を設定変更
 		Camera::SetPosition(camPos);
 		Camera::SetTarget(result);
 
 		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
+
 		
 	}
 
 }
+
+
 
 void Player::PlayerKeyMove()
 {

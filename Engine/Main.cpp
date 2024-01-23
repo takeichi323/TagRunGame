@@ -230,6 +230,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);	//プログラム終了
 		return 0;
 
+	//マウスカーソルを非表示
+	/*case WM_CREATE:
+		ShowCursor(FALSE);
+		return 0;*/
+
 	//マウスが動いた
 	case WM_MOUSEMOVE:
 		Input::SetMousePosition(LOWORD(lParam), HIWORD(lParam));

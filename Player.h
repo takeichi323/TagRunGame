@@ -37,6 +37,8 @@ private:
     //カメラの移動処理
     void CameraMove();
 
+    
+
     //プレイヤーキー移動処理
     //W:前進 A:左 S:後退 D:右
     void PlayerKeyMove();

@@ -1,5 +1,9 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Stage.h"
+
+
+
 
 //◆◆◆を管理するクラス
 class Player : public GameObject
@@ -9,6 +13,10 @@ class Player : public GameObject
 
     int hModel_;    //モデル番号
     int hSound_;    //サウンド番号
+
+    XMFLOAT3  prevPosition_;   //prev(previous)前
+    Stage* pStage_;//モデル番号
+
 public:
     //コンストラクタ
     Player(GameObject* parent);
@@ -25,4 +33,7 @@ public:
     void Release() override;
     //プレイヤーのカメラ位置
     void CameraPosition();
+
+    
+    
 };

@@ -14,20 +14,15 @@ Stage::Stage(GameObject* parent)
 	int width_ = csv.GetWidth();
 	int height_ = csv.GetHeight();
 
-	table_ = new int* [csv.GetWidth()];
+	//table_ = new int* [csv.GetWidth()];
+	table_ = new int* [width_];
 
 	for (int x = 0; x < width_; x++)
 	{
 		table_[x] = new int[height_];
-	}
-
-
-	for (int x = 0; x < width_; x++)
-	{
 		for (int z = 0; z < height_; z++)
 		{
-			table_[x][height_ - 1 - z] = csv.GetValue(x, z);
-			//上下を反転させる↑
+			table_[x][z] = csv.GetValue(x, z); // マップデータを取得し、table_ に格納
 		}
 	}
 }
@@ -86,4 +81,6 @@ bool Stage::IsWall(int x, int z)
 		return true;
 	else
 		return false;
+
+	
 }

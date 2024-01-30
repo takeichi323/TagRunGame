@@ -23,6 +23,8 @@ Stage::Stage(GameObject* parent)
 		for (int z = 0; z < height_; z++)
 		{
 			table_[x][z] = csv.GetValue(x, z); // マップデータを取得し、table_ に格納
+			//何とかなる！！ファイトだよ！
+
 		}
 	}
 }
@@ -51,9 +53,9 @@ void Stage::Draw()
 
 	Transform blockTrans;
 
-	for (int x = 0; x < 30/*34*/; x++)
+	for (int x = 0; x < 34; x++)
 	{
-		for (int z = 0; z <30 /*58*/; z++)
+		for (int z = 0; z <58; z++)
 		{
 			blockTrans.position_.x = z;
 			blockTrans.position_.z = x;

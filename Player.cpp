@@ -90,8 +90,7 @@ void Player::Update()
         checkX2 = (int)(transform_.position_.x + 0.3f);
         checkZ2 = (int)(transform_.position_.z - 0.2f);
 
-        if (pStage_->IsWall(checkX1, checkZ1) == true ||
-            pStage_->IsWall(checkX2, checkZ2) == true)
+        if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
         {
             transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
         }
@@ -142,7 +141,7 @@ void Player::Update()
         }
     }
 
-
+   
 }
 
 //•`‰æ

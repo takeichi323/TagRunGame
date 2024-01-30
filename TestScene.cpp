@@ -12,9 +12,10 @@ TestScene::TestScene(GameObject * parent)
 //‰Šú‰»
 void TestScene::Initialize()
 {
-	Instantiate<Player>(this);
+
 	Instantiate<Enemy>(this);
 	Instantiate<Stage>(this);
+	Instantiate<Player>(this);
 }
 
 //XV

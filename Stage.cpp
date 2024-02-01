@@ -14,20 +14,17 @@ Stage::Stage(GameObject* parent)
 	int width_ = csv.GetWidth();
 	int height_ = csv.GetHeight();
 
-	table_ = new int* [csv.GetWidth()];
+	//table_ = new int* [csv.GetWidth()];
+	table_ = new int* [width_];
 
 	for (int x = 0; x < width_; x++)
 	{
 		table_[x] = new int[height_];
-	}
-
-
-	for (int x = 0; x < width_; x++)
-	{
 		for (int z = 0; z < height_; z++)
 		{
-			table_[x][height_ - 1 - z] = csv.GetValue(x, z);
-			//上下を反転させる↑
+			table_[x][z] = csv.GetValue(x, z); // マップデータを取得し、table_ に格納
+			//何とかなる！！ファイトだよ！
+
 		}
 	}
 }
@@ -56,12 +53,12 @@ void Stage::Draw()
 
 	Transform blockTrans;
 
-	for (int x = 0; x < 28; x++)
+	for (int x = 0; x < 34; x++)
 	{
-		for (int z = 0; z < 25; z++)
+		for (int z = 0; z <58; z++)
 		{
-			blockTrans.position_.x = x;
-			blockTrans.position_.z = z;
+			blockTrans.position_.x = z;
+			blockTrans.position_.z = x;
 
 			int type = table_[x][z];
 			Model::SetTransform(hModel_[type], blockTrans);
@@ -88,4 +85,12 @@ void Stage::Release()
 	delete[] table_;
 }
 
+bool Stage::IsWall(int x, int z)
+{
+	if (table_[x][z] == TYPE_WALL)
+		return true;
+	else
+		return false;
 
+	
+}

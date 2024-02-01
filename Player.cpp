@@ -33,6 +33,10 @@ Player::~Player()
 //初期化
 void Player::Initialize()
 {
+    //当たり判定のサイズ
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+    AddCollider(collision);
+
     //モデルデータのロード
     hModel_ = Model::Load("Pacplayer.fbx");
     assert(hModel_ >= 0);
@@ -42,12 +46,16 @@ void Player::Initialize()
     assert(hSound_ >= 0);
 
     //仮ポジション
-    transform_.position_.y += 0.5;
-	transform_.position_.x += 0.5;
-	transform_.position_.z += 1.5;
-	
+    //transform_.position_.y += 0.5;
+    transform_.position_ = XMFLOAT3(1.0, 0.5, 1.5);
    
-	pStage_ = (Stage*)FindObject("Stage");
+    //全体のマップを確認するためのカメラ位置
+    Camera::SetPosition(XMFLOAT3(25, 50, -8));
+    Camera::SetTarget(XMFLOAT3(25, 10, 10));
+
+    pStage_ = (Stage*)FindObject("Stage");
+
+
 }
 
 //更新
@@ -66,18 +74,19 @@ void Player::Update()
 
 	/*  HitTest();*/
     
-    //スペースキーが押されていたら
+   //右移動
     if (Input::IsKey(DIK_D))
     {
         transform_.position_.x += PLAYERMOVE;
         //Audio::Play(hSound_);
     }
-    //スペースキーが押されていたら
+   //左移動
     if (Input::IsKey(DIK_A))
     {
         transform_.position_.x -= PLAYERMOVE;
        // Audio::Stop(hSound_);
     }
+    //前移動
     if (Input::IsKey(DIK_W))
     {
 		// 移動前の位置を保存
@@ -86,6 +95,7 @@ void Player::Update()
 		
        
     }
+    //後移動
     if (Input::IsKey(DIK_S))
     {
 		// 移動前の位置を保存
@@ -95,9 +105,71 @@ void Player::Update()
 
     }
 
-	
-	
     
+    //壁との判定
+    int checkX1, checkX2;
+    int checkZ1, checkZ2;
+
+    //右
+    {
+        checkX1 = (int)(transform_.position_.x + 0.3f);
+        checkZ1 = (int)(transform_.position_.z + 0.2f);
+
+        checkX2 = (int)(transform_.position_.x + 0.3f);
+        checkZ2 = (int)(transform_.position_.z - 0.2f);
+
+        if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
+        {
+            transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
+        }
+    }
+
+    //左
+    {
+        checkX1 = (int)(transform_.position_.x - 0.3f);
+        checkZ1 = (int)(transform_.position_.z + 0.1f);
+
+        checkX2 = (int)(transform_.position_.x - 0.3f);
+        checkZ2 = (int)(transform_.position_.z - 0.1f);
+
+        if (pStage_->IsWall(checkX1, checkZ1) == true ||
+            pStage_->IsWall(checkX2, checkZ2) == true)
+        {
+            transform_.position_.x = (float)((int)prevPosition_.x) + 0.3;
+        }
+    }
+
+    //奥
+    {
+        checkX1 = (int)(transform_.position_.x + 0.1f);
+        checkZ1 = (int)(transform_.position_.z + 0.3f);
+
+        checkX2 = (int)(transform_.position_.x - 0.1f);
+        checkZ2 = (int)(transform_.position_.z + 0.3f);
+
+        if (pStage_->IsWall(checkX1, checkZ1) == true ||
+            pStage_->IsWall(checkX2, checkZ2) == true)
+        {
+            transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
+        }
+    }
+
+    //手前
+    {
+        checkX1 = (int)(transform_.position_.x + 0.1f);
+        checkZ1 = (int)(transform_.position_.z - 0.3f);
+
+        checkX2 = (int)(transform_.position_.x - 0.1f);
+        checkZ2 = (int)(transform_.position_.z - 0.3f);
+
+        if (pStage_->IsWall(checkX1, checkZ1) == true ||
+            pStage_->IsWall(checkX2, checkZ2) == true)
+        {
+            transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
+        }
+    }
+
+   
 }
 
 //描画

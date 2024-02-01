@@ -2,6 +2,9 @@
 #include "Engine/GameObject.h"
 #include "Stage.h"
 
+
+
+
 //ŸŸŸ‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 class Player : public GameObject
 {   

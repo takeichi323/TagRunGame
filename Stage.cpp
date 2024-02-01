@@ -57,8 +57,8 @@ void Stage::Draw()
 	{
 		for (int z = 0; z <58; z++)
 		{
-			blockTrans.position_.x = z;
-			blockTrans.position_.z = x;
+			blockTrans.position_.x = x;
+			blockTrans.position_.z = z;
 
 			int type = table_[x][z];
 			Model::SetTransform(hModel_[type], blockTrans);
@@ -67,13 +67,6 @@ void Stage::Draw()
 	}
 }
 
-bool Stage::IsWall(int x, int z)
-{
-	if (table_[x][z] == TYPE_WALL)
-		return true;
-	else
-		return false;
-}
 
 //ŠJ•ú
 void Stage::Release()

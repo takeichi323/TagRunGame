@@ -84,23 +84,23 @@ void Player::Release()
 bool Player::WallHitTest()
 {
 
-	// PlayerクラスからStageクラスへの参照を取得
-	Stage* stage = dynamic_cast<Stage*>(GetParent()->FindChildObject("Stage"));
-	//もし取得できた場合
-	if (stage)
-	{
-		// Playerの位置をステージ座標系に変換→キャストってやーつ
-		int playerX = static_cast<int>(transform_.position_.x);
-		int playerZ = static_cast<int>(transform_.position_.z);
-		// ステージ上の座標が壁かどうかをチェック
-		if (stage->IsWall(playerX, playerZ))
-		{
-			// 壁と当たっている場合はtrueを返す
-			return true;
-		}
-	}
-	//当たっていない場合falseを返す
-	return false;
+	//// PlayerクラスからStageクラスへの参照を取得
+	//Stage* stage = dynamic_cast<Stage*>(GetParent()->FindChildObject("Stage"));
+	////もし取得できた場合
+	//if (stage)
+	//{
+	//	// Playerの位置をステージ座標系に変換→キャストってやーつ
+	//	int playerX = static_cast<int>(transform_.position_.x);
+	//	int playerZ = static_cast<int>(transform_.position_.z);
+	//	// ステージ上の座標が壁かどうかをチェック
+	//	if (stage->IsWall(playerX, playerZ))
+	//	{
+	//		// 壁と当たっている場合はtrueを返す
+	//		return true;
+	//	}
+	//}
+	////当たっていない場合falseを返す
+	//return false;
 	
 }
 

@@ -280,15 +280,7 @@ void Player::CameraMove()
 		Camera::SetPosition(camPos);
 		Camera::SetTarget(result);
 
-		//SetTarget‚ªXMFLOAT‚È‚Ì‚ÅcamTar‚ðXMFLOATŒ^‚É‚·‚é
-
-
-
-
-
-
-	   
-		
+		//SetTarget‚ªXMFLOAT‚È‚Ì‚ÅcamTar‚ðXMFLOATŒ^‚É‚·‚é	
 	}
 
 }

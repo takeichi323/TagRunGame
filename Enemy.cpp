@@ -19,7 +19,8 @@ void Enemy::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Enemy.fbx");
     assert(hModel_ >= 0);
-    transform_.position_ = XMFLOAT3(0, 0, 10);
+    transform_.position_ = XMFLOAT3(3, 0.5, 10);
+    transform_.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);
    
 }
 

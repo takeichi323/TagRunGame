@@ -5,6 +5,8 @@
 class Enemy : public GameObject
 {
     int hModel_;    //モデル番号
+
+
 public:
     //コンストラクタ
     Enemy(GameObject* parent);

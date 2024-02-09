@@ -10,21 +10,6 @@ Enemy::Enemy(GameObject* parent)
     
 }
 
-struct EnemyPos {
-    DirectX::XMFLOAT3 position;
-};
-struct PlayerPos {
-    DirectX::XMFLOAT3 position;
-};
-DirectX::XMFLOAT3 GetPlayerPosition(const PlayerPos& player) {
-    return player.position;
-}
-
-DirectX::XMFLOAT3 GetEnemyPosition(const EnemyPos& enemy) {
-    return enemy.position;
-}
-
-
 //デストラクタ
 Enemy::~Enemy()
 {
@@ -57,20 +42,7 @@ void Enemy::Draw()
     Model::Draw(hModel_);
 }
 
-void EnemyChasePlayer(Enemy& enemy, const PlayerPos& player, float speed) {
-    DirectX::XMFLOAT3 playerPosition = GetPlayerPosition(player);
-    DirectX::XMFLOAT3 enemyPosition = GetEnemyPosition(enemy);
 
-    // プレイヤーの位置に向かって敵を移動させる
-    DirectX::XMVECTOR direction = DirectX::XMVectorSubtract(
-        DirectX::XMLoadFloat3(&playerPosition),
-        DirectX::XMLoadFloat3(&enemyPosition)
-    );
-    direction = DirectX::XMVector3Normalize(direction);
-
-    DirectX::XMVECTOR movement = DirectX::XMVectorScale(direction, speed);
-    DirectX::XMStoreFloat3(&enemy.position, DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&enemyPosition), movement));
-}
 
 
 

@@ -3,6 +3,18 @@
 #include <DirectXMath.h>
 
 
+XMFLOAT3 Enemy::GetObjectPosition(ID3D11DeviceContext* pContext, ID3D11Buffer* pObjectBuffer)
+{
+    //位置取得
+    XMFLOAT3 EnemyPosition{};
+    D3D11_MAPPED_SUBRESOURCE mappedResource{};
+    
+    
+
+
+    
+}
+
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), hModel_(-1)

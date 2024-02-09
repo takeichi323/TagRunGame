@@ -5,6 +5,11 @@
 class Enemy : public GameObject
 {
     int hModel_;    //モデル番号
+    
+
+private:
+    //位置情報3次元ベクトルにするやつ
+    XMFLOAT3 GetObjectPosition(ID3D11DeviceContext* pContext, ID3D11Buffer* pObjectBuffer);
 
 
 public:

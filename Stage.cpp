@@ -57,7 +57,8 @@ void Stage::Draw()
 	{
 		for (int z = 0; z <58; z++)
 		{
-			blockTrans.position_.x = x;
+			//x‚ª+‚P‚¸‚ê‚Ä‚¢‚½‚©‚ç+1‚É‚µ‚½
+			blockTrans.position_.x = x+1;
 			blockTrans.position_.z = z;
 
 			int type = table_[x][z];

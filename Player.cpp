@@ -7,6 +7,7 @@
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
 #include "Engine/Transform.h"
+#include "Engine/SceneManager.h"
 
 
 
@@ -61,6 +62,10 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+
+
+    
+
 	prevPosition_ = transform_.position_;
     //カメラ位置
      // CameraPosition();

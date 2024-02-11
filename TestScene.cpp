@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Stage.h"
+#include "Engine/Input.h"
+#include "Engine/SceneManager.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -21,6 +23,7 @@ void TestScene::Initialize()
 //更新
 void TestScene::Update()
 {
+	
 }
 
 //描画

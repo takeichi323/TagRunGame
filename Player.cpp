@@ -81,28 +81,7 @@ void Player::Release()
 
 
 
-bool Player::WallHitTest()
-{
 
-	//// PlayerクラスからStageクラスへの参照を取得
-	//Stage* stage = dynamic_cast<Stage*>(GetParent()->FindChildObject("Stage"));
-	////もし取得できた場合
-	//if (stage)
-	//{
-	//	// Playerの位置をステージ座標系に変換→キャストってやーつ
-	//	int playerX = static_cast<int>(transform_.position_.x);
-	//	int playerZ = static_cast<int>(transform_.position_.z);
-	//	// ステージ上の座標が壁かどうかをチェック
-	//	if (stage->IsWall(playerX, playerZ))
-	//	{
-	//		// 壁と当たっている場合はtrueを返す
-	//		return true;
-	//	}
-	//}
-	////当たっていない場合falseを返す
-	//return false;
-	
-}
 
 //型変換のために必要な関数
 XMFLOAT3 Player::XMVectorToXMFLOAT3(const XMVECTOR& vector)
@@ -119,29 +98,18 @@ void Player::MouseControl()
 	//もしマウス操作がされたら
 	if (isMouseControl_)
 	{
-		
-		//ウィンドウ位置を取得
-		RECT lprc;//RECT:左上隅と右下隅の座標によって四角形を定義
-		GetWindowRect(Direct3D::hwnd_, &lprc);
+		RECT lprc{};
+		// マウスの動きに基づいてプレイヤーのカメラの角度を更新
+		float mouseX = Input::GetMouseMoveX();
+		float mouseY = Input::GetMouseMoveY();
+		transform_.rotate_.y += mouseX * MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED;
+		cameraHeight_ += mouseY * MOUSE_CURSOR_VERTICAL_MOVE_SPEED;
 
-		//マウスカーソルの位置を取得
-		POINT mouseCursorPosition{};//POINT:x 座標と y 座標を定義
-		mouseCursorPosition.x = lprc.left + Direct3D::GetWindowCenterX();
-		mouseCursorPosition.y = lprc.top + Direct3D::GetWindowCenterY();
-
-		SetCursorPos(mouseCursorPosition.x,mouseCursorPosition.y);
-
-		//マウスカーソルをセットする位置
-		POINT setMoucePos{};
-
-		//Xのウィンドウ中心
-		setMoucePos.x = lprc.left + Direct3D::GetWindowCenterX();
-
-		//Yのウィンドウ中心
-		setMoucePos.y = lprc.top + Direct3D::GetWindowCenterY();
-
-		//マウスカーソルの位置
-		SetCursorPos(setMoucePos.x, setMoucePos.y);
+		// マウスカーソルの位置をウィンドウの中心に戻す
+		POINT windowCenter{};
+		windowCenter.x = lprc.left + (lprc.right - lprc.left) / 2;
+		windowCenter.y = lprc.top + (lprc.bottom - lprc.top) / 2;
+		SetCursorPos(windowCenter.x, windowCenter.y);
 	}
 }
 
@@ -150,32 +118,17 @@ void Player::CameraMove()
 	//マウスが動いた場合
 	if (isMouseControl_)
 	{
-		//マウスとカメラの連動
-		transform_.rotate_.y += Input::GetMouseMoveX() * MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED;
-		cameraHeight_ += Input::GetMouseMoveY() * MOUSE_CURSOR_VERTICAL_MOVE_SPEED;
+		// プレイヤーのカメラの角度を基にカメラの位置と焦点を設定
+		float radius = 5.0f; // カメラの半径
+		float camPosX = radius * sin(transform_.rotate_.y);
+		float camPosZ = radius * cos(transform_.rotate_.y);
+		float camPosY = transform_.position_.y + cameraHeight_;
+		XMFLOAT3 camPos(camPosX, camPosY, camPosZ);
+		XMFLOAT3 camTarget(transform_.position_.x, transform_.position_.y, transform_.position_.z);
 
-		//カメラの位置設定
-	    //カメラポジション
-		XMFLOAT3 camPos = transform_.position_;
-
-		//カメラ焦点位置
-		XMVECTOR camTar = CAMERA_TARGET_POSITION;
-		//プレイヤーの向く方向にカメラの焦点位置回転
-		camTar = XMVector3TransformCoord(camTar, playerAngleYMatrix_);
-
-		// XMFLOAT3型からXMVECTOR型に変換
-		XMVECTOR VectorcamPos = XMLoadFloat3(&camPos);
-		// XMVECTOR型同士の足し算
-		XMVECTOR CameraPositionFocus = XMVectorAdd(VectorcamPos, camTar);
-		XMFLOAT3 result{};
-		// XMVECTOR型をXMFLOAT3型に変換
-		XMStoreFloat3(&result, CameraPositionFocus);
-
-		//カメラ位置と焦点を設定変更
+		// カメラ位置と焦点を設定
 		Camera::SetPosition(camPos);
-		Camera::SetTarget(result);
-
-		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
+		Camera::SetTarget(camTarget);
 	}
 }
 

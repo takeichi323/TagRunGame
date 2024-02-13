@@ -35,8 +35,8 @@ void Coin::Draw()
 	{
 		for (int z = 0; z < 58; z++)
 		{
-			CoinTrans.position_.x = x+0.5f ;
-			CoinTrans.position_.z = z+0.5f;
+			CoinTrans.position_.x = x + 0.5f;
+			CoinTrans.position_.z = z + 0.5f;
 			Model::SetTransform(hCoinModel_, CoinTrans);
 			Model::Draw(hCoinModel_);
 		}
@@ -47,4 +47,19 @@ void Coin::Draw()
 //ŠJ•ú
 void Coin::Release()
 {
+}
+
+//‰½‚©‚É“–‚½‚Á‚½
+void Coin::OnCollision(GameObject* pTarget)
+{
+	BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+	AddCollider(collision);
+
+	//“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
+	if (pTarget->GetObjectName() == "Player")
+	{
+		KillMe();
+		pTarget->KillMe();
+
+	}
 }

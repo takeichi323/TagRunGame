@@ -4,6 +4,7 @@
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
+#include "Engine/BoxCollider.h"
 
 
 //コンストラクタ

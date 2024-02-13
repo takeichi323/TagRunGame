@@ -5,6 +5,8 @@
 Coin::Coin(GameObject* parent)
     :GameObject(parent, "Coin"), hCoinModel_(-1)
 {
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 1.2f);
+	AddCollider(collision);
 }
 
 //デストラクタ
@@ -52,14 +54,13 @@ void Coin::Release()
 //何かに当たった
 void Coin::OnCollision(GameObject* pTarget)
 {
-	BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
-	AddCollider(collision);
+	
 
 	//当たったときの処理
 	if (pTarget->GetObjectName() == "Player")
 	{
 		KillMe();
-		pTarget->KillMe();
+		//pTarget->KillMe();
 
 	}
 }

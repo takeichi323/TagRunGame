@@ -36,6 +36,7 @@ void Player::Initialize()
     //仮ポジション
     //transform_.position_.y += 0.5;
     transform_.position_ = XMFLOAT3(1.0, 0.5, 1.5);
+    //transform_.position_ = XMFLOAT3(10.5, 5.0, 1.5);
    
     //全体のマップを確認するためのカメラ位置
     Camera::SetPosition(XMFLOAT3(25, 50, -8));
@@ -49,9 +50,12 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+
+
+
     prevPosition_ = transform_.position_;
     //カメラ位置
-     // CameraPosition();
+    // CameraPosition();
     
    //右移動
     if (Input::IsKey(DIK_D))

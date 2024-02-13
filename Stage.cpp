@@ -70,6 +70,13 @@ void Stage::Draw()
 	}
 }
 
+/*コイン(仮)マップ上に配置
+マップの床になっている所に配置
+"floar.fbx"＝0になっている場所
+Y軸で常に回転させる*/
+
+
+
 bool Stage::IsWall(int x, int z)
 {
 	if (table_[x][z] == TYPE_WALL)

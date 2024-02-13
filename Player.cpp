@@ -99,7 +99,7 @@ void Player::MouseControl()
 	if (isMouseControl_)
 	{
 		RECT lprc{};
-		// マウスの動きに基づいてプレイヤーのカメラの角度を更新
+		// マウスの動きでプレイヤーのカメラの角度を更新
 		float mouseX = Input::GetMouseMoveX();
 		float mouseY = Input::GetMouseMoveY();
 		transform_.rotate_.y += mouseX * MOUSE_CURSOR_X_MOVE_SPEED;

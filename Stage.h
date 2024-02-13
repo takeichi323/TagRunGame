@@ -15,6 +15,7 @@ class Stage : public GameObject
 {
 
 	int hModel_[TYPE_MAX];    //モデル番号
+	int hCoinModel_;       //コインモデル
 	int** table_;
 	int width_, height_;
 public:

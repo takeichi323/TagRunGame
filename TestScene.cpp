@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Stage.h"
+#include "Coin.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -14,6 +15,7 @@ void TestScene::Initialize()
 {
 
 	Instantiate<Enemy>(this);
+	Instantiate<Coin>(this);
 	Instantiate<Stage>(this);
 	Instantiate<Player>(this);
 }

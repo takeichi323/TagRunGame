@@ -41,14 +41,13 @@ void Stage::Initialize()
 		assert(hModel_[i] >= 0);
 	}
 
-	//モデルデータのロード
-	hCoinModel_ = Model::Load("Coin.fbx");
-	assert(hCoinModel_ >= 0);
+	
 }
 
 //更新
 void Stage::Update()
 {
+	
 }
 
 //描画
@@ -68,8 +67,7 @@ void Stage::Draw()
 			Model::SetTransform(hModel_[type], blockTrans);
 			Model::Draw(hModel_[type]);
 
-			Model::SetTransform(hCoinModel_, transform_);
-			Model::Draw(hCoinModel_);
+			
 		}
 	}
 }

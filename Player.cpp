@@ -13,8 +13,8 @@
 
 
 //定数
-static const float MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED = 0.1f;				//マウスのX軸移動の速さ
-static const float MOUSE_CURSOR_VERTICAL_MOVE_SPEED = 0.01f;				//マウスのY軸移動の速さ
+static const float MOUSE_CURSOR_X_MOVE_SPEED = 0.1f;				//マウスのX軸移動の速さ
+static const float MOUSE_CURSOR_Y_MOVE_SPEED = 0.01f;				//マウスのY軸移動の速さ
 static const XMVECTOR CAMERA_TARGET_POSITION = XMVectorSet(0, 0, 5, 0);		//カメラの焦点
 
 using namespace DirectX;
@@ -102,8 +102,8 @@ void Player::MouseControl()
 		// マウスの動きに基づいてプレイヤーのカメラの角度を更新
 		float mouseX = Input::GetMouseMoveX();
 		float mouseY = Input::GetMouseMoveY();
-		transform_.rotate_.y += mouseX * MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED;
-		cameraHeight_ += mouseY * MOUSE_CURSOR_VERTICAL_MOVE_SPEED;
+		transform_.rotate_.y += mouseX * MOUSE_CURSOR_X_MOVE_SPEED;
+		cameraHeight_ += mouseY * MOUSE_CURSOR_Y_MOVE_SPEED;
 
 		// マウスカーソルの位置をウィンドウの中心に戻す
 		POINT windowCenter{};

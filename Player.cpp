@@ -98,6 +98,7 @@ void Player::MouseControl()
 	//もしマウス操作がされたら
 	if (isMouseControl_)
 	{
+		//RECT=左上隅と右下隅の座標によって四角形を定義ってやーつ
 		RECT lprc{};
 		// マウスの動きでプレイヤーのカメラの角度を更新
 		float mouseX = Input::GetMouseMoveX();

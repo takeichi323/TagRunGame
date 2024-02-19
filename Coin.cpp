@@ -18,8 +18,8 @@ Coin::~Coin()
 void Coin::Initialize()
 {
 	//モデルデータのロード
-	hCoinModel_ = Model::Load("Coin.fbx");
-	assert(hCoinModel_ >= 0);
+	/*hCoinModel_ = Model::Load("Coin.fbx");
+	assert(hCoinModel_ >= 0);*/
 	
 }
 
@@ -33,7 +33,7 @@ void Coin::Update()
 void Coin::Draw()
 {
 	
-	for (int x = 0; x < 34; x++)
+	/*for (int x = 0; x < 34; x++)
 	{
 		for (int z = 0; z < 58; z++)
 		{
@@ -42,7 +42,7 @@ void Coin::Draw()
 			Model::SetTransform(hCoinModel_, CoinTrans);
 			Model::Draw(hCoinModel_);
 		}
-	}
+	}*/
 	
 }
 

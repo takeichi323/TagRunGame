@@ -15,9 +15,12 @@ class Stage : public GameObject
 {
 
 	int hModel_[TYPE_MAX];    //モデル番号
+	int hCoinModel_;
 	
 	int** table_;
 	int width_, height_;
+
+	Transform CoinTrans;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

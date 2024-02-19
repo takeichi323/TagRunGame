@@ -33,6 +33,9 @@ Stage::Stage(GameObject* parent)
 void Stage::Initialize()
 {
 	const char* fileName[] = { "floar.fbx", "floarbox.fbx"};
+	hCoinModel_ = Model::Load("Coin.fbx");
+	assert(hCoinModel_ >= 0);
+
 
 	//モデルデータのロード
 	for (int i = 0; i < TYPE_MAX; i++)
@@ -47,7 +50,7 @@ void Stage::Initialize()
 //更新
 void Stage::Update()
 {
-	
+	CoinTrans.rotate_.y += 5.0f;
 }
 
 //描画
@@ -60,6 +63,12 @@ void Stage::Draw()
 	{
 		for (int z = 0; z <58; z++)
 		{
+			if (hModel_[TYPE_FLOOR]) {
+				CoinTrans.position_.x = x + 0.5f;
+				CoinTrans.position_.z = z + 0.5f;
+				Model::SetTransform(hCoinModel_, CoinTrans);
+				Model::Draw(hCoinModel_);
+			}
 			blockTrans.position_.x = x+1;
 			blockTrans.position_.z = z;
 

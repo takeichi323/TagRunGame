@@ -59,7 +59,7 @@ void Coin::OnCollision(GameObject* pTarget)
 	//“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
 	if (pTarget->GetObjectName() == "Player")
 	{
-		KillMe();
+		//KillMe();
 		//pTarget->KillMe();
 
 	}

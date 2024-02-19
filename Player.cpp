@@ -50,12 +50,9 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-
-
-
     prevPosition_ = transform_.position_;
     //カメラ位置
-    // CameraPosition();
+     CameraPosition();
     
    //右移動
     if (Input::IsKey(DIK_D))
@@ -82,7 +79,7 @@ void Player::Update()
 
     }
 
-    
+
     //壁との判定
     int checkX1, checkX2;
     int checkZ1, checkZ2;
@@ -146,6 +143,8 @@ void Player::Update()
         }
     }
 
+
+    
    
 }
 

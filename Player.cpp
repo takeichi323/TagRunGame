@@ -21,6 +21,7 @@ Player::~Player()
 //初期化
 void Player::Initialize()
 {
+    
     //当たり判定のサイズ
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
     AddCollider(collision);
@@ -34,9 +35,9 @@ void Player::Initialize()
     assert(hSound_ >= 0);
 
     //仮ポジション
-    //transform_.position_.y += 0.5;
-    transform_.position_ = XMFLOAT3(1.0, 0.5, 1.5);
-    //transform_.position_ = XMFLOAT3(10.5, 5.0, 1.5);
+    //Player_Transform.position_.y += 0.5;
+    Player_Transform.position_ = XMFLOAT3(1.0, 0.5, 1.5);
+    //Player_Transform.position_ = XMFLOAT3(10.5, 5.0, 1.5);
    
     //全体のマップを確認するためのカメラ位置
     Camera::SetPosition(XMFLOAT3(25, 50, -8));
@@ -50,32 +51,32 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-    prevPosition_ = transform_.position_;
+    prevPosition_ = Player_Transform.position_;
     //カメラ位置
      CameraPosition();
     
    //右移動
     if (Input::IsKey(DIK_D))
     {
-        transform_.position_.x += PLAYERMOVE;
+        Player_Transform.position_.x += PLAYERMOVE;
        // Audio::Play(hSound_);
     }
    //左移動
     if (Input::IsKey(DIK_A))
     {
-        transform_.position_.x -= PLAYERMOVE;
+        Player_Transform.position_.x -= PLAYERMOVE;
        // Audio::Stop(hSound_);
     }
     //前移動
     if (Input::IsKey(DIK_W))
     {
-        transform_.position_.z += PLAYERMOVE;
+        Player_Transform.position_.z += PLAYERMOVE;
        
     }
     //後移動
     if (Input::IsKey(DIK_S))
     {
-        transform_.position_.z -= PLAYERMOVE;
+        Player_Transform.position_.z -= PLAYERMOVE;
 
     }
 
@@ -86,60 +87,60 @@ void Player::Update()
 
     //右
     {
-        checkX1 = (int)(transform_.position_.x + 0.3f);
-        checkZ1 = (int)(transform_.position_.z + 0.2f);
+        checkX1 = (int)(Player_Transform.position_.x + 0.3f);
+        checkZ1 = (int)(Player_Transform.position_.z + 0.2f);
 
-        checkX2 = (int)(transform_.position_.x + 0.3f);
-        checkZ2 = (int)(transform_.position_.z - 0.2f);
+        checkX2 = (int)(Player_Transform.position_.x + 0.3f);
+        checkZ2 = (int)(Player_Transform.position_.z - 0.2f);
 
         if (pStage_->IsWall(checkX1, checkZ1) == true ||pStage_->IsWall(checkX2, checkZ2) == true)
         {
-            transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
+            Player_Transform.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
         }
     }
 
     //左
     {
-        checkX1 = (int)(transform_.position_.x - 0.3f);
-        checkZ1 = (int)(transform_.position_.z + 0.1f);
+        checkX1 = (int)(Player_Transform.position_.x - 0.3f);
+        checkZ1 = (int)(Player_Transform.position_.z + 0.1f);
 
-        checkX2 = (int)(transform_.position_.x - 0.3f);
-        checkZ2 = (int)(transform_.position_.z - 0.1f);
+        checkX2 = (int)(Player_Transform.position_.x - 0.3f);
+        checkZ2 = (int)(Player_Transform.position_.z - 0.1f);
 
         if (pStage_->IsWall(checkX1, checkZ1) == true ||
             pStage_->IsWall(checkX2, checkZ2) == true)
         {
-            transform_.position_.x = (float)((int)prevPosition_.x) + 0.3;
+            Player_Transform.position_.x = (float)((int)prevPosition_.x) + 0.3;
         }
     }
 
     //奥
     /*{
-        checkX1 = (int)(transform_.position_.x + 0.1f);
-        checkZ1 = (int)(transform_.position_.z + 0.3f);
+        checkX1 = (int)(Player_Transform.position_.x + 0.1f);
+        checkZ1 = (int)(Player_Transform.position_.z + 0.3f);
 
-        checkX2 = (int)(transform_.position_.x - 0.1f);
-        checkZ2 = (int)(transform_.position_.z + 0.3f);
+        checkX2 = (int)(Player_Transform.position_.x - 0.1f);
+        checkZ2 = (int)(Player_Transform.position_.z + 0.3f);
 
         if (pStage_->IsWall(checkX1, checkZ1) == true ||
             pStage_->IsWall(checkX2, checkZ2) == true)
         {
-            transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
+            Player_Transform.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
         }
     }*/
 
     //手前
     {
-        checkX1 = (int)(transform_.position_.x + 0.1f);
-        checkZ1 = (int)(transform_.position_.z - 0.3f);
+        checkX1 = (int)(Player_Transform.position_.x + 0.1f);
+        checkZ1 = (int)(Player_Transform.position_.z - 0.3f);
 
-        checkX2 = (int)(transform_.position_.x - 0.1f);
-        checkZ2 = (int)(transform_.position_.z - 0.3f);
+        checkX2 = (int)(Player_Transform.position_.x - 0.1f);
+        checkZ2 = (int)(Player_Transform.position_.z - 0.3f);
 
         if (pStage_->IsWall(checkX1, checkZ1) == true ||
             pStage_->IsWall(checkX2, checkZ2) == true)
         {
-            transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
+            Player_Transform.position_.z = (float)((int)prevPosition_.z) + 0.3;
         }
     }
 
@@ -152,7 +153,7 @@ void Player::Update()
 void Player::Draw()
 {
    
-    Model::SetTransform(hModel_, transform_);
+    Model::SetTransform(hModel_, Player_Transform);
     Model::Draw(hModel_);
 
     
@@ -169,8 +170,8 @@ void Player::CameraPosition()
     //1フレームの移動ベクトル
     XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
     //オブジェクトの現在地をベクトル型に変換
-    XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
-    Camera::SetPosition(transform_.position_);
+    XMVECTOR vPos = XMLoadFloat3(&Player_Transform.position_);
+    Camera::SetPosition(Player_Transform.position_);
     XMFLOAT3 camTarget;
     XMStoreFloat3(&camTarget, vPos + vMove);
     Camera::SetTarget(camTarget);

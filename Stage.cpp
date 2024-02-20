@@ -10,8 +10,9 @@ Stage::Stage(GameObject* parent)
 
 	CsvReader csv;
 	csv.Load("map.csv");
-
+	//列データをwidth_に格納
 	int width_ = csv.GetWidth();
+	//行データをheight_に格納
 	int height_ = csv.GetHeight();
 
 	//table_ = new int* [csv.GetWidth()];

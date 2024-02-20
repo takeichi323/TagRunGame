@@ -1,5 +1,5 @@
 #include "CharacterAI.h"
 
-void CharacterAI::Update()
-{
-}
+//void CharacterAI::Update()
+//{
+//}

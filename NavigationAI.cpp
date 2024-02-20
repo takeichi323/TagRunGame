@@ -1,5 +1,5 @@
 #include "NavigationAI.h"
 
-void NavigationAI::Update()
-{
-}
+//void NavigationAI::Update()
+//{
+//}

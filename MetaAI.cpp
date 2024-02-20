@@ -1,5 +1,5 @@
 #include "MetaAI.h"
 
-void MetaAI::Update()
-{
-}
+//void MetaAI::Update()
+//{
+//}

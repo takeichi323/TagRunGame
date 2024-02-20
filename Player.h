@@ -16,6 +16,7 @@ class Player : public GameObject
 
     XMFLOAT3  prevPosition_;   //prev(previous)前
     Stage* pStage_;//モデル番号
+    Transform Player_Transform;
 
 public:
     //コンストラクタ

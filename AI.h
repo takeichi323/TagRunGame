@@ -20,6 +20,9 @@ public:
 	void GetPosition(Point& player, Point& enemy);
 	//２つ(player,enemy)の距離を計算する関数
 	float RangeCalculation(const Point& p1, const Point& p2);
+	//敵がプレイヤーに向かって移動する関数
+	void MoveTowards(Point& enemy, const Point& player, float speed);
+
 
 	//メタAI
 	void MetaAI();

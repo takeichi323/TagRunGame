@@ -167,14 +167,25 @@ void Player::Release()
 //カメラ位置(一人称)
 void Player::CameraPosition()
 {
-    //1フレームの移動ベクトル
-    XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
-    //オブジェクトの現在地をベクトル型に変換
-    XMVECTOR vPos = XMLoadFloat3(&Player_Transform.position_);
-    Camera::SetPosition(Player_Transform.position_);
-    XMFLOAT3 camTarget;
-    XMStoreFloat3(&camTarget, vPos + vMove);
-    Camera::SetTarget(camTarget);
+    // カメラの視線ベクトルを取得
+    XMVECTOR vecSightline = /*カメラの位置ーカメラ焦点*/;
+
+    // マウスの情報を取得
+    XMFLOAT3 mouseMove = /*Inputから取得した移動量xy*/;
+
+    // マウスで取得した移動量をもとに回転行列を生成
+    XMMATRIX matRotate = XMMatrixRotationY(/*角度*/);
+    XMVector3Transform(vecSightline, matRotate);
+
+    // 視線ベクトルを正規化後、回転行列でベクトルを回転
+    /*正規化したいベクトル*/ = XMVector3Normalize(/*正規化したいベクトル*/);
+
+
+    // ベクトルをターゲットにセット
+    XMFLOAT3 camPos;
+    XMStoreFloat3(&camPos,/*視線ベクトル*/)
+    
+    // カメラの位置＝プレイヤーポジションで更新
 }
 
 

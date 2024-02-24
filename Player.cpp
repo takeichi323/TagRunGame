@@ -13,8 +13,8 @@
 
 
 //定数
-static const float MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED = 0.1f;				//マウスのX軸移動の速さ
-static const float MOUSE_CURSOR_VERTICAL_MOVE_SPEED = 0.01f;				//マウスのY軸移動の速さ
+static const float MOUSE_CURSOR_X_MOVE_SPEED = 0.1f;				//マウスのX軸移動の速さ
+static const float MOUSE_CURSOR_Y_MOVE_SPEED = 0.01f;				//マウスのY軸移動の速さ
 static const XMVECTOR CAMERA_TARGET_POSITION = XMVectorSet(0, 0, 5, 0);		//カメラの焦点
 
 using namespace DirectX;

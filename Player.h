@@ -40,8 +40,6 @@ private:
     //プレイヤー初期位置
     void PlayerInitialPosition();
 
-    
-
     //プレイヤーキー移動処理
     //W:前進 A:左 S:後退 D:右
     void PlayerKeyMove();

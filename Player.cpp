@@ -54,6 +54,7 @@ void Player::Update()
     prevPosition_ = Player_Transform.position_;
     //カメラ位置
      CameraPosition();
+     
     
    //右移動
     if (Input::IsKey(DIK_D))
@@ -187,18 +188,19 @@ void Player::CameraPosition()
 
 
     // マウスで取得した移動量をもとに回転行列を生成
-    XMMATRIX matRotate = XMMatrixRotationY(/*角度*/);
+    float angle = -mouseMove.x * 0.001f; // マウスの移動量に基づいて回転角度を計算
+    XMMATRIX matRotate = XMMatrixRotationY(angle);
     XMVector3Transform(vecSightline, matRotate);
 
     // 視線ベクトルを正規化後、回転行列でベクトルを回転
-    /*正規化したいベクトル*/ = XMVector3Normalize(/*正規化したいベクトル*/);
-
+    ///*正規化したいベクトル*/ = XMVector3Normalize(/*正規化したいベクトル*/);
+    vecSightline = XMVector3Normalize(vecSightline);
 
     // ベクトルをターゲットにセット
     XMFLOAT3 camPos;
-    XMStoreFloat3(&camPos,/*視線ベクトル*/);
+    XMStoreFloat3(&camPos, vecSightline/*視線ベクトル*/);
     
-    // カメラの位置＝プレイヤーポジションで更新
+   // カメラの位置＝プレイヤーポジションで更新
 
      
 }

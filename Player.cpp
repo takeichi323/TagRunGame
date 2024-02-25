@@ -57,7 +57,7 @@ void Player::Update()
 	  //マウス操作処理
 	  MouseControl();
 	  //カメラ処理
-	  CameraMove();
+	//  CameraMove();
 	  //プレイヤー移動処理
 	  PlayerKeyMove();
 	 
@@ -124,39 +124,39 @@ void Player::MouseControl()
 	}
 }
 
-void Player::CameraMove()
-{
-	//マウスが動いた場合
-	if (isMouseControl_)
-	{
-		//マウスとカメラの連動
-		transform_.rotate_.y += Input::GetMouseMoveX() * MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED;
-		cameraHeight_ += Input::GetMouseMoveY() * MOUSE_CURSOR_VERTICAL_MOVE_SPEED;
-
-		//カメラの位置設定
-	    //カメラポジション
-		XMFLOAT3 camPos = transform_.position_;
-
-		//カメラ焦点位置
-		XMVECTOR camTar = CAMERA_TARGET_POSITION;
-		//プレイヤーの向く方向にカメラの焦点位置回転
-		camTar = XMVector3TransformCoord(camTar, playerAngleYMatrix_);
-
-		// XMFLOAT3型からXMVECTOR型に変換
-		XMVECTOR VectorcamPos = XMLoadFloat3(&camPos);
-		// XMVECTOR型同士の足し算
-		XMVECTOR CameraPositionFocus = XMVectorAdd(VectorcamPos, camTar);
-		XMFLOAT3 result{};
-		// XMVECTOR型をXMFLOAT3型に変換
-		XMStoreFloat3(&result, CameraPositionFocus);
-
-		//カメラ位置と焦点を設定変更
-		Camera::SetPosition(camPos);
-		Camera::SetTarget(result);
-
-		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
-	}
-}
+//void Player::CameraMove()
+//{
+//	//マウスが動いた場合
+//	if (isMouseControl_)
+//	{
+//		//マウスとカメラの連動
+//		transform_.rotate_.y += Input::GetMouseMoveX() * MOUSE_CURSOR_HORIZONTAL_MOVE_SPEED;
+//		cameraHeight_ += Input::GetMouseMoveY() * MOUSE_CURSOR_VERTICAL_MOVE_SPEED;
+//
+//		//カメラの位置設定
+//	    //カメラポジション
+//		XMFLOAT3 camPos = transform_.position_;
+//
+//		//カメラ焦点位置
+//		XMVECTOR camTar = CAMERA_TARGET_POSITION;
+//		//プレイヤーの向く方向にカメラの焦点位置回転
+//		camTar = XMVector3TransformCoord(camTar, playerAngleYMatrix_);
+//
+//		// XMFLOAT3型からXMVECTOR型に変換
+//		XMVECTOR VectorcamPos = XMLoadFloat3(&camPos);
+//		// XMVECTOR型同士の足し算
+//		XMVECTOR CameraPositionFocus = XMVectorAdd(VectorcamPos, camTar);
+//		XMFLOAT3 result{};
+//		// XMVECTOR型をXMFLOAT3型に変換
+//		XMStoreFloat3(&result, CameraPositionFocus);
+//
+//		//カメラ位置と焦点を設定変更
+//		Camera::SetPosition(camPos);
+//		Camera::SetTarget(result);
+//
+//		//SetTargetがXMFLOATなのでcamTarをXMFLOAT型にする
+//	}
+//}
 
 //プレイヤー初期位置
 void Player::PlayerInitialPosition()

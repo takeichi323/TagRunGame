@@ -52,7 +52,7 @@ void Player::Update()
 {
     prevPosition_ = transform_.position_;
     //ƒJƒƒ‰ˆÊ’u
-     CameraPosition();
+     //CameraPosition();
     
    //‰EˆÚ“®
     if (Input::IsKey(DIK_D))

@@ -9,8 +9,8 @@
 class Player : public GameObject
 {   
     //Player移動速度
-    const float PLAYERMOVE = 0.05;
-    const float DASHPLAYERMOVE = 0.08;
+    const float PLAYERMOVE = 0.05f;
+    const float DASHPLAYERMOVE = 2.00f;
 
     int hModel_;    //モデル番号
     int hSound_;    //サウンド番号

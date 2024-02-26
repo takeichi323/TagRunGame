@@ -82,8 +82,8 @@ void Player::Update()
 	//ダッシュボタン:左シフト
 	if (Input::IsKey(DIK_LSHIFT))
 	{
-		move.x *= 2;
-		move.z *= 2;
+		move.x *= DASHPLAYERMOVE;
+		move.z *= DASHPLAYERMOVE;
 
 	}
 

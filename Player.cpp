@@ -78,6 +78,12 @@ void Player::Update()
         transform_.position_.z -= PLAYERMOVE;
 
     }
+    //ダッシュボタン:左シフト
+    if (Input::IsKey(DIK_LSHIFT))
+    {
+       
+
+    }
 
 
 

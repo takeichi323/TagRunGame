@@ -2,6 +2,9 @@
 #include "Engine/GameObject.h"
 #include "Stage.h"
 
+/*・制限時間（タイマー）をつける
+　・ハート形のライフ追加
+  */
 
 
 

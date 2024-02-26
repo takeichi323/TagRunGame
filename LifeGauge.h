@@ -5,7 +5,7 @@
 class LifeGauge : public GameObject
 {
 private:
-    int hPict_;    //画像番号
+    int hFrame_;    //画像番号
 
 public:
     //コンストラクタ

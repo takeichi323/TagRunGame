@@ -80,6 +80,8 @@ void Player::Update()
     }
 
 
+
+
     //•Ç‚Æ‚Ì”»’è
     int checkX1, checkX2;
     int checkZ1, checkZ2;
@@ -114,7 +116,7 @@ void Player::Update()
     }
 
     //‰œ
-    /*{
+    {
         checkX1 = (int)(transform_.position_.x + 0.1f);
         checkZ1 = (int)(transform_.position_.z + 0.3f);
 
@@ -126,7 +128,7 @@ void Player::Update()
         {
             transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
         }
-    }*/
+    }
 
     //Žè‘O
     {

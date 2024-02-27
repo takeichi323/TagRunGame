@@ -1,10 +1,15 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "TitleButton.h"
 
 
 //■■シーンを管理するクラス
 class TitleScene : public GameObject
 {
+private:
+	int hSubLogo_; //画像番号
+
+	Button* start_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

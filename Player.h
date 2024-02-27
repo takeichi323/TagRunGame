@@ -35,7 +35,7 @@ private:
     void MouseControl();
 
     //カメラの移動処理
-   // void CameraMove();
+    void CameraMove();
 
     //プレイヤー初期位置
     void PlayerInitialPosition();

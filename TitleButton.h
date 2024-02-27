@@ -3,15 +3,14 @@
 
 enum NEXTSCENE {
 	NONE = -1,
-	SELECT,
-	MAIN,
-	STORE
+	TEST,
+	MAX
 };
 
-class Button : public GameObject {
+class TitleButton : public GameObject {
 public:
-	Button(GameObject* parent);
-	~Button();
+	TitleButton(GameObject* parent);
+	~TitleButton();
 
 
 	void Initialize() override;

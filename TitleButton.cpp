@@ -34,7 +34,7 @@ namespace {
 	bool canMove; // ˆÚ“®‚Å‚«‚é
 };
 
-Button::Button(GameObject* parent)
+TitleButton :: TitleButton(GameObject* parent)
 {
 	seq_line = -1;
 	seq_time = 0.0f;
@@ -48,11 +48,11 @@ Button::Button(GameObject* parent)
 	isFlash_ = false;
 }
 
-Button::~Button()
+TitleButton::~TitleButton()
 {
 }
 
-void Button::Initialize()
+void TitleButton::Initialize()
 {
 	pushed_ = false;
 	hImage_ = -1;
@@ -62,7 +62,7 @@ void Button::Initialize()
 
 }
 
-void Button::Update()
+void TitleButton::Update()
 {
 
 	//“_–Å‚ðŠÇ—
@@ -92,7 +92,7 @@ void Button::Update()
 	Image::SetAlpha(hImage_, alpha_);
 }
 
-void Button::Draw()
+void TitleButton::Draw()
 {
 
 	Image::SetTransform(hImage_, transform_);
@@ -100,37 +100,37 @@ void Button::Draw()
 
 }
 
-bool Button::Finished()
+bool TitleButton::Finished()
 {
 	return canMove;
 }
 
-void Button::SetImage(std::string normal)
+void TitleButton::SetImage(std::string normal)
 {
 	hImage_ = Image::Load((normal + ".png").c_str());
 	size_ = Image::GetSize(hImage_);
 }
 
-void Button::SetImage(std::string normal, std::string pushed)
+void TitleButton::SetImage(std::string normal, std::string pushed)
 {
 	hImage_ = Image::Load((normal + ".png").c_str());
 	hPush_ = Image::Load((pushed + ".png").c_str());
 	size_ = Image::GetSize(hImage_);
 }
 
-void Button::SetPosition(int x, int y)
+void TitleButton::SetPosition(int x, int y)
 {
 	transform_.position_.x = (float)(x - Direct3D::screenWidth_ / 2) / Direct3D::screenWidth_;
 	transform_.position_.y = -(float)(y - Direct3D::screenHeight_ / 2) / (Direct3D::screenHeight_ / 2);
 	center_ = XMFLOAT3(x, y, 0);
 }
 
-void Button::Push(bool pushed)
+void TitleButton::Push(bool pushed)
 {
 	this->pushed_ = pushed;
 }
 
-bool Button::MouseInArea(XMFLOAT3 mousePos)
+bool TitleButton::MouseInArea(XMFLOAT3 mousePos)
 {
 	if (abs(mousePos.x - center_.x) > size_.x / 2)
 		return false;
@@ -139,32 +139,32 @@ bool Button::MouseInArea(XMFLOAT3 mousePos)
 	return true;
 }
 
-void Button::SetAlphaNormal(float alpha)
+void TitleButton::SetAlphaNormal(float alpha)
 {
 	Image::SetAlpha(hImage_, alpha);
 }
 
-void Button::SetAlphaPush(float alpha)
+void TitleButton::SetAlphaPush(float alpha)
 {
 	Image::SetAlpha(hPush_, alpha);
 }
 
-void Button::SetNextScene(NEXTSCENE next)
+void TitleButton::SetNextScene(NEXTSCENE next)
 {
 	nextScene_ = next;
 }
 
-void Button::SetIsFlash(bool flash)
+void TitleButton::SetIsFlash(bool flash)
 {
 	isFlash_ = flash;
 }
 
-int Button::GetImageHandle() const
+int TitleButton::GetImageHandle() const
 {
 	return hImage_;
 }
 
-void Button::ChangeAlpha()
+void TitleButton::ChangeAlpha()
 {
 	if (!alphaFlag_) {
 		alpha_ += 3;
@@ -180,7 +180,7 @@ void Button::ChangeAlpha()
 		alphaFlag_ = false;
 }
 
-void Button::ChangeScene()
+void TitleButton::ChangeScene()
 {
 	changeLimit_++;
 
@@ -205,7 +205,7 @@ void Button::ChangeScene()
 		{
 		case NONE:
 			break;
-		case SELECT: {
+		case TEST: {
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_TEST);
 		}

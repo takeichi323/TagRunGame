@@ -1,6 +1,7 @@
 #include "TitleScene.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Input.h"
+
 #include "Engine/Image.h"
 
 
@@ -13,11 +14,6 @@ TitleScene::TitleScene(GameObject* parent)
 //初期化
 void TitleScene::Initialize()
 {
-    start_ = Instantiate<Button>(this);
-    start_->SetImage("StartTest");
-    start_->SetPosition(600, 650);//ウィンドウの横幅1280,縦720
-    start_->SetNextScene(SELECT);
-    start_->SetIsFlash(false);
 
     //画像ロード
     hSubLogo_ = Image::Load("EnterPUSH logo.png");

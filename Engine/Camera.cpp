@@ -52,3 +52,4 @@ XMMATRIX Camera::GetProjectionMatrix() { return _proj; }
 
 //ビルボード用回転行列を取得
 XMMATRIX Camera::GetBillboardMatrix(){	return _billBoard; }
+

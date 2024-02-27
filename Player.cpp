@@ -53,7 +53,7 @@ void Player::Update()
 	prevPosition_ = transform_.position_;
 	XMFLOAT3 move{ 0,0,0 };
 	//カメラ位置
-	//CameraPosition();
+	CameraPosition();
 
 	//右移動
 	if (Input::IsKey(DIK_D))
@@ -85,6 +85,15 @@ void Player::Update()
 		move.x *= DASHPLAYERMOVE;
 		move.z *= DASHPLAYERMOVE;
 
+	}
+
+	if (Input::IsKey(DIK_M))
+	{
+		transform_.rotate_.y += 1.0f; ;
+	}
+	if (Input::IsKey(DIK_N))
+	{
+		transform_.rotate_.y -= 1.0f;
 	}
 
 	transform_.position_ = transform_.position_ + move;
@@ -178,12 +187,32 @@ void Player::CameraPosition()
 {
 	//1フレームの移動ベクトル
 	XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
-	//オブジェクトの現在地をベクトル型に変換
+	// transform_.rotate_.y度回転させる行列を作成
+	XMMATRIX mRotY = XMMatrixRotationY(XMConvertToRadians(transform_.rotate_.y));
 	XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
-	Camera::SetPosition(transform_.position_);
-	XMFLOAT3 camTarget;
-	XMStoreFloat3(&camTarget, vPos + vMove);
-	Camera::SetTarget(camTarget);
+	XMVECTOR vCam = { 0,5,-10,0 };
+	XMFLOAT3 camPos = transform_.position_;
+
+	Camera::SetTarget(transform_.position_);
+	camPos.y += 5;
+	camPos.z -= 10;
+	Camera::SetPosition(camPos);
+
+
+	//Camera::SetTarget(transform_.position_);
+	////XMVECTOR vCam = { 0,5,-10,0 };
+	//vCam = XMVector3TransformCoord(vCam, mRotY);
+	//XMStoreFloat3(&camPos, vPos + vCam);
+	//Camera::SetPosition(camPos);
+
+
+
+	////オブジェクトの現在地をベクトル型に変換
+	//XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
+	//Camera::SetPosition(transform_.position_);
+	//XMFLOAT3 camTarget;
+	//XMStoreFloat3(&camTarget, vPos + vMove);
+	//Camera::SetTarget(camTarget);
 }
 
 

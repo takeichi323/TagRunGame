@@ -47,56 +47,16 @@ void Player::Initialize()
 
 }
 
+
 //更新
 void Player::Update()
 {
-	prevPosition_ = transform_.position_;
-	XMFLOAT3 move{ 0,0,0 };
+	
 	//カメラ位置
 	CameraPosition();
+	PlayerMove();
 
-	//右移動
-	if (Input::IsKey(DIK_D))
-	{
-		move.x += PLAYERMOVE;
-		// Audio::Play(hSound_);
-	}
-	//左移動
-	if (Input::IsKey(DIK_A))
-	{
-		move.x -= PLAYERMOVE;
-		// Audio::Stop(hSound_);
-	}
-	//前移動
-	if (Input::IsKey(DIK_W))
-	{
-		move.z += PLAYERMOVE;
-
-	}
-	//後移動
-	if (Input::IsKey(DIK_S))
-	{
-		move.z -= PLAYERMOVE;
-
-	}
-	//ダッシュボタン:左シフト
-	if (Input::IsKey(DIK_LSHIFT))
-	{
-		move.x *= DASHPLAYERMOVE;
-		move.z *= DASHPLAYERMOVE;
-
-	}
-
-	if (Input::IsKey(DIK_M))
-	{
-		transform_.rotate_.y += 1.0f; ;
-	}
-	if (Input::IsKey(DIK_N))
-	{
-		transform_.rotate_.y -= 1.0f;
-	}
-
-	transform_.position_ = transform_.position_ + move;
+	
 	
 
 	//壁との判定
@@ -238,6 +198,59 @@ void Player::CameraPosition()
 	//XMStoreFloat3(&camTarget, vPos + vMove);
 	//Camera::SetTarget(camTarget);
 }
+
+//プレイヤーの移動
+void Player::PlayerMove()
+{
+	prevPosition_ = transform_.position_;
+	XMFLOAT3 move{ 0,0,0 };
+
+	//右移動
+	if (Input::IsKey(DIK_D))
+	{
+		move.x += PLAYERMOVE;
+		// Audio::Play(hSound_);
+	}
+	//左移動
+	if (Input::IsKey(DIK_A))
+	{
+		move.x -= PLAYERMOVE;
+		// Audio::Stop(hSound_);
+	}
+	//前移動
+	if (Input::IsKey(DIK_W))
+	{
+		move.z += PLAYERMOVE;
+
+	}
+	//後移動
+	if (Input::IsKey(DIK_S))
+	{
+		move.z -= PLAYERMOVE;
+
+	}
+
+	//ダッシュボタン:左シフト
+	if (Input::IsKey(DIK_LSHIFT))
+	{
+		move.x *= DASHPLAYERMOVE;
+		move.z *= DASHPLAYERMOVE;
+
+	}
+
+	if (Input::IsKey(DIK_M))
+	{
+		transform_.rotate_.y += 1.0f; ;
+	}
+	if (Input::IsKey(DIK_N))
+	{
+		transform_.rotate_.y -= 1.0f;
+	}
+
+	transform_.position_ = transform_.position_ + move;
+}
+
+
 
 
 

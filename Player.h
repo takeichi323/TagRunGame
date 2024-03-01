@@ -37,6 +37,9 @@ public:
     void Release() override;
     //プレイヤーのカメラ位置
     void CameraPosition();
+//プレイヤーの移動関数
+    void PlayerMove();
+
 
     
     

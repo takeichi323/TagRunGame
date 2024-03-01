@@ -182,21 +182,45 @@ void Player::Release()
 {
 }
 
+// XMVECTORからXMFLOAT3への変換関数
+XMFLOAT3 XMVectorToXMFLOAT3(const XMVECTOR& vector)
+{
+	XMFLOAT3 result;
+	XMStoreFloat3(&result, vector);
+	return result;
+}
+
 //カメラ位置(一人称)
 void Player::CameraPosition()
 {
+
 	//1フレームの移動ベクトル
 	XMVECTOR vMove{ 0.0f,0.0f,0.1f,0.0f };//奥に0.1ｍ
 	// transform_.rotate_.y度回転させる行列を作成
 	XMMATRIX mRotY = XMMatrixRotationY(XMConvertToRadians(transform_.rotate_.y));
 	XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
-	XMVECTOR vCam = { 0,5,-10,0 };
-	XMFLOAT3 camPos = transform_.position_;
+	//カメラの相対位置
+	XMVECTOR vCamRelative = { 0,5,-10,0 };
+	//カメラの相対位置をプレイヤーの回転行列で変換
+	vCamRelative = XMVector3Transform(vCamRelative, mRotY);
+	//カメラの最終的な位置を計算
+	XMVECTOR vCamPos = vPos + vCamRelative;
 
+	// XMVECTORからXMFLOAT3へ変換
+	XMFLOAT3 camPos;
+	camPos = XMVectorToXMFLOAT3(vCamPos);
+
+
+	//カメラの位置を設定
+	Camera::SetTarget(transform_.position_);
+	Camera::SetPosition(camPos);
+
+
+	/*XMFLOAT3 camPos = transform_.position_;
 	Camera::SetTarget(transform_.position_);
 	camPos.y += 5;
 	camPos.z -= 10;
-	Camera::SetPosition(camPos);
+	Camera::SetPosition(camPos);*/
 
 
 	//Camera::SetTarget(transform_.position_);

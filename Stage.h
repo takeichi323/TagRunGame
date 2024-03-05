@@ -21,6 +21,8 @@ class Stage : public GameObject
 	int width_, height_;
 
 	Transform CoinTrans;
+	std::vector<Coin> coins; // coins メンバーの定義
+	
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

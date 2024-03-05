@@ -6,10 +6,11 @@ class Coin : public GameObject
 {
 
     int hCoinModel_;       //コインモデル
-    Transform CoinTrans;
+   
 public:
     //コンストラクタ
     Coin(GameObject* parent);
+    Coin() {}
 
     //デストラクタ
     ~Coin();
@@ -28,6 +29,8 @@ public:
     //何かに当たった
     //引数：pTarget 当たった相手
     void OnCollision(GameObject* pTarget) override;
+    Transform CoinTrans;
+    std::vector<Coin> coins; // coins メンバーの定義
 
 
 };

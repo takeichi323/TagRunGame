@@ -2,6 +2,8 @@
 #include "Engine/Model.h"
 #include "TestScene.h"
 #include "Engine/CsvReader.h"
+#include "Coin.h"
+
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
@@ -32,17 +34,44 @@ Stage::Stage(GameObject* parent)
 //初期化
 void Stage::Initialize()
 {
+	
 	const char* fileName[] = { "floar.fbx", "floarbox.fbx"};
+
+	//コインのモデルデータを読み込み
 	hCoinModel_ = Model::Load("Coin.fbx");
 	assert(hCoinModel_ >= 0);
 
+	//CSVデータを読み込み、コインの位置を特定
+	CsvReader coinCsv;
+	coinCsv.Load("coin_map.csv");
 
-	//モデルデータのロード
-	for (int i = 0; i < TYPE_MAX; i++)
-	{
-		hModel_[i] = Model::Load(fileName[i]);
-		assert(hModel_[i] >= 0);
+	//コインを配置する座標のリスト
+	std::vector<std::pair<int, int>>coinPosition;
+
+	//CSVデータを読み込んで、コインが配置されている座標を取得
+	for (int x = 0; x < coinCsv.GetWidth(); x++) {
+		for (int z = 0; z < coinCsv.GetHeight(); z++) {
+			if (coinCsv.GetValue(x, z) == 1) {
+				coinPosition.push_back(std::make_pair(x, z));
+			}
+		}
 	}
+
+	//コインを配置
+	for (const auto& position : coinPosition) {
+		Coin coin;
+		coin.CoinTrans.position_.x = position.first + 0.5f;
+		coin.CoinTrans.position_.z = position.second + 0.5f;
+		coins.push_back(coin); // coins ベクターにコインを追加
+	}
+
+
+	////モデルデータのロード
+	//for (int i = 0; i < TYPE_MAX; i++)
+	//{
+	//	hModel_[i] = Model::Load(fileName[i]);
+	//	assert(hModel_[i] >= 0);
+	//}
 
 	
 }
@@ -79,6 +108,12 @@ void Stage::Draw()
 			
 		}
 	}
+	// コインを描画
+	for (const auto& coin : coins) {
+    const Transform& coinTrans = coin.CoinTrans; // コインのトランスフォームを取得
+    Model::SetTransform(hCoinModel_, coinTrans); // const Transform オブジェクトを渡す
+    Model::Draw(hCoinModel_);
+}
 }
 
 /*コイン(仮)マップ上に配置

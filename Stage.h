@@ -21,7 +21,7 @@ class Stage : public GameObject
 	int width_, height_;
 
 	Transform CoinTrans;
-	std::vector<Coin> coins; // coins メンバーの定義
+
 	
 public:
 	//コンストラクタ

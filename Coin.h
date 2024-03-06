@@ -30,7 +30,7 @@ public:
     //引数：pTarget 当たった相手
     void OnCollision(GameObject* pTarget) override;
     Transform CoinTrans;
-    std::vector<Coin> coins; // coins メンバーの定義
+    //std::vector<Coin> coins; // coins メンバーの定義
 
 
 };

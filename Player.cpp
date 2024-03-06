@@ -35,7 +35,7 @@ void Player::Initialize()
 
 	//仮ポジション
 	//transform_.position_.y += 0.5;
-	transform_.position_ = XMFLOAT3(1.0, 0.5, 1.5);
+	transform_.position_ = XMFLOAT3(2.0, 0.5, 2.5);
 	//transform_.position_ = XMFLOAT3(10.5, 5.0, 1.5);
    
 	//全体のマップを確認するためのカメラ位置

@@ -57,21 +57,21 @@ void Stage::Initialize()
 		}
 	}
 
-	//コインを配置
-	for (const auto& position : coinPosition) {
-		Coin coin;
-		coin.CoinTrans.position_.x = position.first + 0.5f;
-		coin.CoinTrans.position_.z = position.second + 0.5f;
-		coins.push_back(coin); // coins ベクターにコインを追加
-	}
-
-
-	////モデルデータのロード
-	//for (int i = 0; i < TYPE_MAX; i++)
-	//{
-	//	hModel_[i] = Model::Load(fileName[i]);
-	//	assert(hModel_[i] >= 0);
+	////コインを配置
+	//for (const auto& position : coinPosition) {
+	//	Coin coin;
+	//	coin.CoinTrans.position_.x = position.first + 0.5f;
+	//	coin.CoinTrans.position_.z = position.second + 0.5f;
+	//	coins.push_back(coin); // coins ベクターにコインを追加
 	//}
+
+
+	//モデルデータのロード
+	for (int i = 0; i < TYPE_MAX; i++)
+	{
+		hModel_[i] = Model::Load(fileName[i]);
+		assert(hModel_[i] >= 0);
+	}
 
 	
 }
@@ -88,9 +88,9 @@ void Stage::Draw()
 
 	Transform blockTrans;
 
-	for (int x = 0; x < 34; x++)
+	for (int x = 0; x < 36; x++)
 	{
-		for (int z = 0; z <58; z++)
+		for (int z = 0; z < 60; z++)
 		{
 			if (hModel_[TYPE_FLOOR]) {
 				CoinTrans.position_.x = x + 0.5f;
@@ -98,23 +98,24 @@ void Stage::Draw()
 				Model::SetTransform(hCoinModel_, CoinTrans);
 				Model::Draw(hCoinModel_);
 			}
-			blockTrans.position_.x = x+1;
+			blockTrans.position_.x = x + 1;
 			blockTrans.position_.z = z;
 
 			int type = table_[x][z];
 			Model::SetTransform(hModel_[type], blockTrans);
 			Model::Draw(hModel_[type]);
 
-			
+
 		}
 	}
-	// コインを描画
-	for (const auto& coin : coins) {
-    const Transform& coinTrans = coin.CoinTrans; // コインのトランスフォームを取得
-    Model::SetTransform(hCoinModel_, coinTrans); // const Transform オブジェクトを渡す
-    Model::Draw(hCoinModel_);
+	//	// コインを描画
+	//	for (const auto& coin : coins) {
+	//    const Transform& coinTrans = coin.CoinTrans; // コインのトランスフォームを取得
+	//    Model::SetTransform(hCoinModel_, coinTrans); // const Transform オブジェクトを渡す
+	//    Model::Draw(hCoinModel_);
+	//}
 }
-}
+
 
 /*コイン(仮)マップ上に配置
 マップの床になっている所に配置

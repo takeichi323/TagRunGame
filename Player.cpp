@@ -202,6 +202,10 @@ void Player::CameraPosition()
 //プレイヤーの移動
 void Player::PlayerMove()
 {
+	/*カメラの方向に合わせて移動する
+	・プレイヤーの向いてる方向を取得
+	・プレイヤの移動関数内でカメラの向いている方向でプレイヤーを移動させる*/
+
 	prevPosition_ = transform_.position_;
 	XMFLOAT3 move{ 0,0,0 };
 

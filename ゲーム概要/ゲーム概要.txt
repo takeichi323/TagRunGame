@@ -1,0 +1,115 @@
+ゲーム説明
+
+操作方法
+　WASDで移動
+　NMで横方向に視点移動
+
+現在(3/7)の進捗
+・マップを表示させ、コインをマップのマス上に全て配置。
+　コインを個別で格納する方法がわからず、途中のコードが多い
+   →Stage.cpp
+・NMキーで視点操作できるが、移動キーが視点移動に合わせて移動できない。
+　　→Player.cppのCameraPosition()でPlayerの視点を行っている。
+
+ファイル構成
+
+│  .gitattributes
+│  .gitignore
+│  Coin.cpp
+│  Coin.h
+│  Enemy.cpp
+│  Enemy.h
+│  GameBaseDx11.sln
+│  GameBaseDx11.vcxproj
+│  GameBaseDx11.vcxproj.filters
+│  GameBaseDx11.vcxproj.user
+│  LifeGauge.cpp
+│  LifeGauge.h
+│  Player.cpp
+│  Player.h
+│  Stage.cpp
+│  Stage.h
+│  TestScene.cpp
+│  TestScene.h
+│
+├─Assets
+│  │  char.png
+│  │  Coin.fbx
+│  │  defaultParticle.png
+│  │  Enemy.fbx
+│  │  floar.fbx
+│  │  floarbox.fbx
+│  │  Frame.png
+│  │  Gauge.png
+│  │  Jazz 1.wav
+│  │  map.csv
+│  │  Pacplayer.fbx
+│  │  Player.fbx
+│  │  Road.fbx
+│  │  setup.ini
+│  │  TouhokuDenshi_splash.avi
+│  │
+│  ├─DebugCollision
+│  │      BoxCollider.fbx
+│  │      SphereCollider.fbx
+│  │
+│  └─Shader
+│          BillBoard.hlsl
+│          Debug3D.hlsl
+│          Simple2D.hlsl
+│          Simple3D.hlsl
+│
+├─Debug
+│  └─GameBaseDx11.tlog
+│          fxc.command.1.tlog
+│          fxc.read.1.tlog
+│          GameBaseDx11.lastbuildstate
+│          unsuccessfulbuild
+│
+├─Engine
+│      Audio.cpp
+│      Audio.h
+│      BillBoard.cpp
+│      BillBoard.h
+│      BoxCollider.cpp
+│      BoxCollider.h
+│      Camera.cpp
+│      Camera.h
+│      Collider.cpp
+│      Collider.h
+│      CsvReader.cpp
+│      CsvReader.h
+│      Debug.cpp
+│      Debug.h
+│      Direct3D.cpp
+│      Direct3D.h
+│      Fbx.cpp
+│      Fbx.h
+│      FbxParts.cpp
+│      FbxParts.h
+│      GameObject.cpp
+│      GameObject.h
+│      Global.h
+│      Image.cpp
+│      Image.h
+│      Input.cpp
+│      Input.h
+│      Main.cpp
+│      Model.cpp
+│      Model.h
+│      RootObject.cpp
+│      RootObject.h
+│      SceneManager.cpp
+│      SceneManager.h
+│      SphereCollider.cpp
+│      SphereCollider.h
+│      Sprite.cpp
+│      Sprite.h
+│      Text.cpp
+│      Text.h
+│      Texture.cpp
+│      Texture.h
+│      Transform.cpp
+│      Transform.h
+│      VFX.cpp
+│      VFX.h

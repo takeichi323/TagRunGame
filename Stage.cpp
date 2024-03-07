@@ -25,7 +25,7 @@ Stage::Stage(GameObject* parent)
 		for (int z = 0; z < height_; z++)
 		{
 			table_[x][z] = csv.GetValue(x, z); // マップデータを取得し、table_ に格納
-			//何とかなる！！ファイトだよ！
+	
 
 		}
 	}

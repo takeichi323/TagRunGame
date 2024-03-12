@@ -175,7 +175,6 @@ void Player::CameraPosition()
 	Camera::SetTarget(transform_.position_);
 	Camera::SetPosition(camPos);
 
-
 	/*XMFLOAT3 camPos = transform_.position_;
 	Camera::SetTarget(transform_.position_);
 	camPos.y += 5;

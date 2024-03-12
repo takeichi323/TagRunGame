@@ -53,3 +53,16 @@ XMMATRIX Camera::GetProjectionMatrix() { return _proj; }
 //ビルボード用回転行列を取得
 XMMATRIX Camera::GetBillboardMatrix(){	return _billBoard; }
 
+XMFLOAT3 Camera::GetForwardVector()
+{
+	// ビュー行列からカメラの前方ベクトルを取得する
+	XMVECTOR forwardVec = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f); // カメラが初期状態で Z 軸方向を向いていると仮定
+	forwardVec = XMVector3TransformNormal(forwardVec, XMMatrixInverse(nullptr, _view)); // ビュー行列の逆行列をかけてローカル空間からワールド空間に変換
+
+	// XMFLOAT3 に変換して返す
+	XMFLOAT3 forward;
+	XMStoreFloat3(&forward, forwardVec);
+	return forward;
+
+}
+

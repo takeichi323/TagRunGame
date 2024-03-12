@@ -208,29 +208,40 @@ void Player::PlayerMove()
 
 	prevPosition_ = transform_.position_;
 	XMFLOAT3 move{ 0,0,0 };
+	// カメラの向きを取得
+	XMFLOAT3 forward = Camera::GetForwardVector();
+
 
 	//右移動
 	if (Input::IsKey(DIK_D))
 	{
-		move.x += PLAYERMOVE;
+		move.x += PLAYERMOVE * forward.z;
+		move.z -= PLAYERMOVE * forward.x;
 		// Audio::Play(hSound_);
 	}
 	//左移動
 	if (Input::IsKey(DIK_A))
 	{
-		move.x -= PLAYERMOVE;
+		
+		move.x -= PLAYERMOVE * forward.z;
+		move.z += PLAYERMOVE * forward.x;
 		// Audio::Stop(hSound_);
 	}
 	//前移動
 	if (Input::IsKey(DIK_W))
 	{
-		move.z += PLAYERMOVE;
+		move.x += PLAYERMOVE * forward.x;
+		move.z += PLAYERMOVE * forward.z;
+
 
 	}
 	//後移動
 	if (Input::IsKey(DIK_S))
 	{
-		move.z -= PLAYERMOVE;
+		move.x -= PLAYERMOVE * forward.x;
+		move.z -= PLAYERMOVE * forward.z;
+
+		
 
 	}
 
@@ -251,7 +262,10 @@ void Player::PlayerMove()
 		transform_.rotate_.y -= 1.0f;
 	}
 
-	transform_.position_ = transform_.position_ + move;
+	//transform_.position_ = transform_.position_ + move;
+    // 移動を適用
+	transform_.position_.x += move.x;
+	transform_.position_.z += move.z;
 }
 
 

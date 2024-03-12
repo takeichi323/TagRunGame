@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include <DirectXMath.h>
 
 //-----------------------------------------------------------
 //カメラ
@@ -32,5 +33,8 @@ namespace Camera
 
 	//ビルボード用回転行列を取得
 	XMMATRIX GetBillboardMatrix();
+	// カメラの向きを取得する関数
+	 XMFLOAT3 GetForwardVector();
+
 };
 

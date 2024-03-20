@@ -4,7 +4,7 @@
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
-#include "Engine/BoxCollider.h"
+#include "Engine/SphereCollider.h"
 
 
 //コンストラクタ
@@ -22,7 +22,7 @@ Player::~Player()
 void Player::Initialize()
 {
 	//当たり判定のサイズ
-	BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0.0f, 0.21f, 0.0f), 0.4f);
 	AddCollider(collision);
 
 	//モデルデータのロード
@@ -35,7 +35,7 @@ void Player::Initialize()
 
 	//仮ポジション
 	//transform_.position_.y += 0.5;
-	transform_.position_ = XMFLOAT3(2.0, 0.5, 2.5);
+	transform_.position_ = XMFLOAT3(2.0, 0.1, 2.5);
 	//transform_.position_ = XMFLOAT3(10.5, 5.0, 1.5);
    
 	//全体のマップを確認するためのカメラ位置

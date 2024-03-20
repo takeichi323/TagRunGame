@@ -56,6 +56,7 @@ void Stage::Initialize()
 			}
 		}
 	}
+	
 
 	////コインを配置
 	//for (const auto& position : coinPosition) {
@@ -92,12 +93,14 @@ void Stage::Draw()
 	{
 		for (int z = 0; z < 60; z++)
 		{
-			if (hModel_[TYPE_FLOOR]) {
+			
 				CoinTrans.position_.x = x + 0.5f;
 				CoinTrans.position_.z = z + 0.5f;
 				Model::SetTransform(hCoinModel_, CoinTrans);
 				Model::Draw(hCoinModel_);
-			}
+				SphereCollider* collision = new SphereCollider(CoinTrans.position_, 0.2f);
+			     AddCollider(collision);
+			
 			blockTrans.position_.x = x + 1;
 			blockTrans.position_.z = z;
 
@@ -108,12 +111,7 @@ void Stage::Draw()
 
 		}
 	}
-	//	// コインを描画
-	//	for (const auto& coin : coins) {
-	//    const Transform& coinTrans = coin.CoinTrans; // コインのトランスフォームを取得
-	//    Model::SetTransform(hCoinModel_, coinTrans); // const Transform オブジェクトを渡す
-	//    Model::Draw(hCoinModel_);
-	//}
+		
 }
 
 

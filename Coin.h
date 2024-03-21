@@ -12,6 +12,8 @@ public:
     Coin(GameObject* parent);
     Coin() {}
 
+    
+
     //デストラクタ
     ~Coin();
 

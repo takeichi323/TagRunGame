@@ -36,37 +36,6 @@ void Stage::Initialize()
 {
 	
 	const char* fileName[] = { "floar.fbx", "floarbox.fbx"};
-
-	//コインのモデルデータを読み込み
-	hCoinModel_ = Model::Load("Coin.fbx");
-	assert(hCoinModel_ >= 0);
-
-	//CSVデータを読み込み、コインの位置を特定
-	CsvReader coinCsv;
-	coinCsv.Load("coin_map.csv");
-
-	//コインを配置する座標のリスト
-	std::vector<std::pair<int, int>>coinPosition;
-
-	//CSVデータを読み込んで、コインが配置されている座標を取得
-	for (int x = 0; x < coinCsv.GetWidth(); x++) {
-		for (int z = 0; z < coinCsv.GetHeight(); z++) {
-			if (coinCsv.GetValue(x, z) == 1) {
-				coinPosition.push_back(std::make_pair(x, z));
-			}
-		}
-	}
-	
-
-	////コインを配置
-	//for (const auto& position : coinPosition) {
-	//	Coin coin;
-	//	coin.CoinTrans.position_.x = position.first + 0.5f;
-	//	coin.CoinTrans.position_.z = position.second + 0.5f;
-	//	coins.push_back(coin); // coins ベクターにコインを追加
-	//}
-
-
 	//モデルデータのロード
 	for (int i = 0; i < TYPE_MAX; i++)
 	{
@@ -80,7 +49,7 @@ void Stage::Initialize()
 //更新
 void Stage::Update()
 {
-	CoinTrans.rotate_.y += 5.0f;
+	
 }
 
 //描画
@@ -93,13 +62,6 @@ void Stage::Draw()
 	{
 		for (int z = 0; z < 60; z++)
 		{
-			
-				CoinTrans.position_.x = x + 0.5f;
-				CoinTrans.position_.z = z + 0.5f;
-				Model::SetTransform(hCoinModel_, CoinTrans);
-				Model::Draw(hCoinModel_);
-				SphereCollider* collision = new SphereCollider(CoinTrans.position_, 0.2f);
-			     AddCollider(collision);
 			
 			blockTrans.position_.x = x + 1;
 			blockTrans.position_.z = z;

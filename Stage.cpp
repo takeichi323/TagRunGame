@@ -98,8 +98,8 @@ void Stage::Draw()
 				CoinTrans.position_.z = z + 0.5f;
 				Model::SetTransform(hCoinModel_, CoinTrans);
 				Model::Draw(hCoinModel_);
-				SphereCollider* collision = new SphereCollider(CoinTrans.position_, 0.2f);
-			     AddCollider(collision);
+			/*	SphereCollider* collision = new SphereCollider(CoinTrans.position_, 0.2f);
+			     AddCollider(collision);*/
 			
 			blockTrans.position_.x = x + 1;
 			blockTrans.position_.z = z;

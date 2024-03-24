@@ -102,6 +102,7 @@
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="LifeGauge.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="ResultScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -180,6 +181,7 @@
     <ClInclude Include="Coin.h" />
     <ClInclude Include="LifeGauge.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="ResultScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

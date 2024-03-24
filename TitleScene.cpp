@@ -6,20 +6,27 @@
 
 //コンストラクタ
 TitleScene::TitleScene(GameObject* parent)
-	: GameObject(parent, "TitleScene"), hPict_(-1)
+	: GameObject(parent, "TitleScene"), hPict_(-1), hTitlelog_(-1)
 {
 }
 
 //初期化
 void TitleScene::Initialize()
 {
+    
 	//画像データのロード
 	hPict_ = Image::Load("EnterPUSH logo.png");
 	assert(hPict_ >= 0);
-
 	// 画像の位置を変更する
-	transform_.position_.x = 0.0f; 
-	transform_.position_.y =- 0.6f; 
+    transform_.position_.x = 0.0f;
+    transform_.position_.y =- 0.6f;
+
+    Transform transformTitlelog_;
+    hTitlelog_ = Image::Load("TagRunGame.png");
+    assert(hTitlelog_ >= 0);
+    // 画像の位置を変更する
+    transformTitlelog_.position_.x = 0.0f;
+    transformTitlelog_.position_.y = 0.0f;
 }
 
 //更新
@@ -63,6 +70,9 @@ void TitleScene::Draw()
 {
 	Image::SetTransform(hPict_, transform_);
 	Image::Draw(hPict_);
+
+    //Image::SetTransform(hTitlelog_, transform_);
+    //Image::Draw(hTitlelog_);
 }
 
 //開放

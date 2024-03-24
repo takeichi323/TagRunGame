@@ -5,6 +5,7 @@
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
 #include "Engine/SphereCollider.h"
+#include "Engine/SceneManager.h"
 
 
 //コンストラクタ
@@ -259,6 +260,12 @@ void Player::PlayerMove()
 	if (Input::IsKey(DIK_N))
 	{
 		transform_.rotate_.y -= 1.0f;
+	}
+
+	if (Input::IsKey(DIK_SPACE))
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_RESULT);
 	}
 
 	//transform_.position_ = transform_.position_ + move;

@@ -30,5 +30,8 @@ namespace Audio
 
 	//–{‘Ì‚à‰ð•ú
 	void AllRelease();
+
+	void SetVolume(int ID, float volume);
+	float GetVolume(int ID);
 };
 

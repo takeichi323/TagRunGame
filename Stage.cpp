@@ -1,6 +1,7 @@
 #include "Stage.h"
 #include "Engine/Model.h"
 #include "TestScene.h"
+#include "Engine/Audio.h"
 #include "Engine/CsvReader.h"
 #include "Coin.h"
 
@@ -34,6 +35,10 @@ Stage::Stage(GameObject* parent)
 //初期化
 void Stage::Initialize()
 {
+
+	//サウンドデータのロード
+	hSound_ = Audio::Load("Jazz 1.wav");
+	assert(hSound_ >= 0);
 	
 	const char* fileName[] = { "floar.fbx", "floarbox.fbx"};
 
@@ -111,7 +116,7 @@ void Stage::Draw()
 
 		}
 	}
-		
+	//Audio::Play(hSound_);
 }
 
 

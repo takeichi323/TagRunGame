@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "Engine/Model.h"
-#include "Engine/Audio.h"
+
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 #include "Engine/Debug.h"
@@ -9,7 +9,7 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	:GameObject(parent, "Player"), hModel_(-1), hSound_(-1), pStage_(nullptr)
+	:GameObject(parent, "Player"), hModel_(-1),  pStage_(nullptr)
 {
 }
 
@@ -29,9 +29,9 @@ void Player::Initialize()
 	hModel_ = Model::Load("Pacplayer.fbx");
 	assert(hModel_ >= 0);
 
-	//サウンドデータのロード
-	hSound_ = Audio::Load("Jazz 1.wav");
-	assert(hSound_ >= 0);
+	////サウンドデータのロード
+	//hSound_ = Audio::Load("Jazz 1.wav");
+	//assert(hSound_ >= 0);
 
 	//仮ポジション
 	//transform_.position_.y += 0.5;

@@ -19,7 +19,7 @@ class Stage : public GameObject
 	
 	int** table_;
 	int width_, height_;
-
+	int hSound_;    //ƒTƒEƒ“ƒh”Ô†
 	Transform CoinTrans;
 
 	

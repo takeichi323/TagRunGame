@@ -1,5 +1,6 @@
 #include <xaudio2.h>
 #include <vector>
+#include <algorithm> 
 #include "Audio.h"
 
 #define SAFE_DELETE_ARRAY(p) if(p){delete[] p; p = nullptr;}
@@ -26,6 +27,8 @@ namespace Audio
 
 		//ファイル名
 		std::string fileName;
+		// 音量
+		float volume = 1.0f; // 初期音量は1.0（最大音量）
 	};
 	std::vector<AudioData>	audioDatas;
 }
@@ -200,3 +203,23 @@ void Audio::AllRelease()
 	}
 	pXAudio->Release();
 }
+
+void Audio::SetVolume(int ID, float volume)
+{
+	// 音量が0から1の範囲に収まるように調整
+	volume = (volume < 0.0f) ? 0.0f : (volume > 1.0f) ? 1.0f : volume;
+
+	// 指定されたIDの音声ソースの音量を設定
+	for (int i = 0; i < audioDatas[ID].svNum; i++)
+	{
+		audioDatas[ID].pSourceVoice[i]->SetVolume(volume);
+	}
+	// 音量を記憶
+	audioDatas[ID].volume = volume;
+}
+
+//// 現在の音量を取得する関数
+//float Audio::GetVolume(int ID)
+//{
+//	return audioDatas[ID].volume;
+//}

@@ -211,6 +211,45 @@ void Player::PlayerMove()
 	// カメラの向きを取得
 	XMFLOAT3 forward = Camera::GetForwardVector();
 
+	// 一人称カメラの実装
+#if 0
+	{
+		XMFLOAT3 camPosition{};
+		XMFLOAT3 camTarget{};
+
+		// マウスの移動量から角度を設定
+		static XMFLOAT2 angle{};
+		{
+			XMFLOAT3 mouseMove = Input::GetMouseMove();
+
+			float sensitivity = 0.3f;
+			angle.x += mouseMove.y * sensitivity;
+			angle.y += mouseMove.x * sensitivity;
+		}
+
+		// プレイヤーの頭部の位置をカメラの位置に設定
+		XMFLOAT3 playerHeadPosition = transform_.position_;
+		playerHeadPosition.y += 0.5f;
+
+		camPosition = playerHeadPosition;
+
+		// カメラが向く方向を指定
+		XMVECTOR dir = { 0,0,1,0 }; {
+			
+			// 角度から回転行列を作成
+			XMMATRIX rotate = XMMatrixRotationY(XMConvertToRadians(angle.y));
+			dir = XMVector3Transform(dir, rotate);
+		}
+
+		// カメラの焦点の位置を設定
+		XMStoreFloat3(&camTarget,(XMLoadFloat3(&camPosition) + dir));
+
+		Camera::SetPosition(camPosition);
+		Camera::SetTarget(camTarget);
+	}
+#endif // 0
+
+
 
 	//右移動
 	if (Input::IsKey(DIK_D))

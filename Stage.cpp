@@ -113,7 +113,6 @@ void Stage::Draw()
 			Model::SetTransform(hModel_[type], blockTrans);
 			Model::Draw(hModel_[type]);
 
-
 		}
 	}
 	//Audio::Play(hSound_);
@@ -143,6 +142,4 @@ bool Stage::IsWall(int x, int z)
 		return true;
 	else
 		return false;
-
-	
 }

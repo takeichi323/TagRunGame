@@ -8,7 +8,7 @@
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-	: GameObject(parent, "Stage"), hModel_{ -1,-1 }, table_(nullptr)
+	: GameObject(parent, "Stage"), hModel_{ -1,-1,-1 }, table_(nullptr)
 {
 
 	CsvReader csv;
@@ -40,44 +40,33 @@ void Stage::Initialize()
 	hSound_ = Audio::Load("Jazz 1.wav");
 	assert(hSound_ >= 0);
 	
-	const char* fileName[] = { "floar.fbx", "floarbox.fbx"};
 
-	//コインのモデルデータを読み込み
-	hCoinModel_ = Model::Load("Coin.fbx");
-	assert(hCoinModel_ >= 0);
+	hModel_[TYPE_FLOOR] = Model::Load("floar.fbx");
+	assert(hModel_[TYPE_FLOOR] >= 0);
 
-	//CSVデータを読み込み、コインの位置を特定
-	CsvReader coinCsv;
-	coinCsv.Load("coin_map.csv");
+	//壁のロード
+	hModel_[TYPE_WALL] = Model::Load("floarbox.fbx");
+	assert(hModel_[TYPE_WALL] >= 0);
 
-	//コインを配置する座標のリスト
-	std::vector<std::pair<int, int>>coinPosition;
+	//床ロード
+	hModel_[TYPE_FCOIN] = Model::Load("floar.fbx");
+	assert(hModel_[TYPE_FCOIN] >= 0);
 
-	//CSVデータを読み込んで、コインが配置されている座標を取得
-	for (int x = 0; x < coinCsv.GetWidth(); x++) {
-		for (int z = 0; z < coinCsv.GetHeight(); z++) {
-			if (coinCsv.GetValue(x, z) == 1) {
-				coinPosition.push_back(std::make_pair(x, z));
+	// TYPE_FCOINの場合、"Coin.fbx" もロード
+	if (table_ != nullptr) {
+		for (int x = 0; x < width_; x++) {
+			for (int z = 0; z < height_; z++) {
+				if (table_[x][z] == TYPE_FCOIN) {
+					hModel_[TYPE_FCOIN] = Model::Load("Coin.fbx");
+					assert(hModel_[TYPE_FCOIN] >= 0);
+				}
 			}
 		}
 	}
+
+
+
 	
-
-	////コインを配置
-	//for (const auto& position : coinPosition) {
-	//	Coin coin;
-	//	coin.CoinTrans.position_.x = position.first + 0.5f;
-	//	coin.CoinTrans.position_.z = position.second + 0.5f;
-	//	coins.push_back(coin); // coins ベクターにコインを追加
-	//}
-
-
-	//モデルデータのロード
-	for (int i = 0; i < TYPE_MAX; i++)
-	{
-		hModel_[i] = Model::Load(fileName[i]);
-		assert(hModel_[i] >= 0);
-	}
 
 	
 }

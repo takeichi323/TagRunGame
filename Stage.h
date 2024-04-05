@@ -6,6 +6,7 @@ enum
 {
 	TYPE_FLOOR,
 	TYPE_WALL,
+	TYPE_FCOIN,
 	TYPE_MAX
 };
 
@@ -21,6 +22,7 @@ class Stage : public GameObject
 	int width_, height_;
 	int hSound_;    //ÉTÉEÉìÉhî‘çÜ
 	Transform CoinTrans;
+	
 
 	
 public:

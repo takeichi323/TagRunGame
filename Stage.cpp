@@ -49,32 +49,28 @@ void Stage::Initialize()
 	assert(hModel_[TYPE_WALL] >= 0);
 
 	//床ロード
-	hModel_[TYPE_FCOIN] = Model::Load("floar.fbx");
+	hModel_[TYPE_FCOIN] = Model::Load("Coin.fbx");
 	assert(hModel_[TYPE_FCOIN] >= 0);
 
 	// TYPE_FCOINの場合、"Coin.fbx" もロード
 	if (table_ != nullptr) {
 		for (int x = 0; x < width_; x++) {
 			for (int z = 0; z < height_; z++) {
+
 				if (table_[x][z] == TYPE_FCOIN) {
-					hModel_[TYPE_FCOIN] = Model::Load("Coin.fbx");
+					hModel_[TYPE_FCOIN] = Model::Load("floar.fbx");
 					assert(hModel_[TYPE_FCOIN] >= 0);
+					
 				}
 			}
 		}
-	}
-
-
-
-	
-
-	
+	}	
 }
 
 //更新
 void Stage::Update()
 {
-	CoinTrans.rotate_.y += 5.0f;
+	//CoinTrans.rotate_.y += 5.0f;
 }
 
 //描画

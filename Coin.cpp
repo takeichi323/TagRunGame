@@ -5,8 +5,7 @@
 Coin::Coin(GameObject* parent)
     :GameObject(parent, "Coin"), hCoinModel_(-1)
 {
-	/*SphereCollider* collision = new SphereCollider(CoinTrans.position_, 0.2f);
-	AddCollider(collision);*/
+	
 }
 
 //デストラクタ
@@ -17,9 +16,7 @@ Coin::~Coin()
 //初期化
 void Coin::Initialize()
 {
-	//モデルデータのロード
-	/*hCoinModel_ = Model::Load("Coin.fbx");
-	assert(hCoinModel_ >= 0);*/
+	
 	
 }
 
@@ -32,17 +29,6 @@ void Coin::Update()
 //描画
 void Coin::Draw()
 {
-	
-	/*for (int x = 0; x < 34; x++)
-	{
-		for (int z = 0; z < 58; z++)
-		{
-			CoinTrans.position_.x = x + 0.5f;
-			CoinTrans.position_.z = z + 0.5f;
-			Model::SetTransform(hCoinModel_, CoinTrans);
-			Model::Draw(hCoinModel_);
-		}
-	}*/
 	
 }
 

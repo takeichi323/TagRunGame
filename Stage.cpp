@@ -40,31 +40,22 @@ void Stage::Initialize()
 	hSound_ = Audio::Load("Jazz 1.wav");
 	assert(hSound_ >= 0);
 	
+	//モデルファイル格納してる配列
+	const char* fileName[] = { "floar.fbx","floarbox.fbx","Coin.fbx" };
 
-	hModel_[TYPE_FLOOR] = Model::Load("floar.fbx");
-	assert(hModel_[TYPE_FLOOR] >= 0);
+	//モデルデータのロード
+	for (int i = 0; i < TYPE_MAX; i++)
+	{
+		hModel_[i] = Model::Load(fileName[i]);
+		assert(hModel_[i] >= 0);
+	}
+	// TYPE_FCOINの場合、"floar.fbx" もロード
+	//if (hModel_[TYPE_FCOIN] == true)
+	//{   
+	//	Model::Load(fileName[0]);
+	//	/*これだとTYPE_FCOINの場合にfloar.fbxしかロードしない可能性がある*/
+	//}
 
-	//壁のロード
-	hModel_[TYPE_WALL] = Model::Load("floarbox.fbx");
-	assert(hModel_[TYPE_WALL] >= 0);
-
-	//床ロード
-	hModel_[TYPE_FCOIN] = Model::Load("Coin.fbx");
-	assert(hModel_[TYPE_FCOIN] >= 0);
-
-	// TYPE_FCOINの場合、"Coin.fbx" もロード
-	if (table_ != nullptr) {
-		for (int x = 0; x < width_; x++) {
-			for (int z = 0; z < height_; z++) {
-
-				if (table_[x][z] == TYPE_FCOIN) {
-					hModel_[TYPE_FCOIN] = Model::Load("floar.fbx");
-					assert(hModel_[TYPE_FCOIN] >= 0);
-					
-				}
-			}
-		}
-	}	
 }
 
 //更新
@@ -81,17 +72,9 @@ void Stage::Draw()
 
 	for (int x = 0; x < 36; x++)
 	{
-		for (int z = 0; z < 60; z++)
-		{
-			
-				CoinTrans.position_.x = x + 0.5f;
-				CoinTrans.position_.z = z + 0.5f;
-				Model::SetTransform(hCoinModel_, CoinTrans);
-				Model::Draw(hCoinModel_);
-			/*	SphereCollider* collision = new SphereCollider(CoinTrans.position_, 0.2f);
-			     AddCollider(collision);*/
-			
-			blockTrans.position_.x = x + 1;
+	    for (int z = 0; z < 60; z++)
+	    {
+			blockTrans.position_.x = x+1;
 			blockTrans.position_.z = z;
 
 			int type = table_[x][z];
@@ -100,6 +83,29 @@ void Stage::Draw()
 
 		}
 	}
+
+
+	//for (int x = 0; x < 36; x++)
+	//{
+	//	for (int z = 0; z < 60; z++)
+	//	{
+	//		//CoinTransPosition=モデル0の位置
+	//		//hCoinModel_=モデル0の床モデル
+	//			CoinTrans.position_.x = x ;
+	//			CoinTrans.position_.z = z ;
+	//			Model::SetTransform(hCoinModel_, CoinTrans);
+	//			Model::Draw(hCoinModel_);
+
+	//	  //blockTrans.position_=モデル1の位置
+	//	  //hModel_[type]=モデル１の壁モデル
+	//		blockTrans.position_.x = x + 1;
+	//		blockTrans.position_.z = z;
+	//		int type = table_[x][z];
+	//		Model::SetTransform(hModel_[type], blockTrans);
+	//		Model::Draw(hModel_[type]);
+
+	//	}
+	//}
 	//Audio::Play(hSound_);
 }
 

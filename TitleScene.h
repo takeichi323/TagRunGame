@@ -8,6 +8,7 @@ class TitleScene : public GameObject
 private:
 	int hPict_;    //画像番号
 	int hTitlelog_;
+	Transform transformTitlelog_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

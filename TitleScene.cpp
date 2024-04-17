@@ -21,8 +21,8 @@ void TitleScene::Initialize()
     transform_.position_.x = 0.0f;
     transform_.position_.y =- 0.6f;
 
-    Transform transformTitlelog_;
-    hTitlelog_ = Image::Load("TagRunGame.png");
+    
+    hTitlelog_ = Image::Load("TagRunGame_v2.png");
     assert(hTitlelog_ >= 0);
     // ‰æ‘œ‚ÌˆÊ’u‚ğ•ÏX‚·‚é
     transformTitlelog_.position_.x = 0.0f;
@@ -71,8 +71,8 @@ void TitleScene::Draw()
 	Image::SetTransform(hPict_, transform_);
 	Image::Draw(hPict_);
 
-    //Image::SetTransform(hTitlelog_, transform_);
-    //Image::Draw(hTitlelog_);
+    Image::SetTransform(hTitlelog_, transformTitlelog_);
+    Image::Draw(hTitlelog_);
 }
 
 //ŠJ•ú

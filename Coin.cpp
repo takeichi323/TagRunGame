@@ -16,7 +16,13 @@ Coin::~Coin()
 //初期化
 void Coin::Initialize()
 {
-	
+	//コインモデルのロード
+	hCoinModel_ = Model::Load("Coin.fbx");
+	assert(hCoinModel_ >= 0);
+	/*コインをロード
+	　描画させる
+	 　　　↑
+　この処理をステージでCSVの値が２の場合に表示させる*/
 	
 }
 
@@ -29,6 +35,8 @@ void Coin::Update()
 //描画
 void Coin::Draw()
 {
+	Model::SetTransform(hCoinModel_, transform_);
+	Model::Draw(hCoinModel_);
 	
 }
 

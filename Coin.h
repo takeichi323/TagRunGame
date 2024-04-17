@@ -10,7 +10,6 @@ class Coin : public GameObject
 public:
     //コンストラクタ
     Coin(GameObject* parent);
-    Coin() {}
 
     //デストラクタ
     ~Coin();
@@ -34,6 +33,3 @@ public:
 
 
 };
-
-/*コインの単体化
-　*/

@@ -8,7 +8,7 @@
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-	: GameObject(parent, "Stage"), hModel_{ -1,-1,-1 }, table_(nullptr)
+	: GameObject(parent, "Stage"), hModel_{ -1,-1}, table_(nullptr)
 {
 
 	CsvReader csv;
@@ -41,7 +41,7 @@ void Stage::Initialize()
 	assert(hSound_ >= 0);
 	
 	//モデルファイル格納してる配列
-	const char* fileName[] = { "floar.fbx","floarbox.fbx","Coin.fbx" };
+	const char* fileName[] = { "floar.fbx","floarbox.fbx" };
 
 	//モデルデータのロード
 	for (int i = 0; i < TYPE_MAX; i++)

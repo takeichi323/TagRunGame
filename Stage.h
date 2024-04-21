@@ -6,7 +6,6 @@ enum
 {
 	TYPE_FLOOR,
 	TYPE_WALL,
-	TYPE_FCOIN,
 	TYPE_MAX
 };
 

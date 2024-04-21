@@ -17,8 +17,8 @@ Coin::~Coin()
 void Coin::Initialize()
 {
 	//コインモデルのロード
-	/*hCoinModel_ = Model::Load("Coin.fbx");
-	assert(hCoinModel_ >= 0);*/
+	hCoinModel_ = Model::Load("Coin.fbx");
+	assert(hCoinModel_ >= 0);
 	/*コインをロード
 	　描画させる
 	 　　　↑

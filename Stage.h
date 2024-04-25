@@ -14,7 +14,8 @@ enum
 class Stage : public GameObject
 {
 
-	int hModel_[TYPE_MAX];    //ƒ‚ƒfƒ‹”Ô†
+    //ƒ‚ƒfƒ‹”Ô†
+	int hStageModel_[TYPE_MAX];
 	int hCoinModel_;
 	
 	int** table_;

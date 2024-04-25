@@ -8,7 +8,7 @@
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-	: GameObject(parent, "Stage"), hModel_{ -1,-1}, table_(nullptr)
+	: GameObject(parent, "Stage"), hStageModel_{ -1,-1}, table_(nullptr)
 {
 
 	CsvReader csv;
@@ -46,8 +46,8 @@ void Stage::Initialize()
 	//モデルデータのロード
 	for (int i = 0; i < TYPE_MAX; i++)
 	{
-		hModel_[i] = Model::Load(fileName[i]);
-		assert(hModel_[i] >= 0);
+		hStageModel_[i] = Model::Load(fileName[i]);
+		assert(hStageModel_[i] >= 0);
 	}
 	// TYPE_FCOINの場合、"floar.fbx" もロード
 	//if (hModel_[TYPE_FCOIN] == true)
@@ -78,9 +78,9 @@ void Stage::Draw()
 			blockTrans.position_.z = z;
 
 			int type = table_[x][z];
-			Model::SetTransform(hModel_[type], blockTrans);
-			Model::Draw(hModel_[type]);
-
+			Model::SetTransform(hStageModel_[type], blockTrans);
+			Model::Draw(hStageModel_[type]);
+			
 		}
 	}
 

@@ -1,6 +1,8 @@
 #include "Coin.h"
 #include "Engine/Model.h"
 
+#include "Engine/Debug.h"
+
 //コンストラクタ
 Coin::Coin(GameObject* parent)
     :GameObject(parent, "Coin"), hCoinModel_(-1)
@@ -35,8 +37,8 @@ void Coin::Update()
 //描画
 void Coin::Draw()
 {
-	/*Model::SetTransform(hCoinModel_, transform_);
-	Model::Draw(hCoinModel_);*/
+	Model::SetTransform(hCoinModel_, transform_);
+	Model::Draw(hCoinModel_);
 	
 }
 

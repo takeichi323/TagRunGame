@@ -17,7 +17,7 @@ namespace Audio
 	//struct:デフォがpublic
 	struct AudioData
 	{
-		//サウンド情報
+		//サウンド情報：バッファ
 		XAUDIO2_BUFFER buf = {};
 
 		//ソースボイス

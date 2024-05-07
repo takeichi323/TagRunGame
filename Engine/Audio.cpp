@@ -7,13 +7,14 @@
 
 namespace Audio
 {
-	//XAudio本体
+	//XAudio本体:全ての管理を行う
 	IXAudio2* pXAudio = nullptr;
 
-	//マスターボイス
+	//マスターボイス:音を出力するために使う
 	IXAudio2MasteringVoice* pMasteringVoice = nullptr;
 
 	//ファイル毎に必要な情報
+	//struct:デフォがpublic
 	struct AudioData
 	{
 		//サウンド情報

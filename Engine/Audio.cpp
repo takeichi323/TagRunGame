@@ -4,6 +4,7 @@
 #include "Audio.h"
 
 #define SAFE_DELETE_ARRAY(p) if(p){delete[] p; p = nullptr;}
+//https://learn.microsoft.com/ja-jp/windows/win32/xaudio2/x3daudio-overview
 
 namespace Audio
 {

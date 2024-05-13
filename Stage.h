@@ -16,7 +16,7 @@ class Stage : public GameObject
 
     //ƒ‚ƒfƒ‹”Ô†
 	int hStageModel_[TYPE_MAX];
-	int hCoinModel_;
+	
 	
 	int** table_;
 	int width_, height_;

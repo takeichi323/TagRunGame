@@ -35,6 +35,14 @@ Stage::Stage(GameObject* parent)
 //初期化
 void Stage::Initialize()
 {
+	//Coinがなぜか描画されてしまう原因
+	/*現在(5/13)Coinの描画はバグっていないはず
+	　Coin描画をコメントアウトしている
+	  csv番号[2]の箇所は何も描画されていない
+	  if文で書くか
+	  　if
+	  最終的に床とコインが一緒に描画されるようにする
+	  目的：Coinの独立性*/
 
 	//サウンドデータのロード
 	hSound_ = Audio::Load("Jazz 1.wav");

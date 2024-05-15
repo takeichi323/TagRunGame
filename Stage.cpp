@@ -79,9 +79,9 @@ void Stage::Draw()
 
 	Transform blockTrans;
 
-	for (int x = 0; x < 36; x++)
+	for (int x = 0; x < 36/*‰¡*/; x++)
 	{
-	    for (int z = 0; z < 60; z++)
+	    for (int z = 0; z < 60/*c*/; z++)
 	    {
 			blockTrans.position_.x = x+1;
 			blockTrans.position_.z = z;

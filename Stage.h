@@ -17,7 +17,9 @@ class Stage : public GameObject
 
     //モデル番号
 	int hStageModel_[TYPE_MAX];
-	
+	//stageのサイズ
+	const int STAGEWIDTH = 36;
+	const int STAGEHEIGHT = 60;
 	
 	int** table_;
 	int width_, height_;

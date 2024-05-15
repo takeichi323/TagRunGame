@@ -42,7 +42,7 @@ void Stage::Initialize()
 	assert(hSound_ >= 0);
 	
 	//モデルファイル格納してる配列
-	const char* fileName[] = { "floar.fbx","floarbox.fbx" };
+	const char* fileName[] = { "floar.fbx","floarbox.fbx"};
 
 	//モデルデータのロード
 	for (int i = 0; i < TYPE_MAX; i++)
@@ -79,9 +79,9 @@ void Stage::Draw()
 
 	Transform blockTrans;
 
-	for (int x = 0; x < 36/*横*/; x++)
+	for (int x = 0; x < STAGEWIDTH ; x++)
 	{
-	    for (int z = 0; z < 60/*縦*/; z++)
+	    for (int z = 0; z <  STAGEHEIGHT; z++)
 	    {
 			blockTrans.position_.x = x+1;
 			blockTrans.position_.z = z;

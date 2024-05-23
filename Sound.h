@@ -5,7 +5,7 @@
 
 //ƒ‰ƒCƒuƒ‰ƒŠ“Ç‚İ‚İ
 #pragma comment(lib, "XAudio2.lib")
-#pragma comment(lib, "X3DAudio.lib")
+//#pragma comment(lib, "X3DAudio.lib")
 
 class Sound
 {

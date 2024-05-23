@@ -1,11 +1,11 @@
 #pragma once
 #include<Windows.h>
-#include<X3DAudio.h>
+#include<x3daudio.h>
 #include<xaudio2.h>
 
 //ƒ‰ƒCƒuƒ‰ƒŠ“Ç‚İ‚İ
 #pragma comment(lib, "XAudio2.lib")
-//#pragma comment(lib, "X3DAudio.lib")
+#pragma comment(lib, "X3DAudio.lib")
 
 class Sound
 {

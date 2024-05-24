@@ -44,3 +44,36 @@ void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter)
 void Sound::SetupListener(X3DAUDIO_LISTENER& listener)
 {
 }
+
+void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSetting)
+{
+	//仮置き　サイズ変更の可能性あり
+	FLOAT32 matrix[8] = {};
+}
+
+bool Sound::CreateAndPlaySourceVoice(IXAudio2* pXAudio2, IXAudio2SourceVoice** ppSourceVoice, WAVEFORMATEX& waveFormat, XAUDIO2_BUFFER& buffer)
+{
+	HRESULT hr{};
+
+	//ソース音声を作成
+	hr = pXAudio2->CreateSourceVoice(ppSourceVoice, &waveFormat);
+	if (FAILED(hr)) {
+		return false;
+	}
+
+	//(音声キュー?)に新しいオーディオバッファーを追加
+	hr = (*ppSourceVoice)->SubmitSourceBuffer(&buffer);
+	if (FAILED(hr)) {
+		return false;
+	}
+
+	//オーディオ処理スレッドを開始
+	hr = (*ppSourceVoice)->Start(0);
+	if (FAILED(hr)) {
+		return false;
+	}
+
+
+
+	return true;
+}

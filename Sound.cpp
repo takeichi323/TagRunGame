@@ -36,3 +36,11 @@ bool Sound::InitializeX3DAudio(IXAudio2MasteringVoice* pMasterVoice, X3DAUDIO_HA
 
 	return false;
 }
+
+void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter)
+{
+}
+
+void Sound::SetupListener(X3DAUDIO_LISTENER& listener)
+{
+}

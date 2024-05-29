@@ -22,7 +22,7 @@ class Sound
    void SetupListener(X3DAUDIO_LISTENER& listener);
 
    //3Dオーディオ計算関数
-   void Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance,X3DAUDIO_LISTENER& dspSetting);
+   void Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance,X3DAUDIO_LISTENER& dspSettings);
 
    //サウンドバッファの作成と再生用関数
    bool CreateAndPlaySourceVoice(IXAudio2* pXAudio2,IXAudio2SourceVoice** ppSourceVoice,

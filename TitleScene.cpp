@@ -15,6 +15,7 @@ void TitleScene::Initialize()
 {
     
 	//画像データのロード
+    //Press Any Buttonの画像
 	hPict_ = Image::Load("EnterPUSH logo.png");
 	assert(hPict_ >= 0);
 	// 画像の位置を変更する
@@ -32,30 +33,54 @@ void TitleScene::Initialize()
 //更新
 void TitleScene::Update()
 {
-	if (Input::IsKey(DIK_RETURN)) {
+	/*if (Input::IsKey(DIK_RETURN)) {
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_TEST);
-	}
-	
-    // 透明度の変化を制御するフラグ
-    static bool increasing = true;
-    // 透明度の増減速度
-    static int transparencyStep = 5;
-    // 最大透明度
-    static int transparencyMax = 255;
-    // 現在の透明度
-    static int currentTransparency = 0;
-    // 透明度の増減処理
-    if (increasing) {
-        currentTransparency += transparencyStep;
-        if (currentTransparency >= transparencyMax) {
-            increasing = false;
+	}*/
+    
+    if (!transitionmove_ && Input::IsKey(DIK_RETURN)) {
+        transitionmove_ = true;
+        currentTransparency_ = 0;
+    }
+
+    if (transitionmove_) {
+        // 点滅効果
+        if (increasing_) {
+            currentTransparency_ += 10; // 点滅の速度を変更したい場合はこの値を調整
+            if (currentTransparency_ >= transparencyMax_) {
+                currentTransparency_ = transparencyMax_;
+                increasing_ = false;
+            }
+        }
+        else {
+            currentTransparency_ -= 10;
+            if (currentTransparency_ <= 0) {
+                currentTransparency_ = 0;
+                increasing_ = true;
+                // 画面暗転を開始
+                transitionTransparency_ += 5;
+                if (transitionTransparency_ >= transparencyMax_) {
+                    transitionTransparency_ = transparencyMax_;
+                    // シーン切り替え
+                    SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+                    pSceneManager->ChangeScene(SCENE_ID_TEST);
+                }
+            }
         }
     }
     else {
-        currentTransparency -= transparencyStep;
-        if (currentTransparency <= 0) {
-            increasing = true;
+        // 通常時の透明度アニメーション
+        if (increasing_) {
+            currentTransparency_ += 5;
+            if (currentTransparency_ >= transparencyMax_) {
+                increasing_ = false;
+            }
+        }
+        else {
+            currentTransparency_ -= 5;
+            if (currentTransparency_ <= 0) {
+                increasing_ = true;
+            }
         }
     }
 

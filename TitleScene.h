@@ -8,7 +8,9 @@ class TitleScene : public GameObject
 private:
 	int hPict_;    //画像番号
 	int hTitlelog_;//画像番号
+	int hBlack_;  // 黒い画像用
 	Transform transformTitlelog_;
+	Transform transformBlack_;
 
     // 現在の透明度
 	int currentTransparency_ = 0;
@@ -22,7 +24,8 @@ private:
     int transparencyMax_ = 255;
 	// 透明度の増減速度
 	int transparencyStep_ = 5;
-
+	// 暗転速度を制御するための変数
+	float fadeSpeed_;  
 	
 
 public:

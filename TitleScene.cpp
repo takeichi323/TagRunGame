@@ -28,15 +28,17 @@ void TitleScene::Initialize()
     // 画像の位置を変更する
     transformTitlelog_.position_.x = 0.0f;
     transformTitlelog_.position_.y = 0.0f;
+
+    hBlack_ = Image::Load("black.png"); // 黒い四角形画像のロード
+    assert(hBlack_ >= 0);
+    //後で綺麗にする
+    fadeSpeed_ = 400.0f; // 暗転速度
+    
 }
 
 //更新
 void TitleScene::Update()
 {
-	/*if (Input::IsKey(DIK_RETURN)) {
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_TEST);
-	}*/
     
     if (!transitionmove_ && Input::IsKey(DIK_RETURN)) {
         transitionmove_ = true;
@@ -58,7 +60,7 @@ void TitleScene::Update()
                 currentTransparency_ = 0;
                 increasing_ = true;
                 // 画面暗転を開始
-                transitionTransparency_ += 5;
+                transitionTransparency_ += fadeSpeed_;
                 if (transitionTransparency_ >= transparencyMax_) {
                     transitionTransparency_ = transparencyMax_;
                     // シーン切り替え
@@ -85,7 +87,7 @@ void TitleScene::Update()
     }
 
     // 画像の透明度を設定
-    Image::SetAlpha(hPict_, currentTransparency);
+    Image::SetAlpha(hPict_, currentTransparency_);
 
 
 }
@@ -98,6 +100,12 @@ void TitleScene::Draw()
 
     Image::SetTransform(hTitlelog_, transformTitlelog_);
     Image::Draw(hTitlelog_);
+
+    if (transitionmove_) {
+        Image::SetAlpha(hBlack_, transitionTransparency_);
+        Image::SetTransform(hBlack_, transformBlack_);
+        Image::Draw(hBlack_);
+    }
 }
 
 //開放

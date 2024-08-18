@@ -65,7 +65,7 @@ void TitleScene::Update()
                     transitionTransparency_ = transparencyMax_;
                     // ƒV[ƒ“Ø‚è‘Ö‚¦
                     SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-                    pSceneManager->ChangeScene(SCENE_ID_TEST);
+                    pSceneManager->ChangeScene(SCENE_ID_SELECT);
                 }
             }
         }

@@ -6,6 +6,7 @@
 #include "Audio.h"
 #include "../TitleScene.h"
 #include "../ResultScene.h"
+#include "../SelectScene.h"
 
 
 
@@ -50,7 +51,9 @@ void SceneManager::Update()
 		{
 		case SCENE_ID_TEST: Instantiate<TestScene>(this); break;
 		case SCENE_ID_TITLE: Instantiate<TitleScene>(this); break;
+		case SCENE_ID_SELECT:Instantiate<SelectScene>(this); break;
 		case SCENE_ID_RESULT: Instantiate<ResultScene>(this); break;
+		
 
 		}
 		Audio::Initialize();

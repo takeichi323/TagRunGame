@@ -4,6 +4,8 @@
 //◆◆◆を管理するクラス
 class SelectScene : public GameObject
 {
+    int hTitlelog_;//画像番号
+    Transform transformTitlelog_;
 
 public:
     //コンストラクタ

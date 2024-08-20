@@ -4,9 +4,11 @@
 //◆◆◆を管理するクラス
 class SelectScene : public GameObject
 {
-    int hTitlelog_;//画像番号
-    Transform transformTitlelog_;
-
+    int hPictNormal_;//画像番号
+    int hPictHard_;//画像番号
+    Transform transformNormal_;
+    Transform transformHard_;
+    int selectedMode_;//0:ふつう、1:むずかしい
 public:
     //コンストラクタ
     SelectScene(GameObject* parent);

@@ -14,6 +14,11 @@ class SelectScene : public GameObject
     float scaleNormal = 1.0f;
     float scaleHard = 1.0f;
 
+   int soundSelect_;
+
+   bool keyUpPressed = false;   // 上キーが押されているかどうか
+   bool keyDownPressed = false; // 下キーが押されているかどうか
+
 public:
     //コンストラクタ
     SelectScene(GameObject* parent);

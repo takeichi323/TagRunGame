@@ -2,6 +2,7 @@
 #include "Engine/SceneManager.h"
 #include "Engine/Input.h"
 #include "Engine/Image.h"
+#include "Engine/Audio.h"
 
 
 //コンストラクタ
@@ -29,6 +30,10 @@ void SelectScene::Initialize()
     // 画像の位置を変更する
     transformHard_.position_.x = 0.0f;
     transformHard_.position_.y = -0.3f;
+
+    //サウンドデータのロード
+    soundSelect_ = Audio::Load("select.wav");
+    assert(soundSelect_ >= 0); 
 }
 
 //更新
@@ -36,10 +41,27 @@ void SelectScene::Update()
 {
     // 入力処理
     if (Input::IsKey(DIK_UP)) {
-        selectedMode_ = 0; // ふつうを選択
+        if (!keyUpPressed && selectedMode_ != 0) {
+            selectedMode_ = 0; // ふつうを選択
+            Audio::Stop(soundSelect_); // 再生中の効果音を強制的に停止
+            Audio::Play(soundSelect_); // 効果音を再生
+            keyUpPressed = true; // 上キーが押されている状態に設定
+        }
     }
+    else {
+        keyUpPressed = false; // 上キーが離されたらリセット
+    }
+
     if (Input::IsKey(DIK_DOWN)) {
-        selectedMode_ = 1; // むずかしいを選択
+        if (!keyDownPressed && selectedMode_ != 1) {
+            selectedMode_ = 1; // むずかしいを選択
+            Audio::Stop(soundSelect_); // 再生中の効果音を強制的に停止
+            Audio::Play(soundSelect_); // 効果音を再生
+            keyDownPressed = true; // 下キーが押されている状態に設定
+        }
+    }
+    else {
+        keyDownPressed = false; // 下キーが離されたらリセット
     }
 
     //// 画像の切り替え

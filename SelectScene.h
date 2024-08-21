@@ -9,6 +9,11 @@ class SelectScene : public GameObject
     Transform transformNormal_;
     Transform transformHard_;
     int selectedMode_;//0:ふつう、1:むずかしい
+
+    //拡大する値の初期値
+    float scaleNormal = 1.0f;
+    float scaleHard = 1.0f;
+
 public:
     //コンストラクタ
     SelectScene(GameObject* parent);

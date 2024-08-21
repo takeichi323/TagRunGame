@@ -61,11 +61,11 @@ void SelectScene::Update()
         }
     }
 
-    if (Input::IsKey(DIK_BACK))
+    /*if (Input::IsKey(DIK_BACK))
     {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         pSceneManager->ChangeScene(SCENE_ID_TEST);
-    }
+    }*/
     
 }
 

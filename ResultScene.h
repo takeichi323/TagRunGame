@@ -8,6 +8,11 @@ private:
 	int hResult_;
 	int hBackTitle_;
 	Transform transformResultlog_;
+	Transform transformTitelog_;
+	int selectedMode_;//0:ふつう、1:むずかしい
+	//拡大する値の初期値
+	float scaleNormal = 1.0f;
+	float scaleHard = 1.0f;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -21,5 +26,4 @@ public:
 
 	//開放
 	void Release() override;
-	bool Finished();
 };

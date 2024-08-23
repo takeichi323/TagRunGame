@@ -19,16 +19,16 @@ SceneManager::SceneManager(GameObject * parent)
 //初期化
 void SceneManager::Initialize()
 {
-#if 1//最初のシーンを準備
+#if 0//最初のシーンを準備
 	currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
 	Instantiate<TitleScene>(this);
 #endif
 
-#if	0// 最初のシーンを準備
-	/*currentSceneID_ = SCENE_ID_TEST;
+#if	1// 最初のシーンを準備
+	currentSceneID_ = SCENE_ID_TEST;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<TestScene>(this);*/
+	Instantiate<TestScene>(this);
 #endif
 }
 

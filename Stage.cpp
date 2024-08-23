@@ -12,7 +12,7 @@ Stage::Stage(GameObject* parent)
 {
 
 	CsvReader csv;
-	csv.Load("map.csv");
+	csv.Load("coin_map.csv");
 
 	int width_ = csv.GetWidth();
 	int height_ = csv.GetHeight();

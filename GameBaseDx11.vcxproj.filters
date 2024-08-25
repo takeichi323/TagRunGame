@@ -104,6 +104,8 @@
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SelectScene.cpp" />
+    <ClCompile Include="TrackingAI.cpp" />
+    <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -184,6 +186,8 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SelectScene.h" />
+    <ClInclude Include="TrackingAI.h" />
+    <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

@@ -16,13 +16,13 @@ void TrackingAI::SetDestination(const Vector3& destination) {
 }
 
 // –Ú“I’n‚ÉŒü‚©‚Á‚ÄˆÚ“®‚·‚é
-void TrackingAI::Update() {
-    if (parent_ == nullptr) return;
-
-
-    Vector3 currentPosition = parent_->GetPosition();
-    Vector3 direction = (destination_ - currentPosition).Normalized();
-    Vector3 newPosition = currentPosition + direction * speed_;
-
-    parent_->SetPosition(newPosition);
-}
+//void TrackingAI::Update() {
+//    if (parent_ == nullptr) return;
+//
+//
+//    Vector3 currentPosition = parent_->GetPosition();
+//    Vector3 direction = (destination_ - currentPosition).Normalized();
+//    Vector3 newPosition = currentPosition + direction * speed_;
+//
+//    parent_->SetPosition(newPosition);
+//}

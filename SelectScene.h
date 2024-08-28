@@ -5,14 +5,14 @@
 class SelectScene : public GameObject
 {
     int hPictNormal_;//‰æ‘œ”Ô†
-    int hPictHard_;//‰æ‘œ”Ô†
+    int hPictTitle_;//‰æ‘œ”Ô†
     Transform transformNormal_;
     Transform transformHard_;
     int selectedMode_;//0:‚Ó‚Â‚¤A1:‚Ş‚¸‚©‚µ‚¢
 
     //Šg‘å‚·‚é’l‚Ì‰Šú’l
     float scaleNormal = 1.0f;
-    float scaleHard = 1.0f;
+    float scaleTitle = 1.0f;
 
    int soundSelect_;
 

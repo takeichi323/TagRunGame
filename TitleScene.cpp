@@ -73,13 +73,13 @@ void TitleScene::Update()
     else {
         // 通常時の透明度アニメーション
         if (increasing_) {
-            currentTransparency_ += 5;
+            currentTransparency_ += 5;//透明度を更新
             if (currentTransparency_ >= transparencyMax_) {
                 increasing_ = false;
             }
         }
         else {
-            currentTransparency_ -= 5;
+            currentTransparency_ -= 5;//透明度を更新
             if (currentTransparency_ <= 0) {
                 increasing_ = true;
             }

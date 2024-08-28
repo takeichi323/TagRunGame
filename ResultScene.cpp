@@ -3,36 +3,6 @@
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
-
-//namespace {
-//	float startX;//移動開始X座標
-//	float endX;//移動終了X座標
-//	float totalTime;//移動時間
-//	float currentTime;//現在の時間
-//	int seq_line;//今実行している行
-//	float seq_time;//シーケンスを実行している時間
-//	enum ACT {//やることをコマンド化
-//		A_SLIDEIN = 1,
-//		A_WAIT,
-//		A_SLIDEOUT,
-//		A_END
-//	};
-//	struct  Sequence {
-//		float time;//時間
-//		ACT action;//やること
-//		float param;//必要な値
-//	};
-//	//流れを書いていく
-//	Sequence tbl[] = {
-//		{0.0f,A_SLIDEIN,-5.0f},//スライドイン
-//		{3.0f,A_WAIT,0.0f},//１秒待ってから
-//		{4.0f,A_SLIDEOUT,5.0f},//スライドアウト
-//		{5.0f,A_END,0.0f}//ここで消える
-//	};
-//	ACT currentAction;
-//	bool canMove;
-//};
-
 //コンストラクタ
 ResultScene::ResultScene(GameObject* parent)
 	: GameObject(parent, "ResultScene")
@@ -59,24 +29,24 @@ void ResultScene::Update()
     // 入力処理
     if (Input::IsKey(DIK_LEFT)) {
         if (selectedMode_ != 0) {
-            selectedMode_ = 0; // ふつうを選択
+            selectedMode_ = 0; // ゲームシーンを選択
         }
     }
     
     if (Input::IsKey(DIK_RIGHT)) {
         if (selectedMode_ != 1) {
-            selectedMode_ = 1; // むずかしいを選択
+            selectedMode_ = 1; // タイトルを選択
         }
     }
 
     // スケール調整
     if (selectedMode_ == 0) {
         scaleNormal = 1.2f; // ふつうの画像を拡大
-        scaleHard = 1.0f;   // むずかしいの画像はそのまま
+        scaleTitle = 1.0f;   // タイトル画像はそのまま
     }
     else {
         scaleNormal = 1.0f; // ふつうの画像はそのまま
-        scaleHard = 1.2f;   // むずかしいの画像を拡大
+        scaleTitle = 1.2f;   // タイトル画像を拡大
     }
 
 
@@ -84,10 +54,10 @@ void ResultScene::Update()
     if (Input::IsKey(DIK_BACK)) {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         if (selectedMode_ == 0) {
-            pSceneManager->ChangeScene(SCENE_ID_TEST); // ふつうのゲームモードへ(ゲームシーン)
+            pSceneManager->ChangeScene(SCENE_ID_TEST); // ゲームシーンへ
         }
         else {
-            pSceneManager->ChangeScene(SCENE_ID_TITLE); // むずかしいゲームモードへ（タイトルシーン）
+            pSceneManager->ChangeScene(SCENE_ID_TITLE); // タイトルシーンへ
         }
     }
 
@@ -100,8 +70,8 @@ void ResultScene::Draw()
 	Image::SetTransform(hResult_, transformResultlog_);
 	Image::Draw(hResult_);
 
-    // むずかしいの画像の描画
-    transformTitelog_.scale_ = XMFLOAT3(scaleHard, scaleHard, scaleHard);
+    // タイトル画像の描画
+    transformTitelog_.scale_ = XMFLOAT3(scaleTitle, scaleTitle, scaleTitle);
 	Image::SetTransform(hBackTitle_, transformTitelog_);
 	Image::Draw(hBackTitle_);
 }

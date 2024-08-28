@@ -25,8 +25,8 @@ void SelectScene::Initialize()
     transformNormal_.position_.x = 0.0f;
     transformNormal_.position_.y = 0.3f;
 
-    hPictHard_ = Image::Load("TagRunGame_v2.png");
-    assert(hPictHard_ >= 0);
+    hPictTitle_ = Image::Load("TagRunGame_v2.png");
+    assert(hPictTitle_ >= 0);
     // 画像の位置を変更する
     transformHard_.position_.x = 0.0f;
     transformHard_.position_.y = -0.3f;
@@ -64,22 +64,14 @@ void SelectScene::Update()
         keyDownPressed = false; // 下キーが離されたらリセット
     }
 
-    //// 画像の切り替え
-    //if (!hPictNormal_) {
-    //    hPictNormal_ = Image::Load("TagRunGame_v2.png");
-    //}
-    //if (!hPictHard_) {
-    //    hPictHard_ = Image::Load("TagRunGame_v2.png");
-    //}
-    // 
     // スケール調整
     if (selectedMode_ == 0) {
         scaleNormal = 1.2f; // ふつうの画像を拡大
-        scaleHard = 1.0f;   // むずかしいの画像はそのまま
+        scaleTitle = 1.0f;   // タイトル画像はそのまま
     }
     else {
         scaleNormal = 1.0f; // ふつうの画像はそのまま
-        scaleHard = 1.2f;   // むずかしいの画像を拡大
+        scaleTitle = 1.2f;   // タイトルの画像を拡大
     }
 
 
@@ -87,19 +79,12 @@ void SelectScene::Update()
     if (Input::IsKey(DIK_BACK)) {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         if (selectedMode_ == 0) {
-            pSceneManager->ChangeScene(SCENE_ID_TEST); // ふつうのゲームモードへ(ゲームシーン)
+            pSceneManager->ChangeScene(SCENE_ID_TEST); //ゲームシーンへ
         }
         else {
-            pSceneManager->ChangeScene(SCENE_ID_TITLE); // むずかしいゲームモードへ（タイトルシーン）
+            pSceneManager->ChangeScene(SCENE_ID_TITLE); //タイトルシーンへ
         }
     }
-
-    /*if (Input::IsKey(DIK_BACK))
-    {
-        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-        pSceneManager->ChangeScene(SCENE_ID_TEST);
-    }*/
-    
 }
 
 //描画
@@ -110,10 +95,10 @@ void SelectScene::Draw()
     Image::SetTransform(hPictNormal_, transformNormal_);
     Image::Draw(hPictNormal_);
 
-    // むずかしいの画像の描画
-    transformHard_.scale_ = XMFLOAT3(scaleHard, scaleHard, scaleHard);
-    Image::SetTransform(hPictHard_, transformHard_);
-    Image::Draw(hPictHard_);
+    // タイトル画像の描画
+    transformHard_.scale_ = XMFLOAT3(scaleTitle, scaleTitle, scaleTitle);
+    Image::SetTransform(hPictTitle_, transformHard_);
+    Image::Draw(hPictTitle_);
 }
 
 //開放

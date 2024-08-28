@@ -9,10 +9,10 @@ private:
 	int hBackTitle_;
 	Transform transformResultlog_;
 	Transform transformTitelog_;
-	int selectedMode_;//0:ふつう、1:むずかしい
+	int selectedMode_;//0:ゲームシーン、1:タイトルシーン
 	//拡大する値の初期値
 	float scaleNormal = 1.0f;
-	float scaleHard = 1.0f;
+	float scaleTitle = 1.0f;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

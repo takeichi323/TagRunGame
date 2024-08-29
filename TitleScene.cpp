@@ -32,7 +32,7 @@ void TitleScene::Initialize()
     hBlack_ = Image::Load("black.png"); // •‚Άlp`‰ζ‘‚Μƒ[ƒh
     assert(hBlack_ >= 0);
     //γ‚ΕγY—ν‚Ι‚·‚ι
-    fadeSpeed_ = 400.0f; // Γ“]‘¬“x
+    fadeSpeed_ = 150.0f; // Γ“]‘¬“x
     
 }
 

@@ -19,13 +19,13 @@ SelectScene::~SelectScene()
 //初期化
 void SelectScene::Initialize()
 {
-    hPictNormal_ = Image::Load("TagRunGame_v2.png");
+    hPictNormal_ = Image::Load("GameStart.png");
     assert(hPictNormal_ >= 0);
     // 画像の位置を変更する
     transformNormal_.position_.x = 0.0f;
     transformNormal_.position_.y = 0.3f;
 
-    hPictTitle_ = Image::Load("TagRunGame_v2.png");
+    hPictTitle_ = Image::Load("Title.png");
     assert(hPictTitle_ >= 0);
     // 画像の位置を変更する
     transformHard_.position_.x = 0.0f;

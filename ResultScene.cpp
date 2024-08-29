@@ -11,13 +11,13 @@ ResultScene::ResultScene(GameObject* parent)
 //‰Šú‰»
 void ResultScene::Initialize()
 {
-	hResult_= Image::Load("TagRunGame_v2.png");
+	hResult_= Image::Load("Retry.png");
 	assert(hResult_ >= 0);
 	// ‰æ‘œ‚ÌˆÊ’u‚ð•ÏX‚·‚é
     transformResultlog_.position_.x = -0.4f;
     transformResultlog_.position_.y = -0.5f;
 
-	hBackTitle_ = Image::Load("EnterPUSH logo.png");
+	hBackTitle_ = Image::Load("Title.png");
 	assert(hBackTitle_ >= 0);
     transformTitelog_.position_.x = 0.8f;
     transformTitelog_.position_.y = -0.5f;

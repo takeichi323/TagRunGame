@@ -6,11 +6,11 @@ public:
 	TrackingAI(GameObject* parent);
 	~TrackingAI();
 
-	void SetDestination(const Vector3& destination);
+	void SetDestination(const XMFLOAT3& destination);
 	void Update();
 private:
 	GameObject* parent_;
-	Vector3 destination_; // 目的地
+	XMFLOAT3 destination_; // 目的地
 	float speed_; // 移動速度
 
 };

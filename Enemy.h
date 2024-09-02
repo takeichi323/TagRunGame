@@ -1,10 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "TrackingAI.h"
 
 //◆◆◆を管理するクラス
 class Enemy : public GameObject
 {
     int hModel_;    //モデル番号
+    TrackingAI* TrackingAI_;
+    //Player* Player_;  //プレイヤのポインタ
 public:
     //コンストラクタ
     Enemy(GameObject* parent);

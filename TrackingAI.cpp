@@ -3,7 +3,7 @@
 
 // コンストラクタ
 TrackingAI::TrackingAI(GameObject* parent)
-    : parent_(parent), speed_(5.0f) // 例として速度を5.0に設定
+    //: parent_(parent), speed_(0.05f) // 例として速度を0.05に設定
 {
 }
 
@@ -24,7 +24,6 @@ void TrackingAI::Update() {
     Vector3 newPosition = currentPosition + direction * speed_;
 
     parent_->SetPosition(newPosition);*/
-
 
     XMFLOAT3 currentPosition = parent_->GetPosition();
     XMVECTOR currentPositionVec = XMLoadFloat3(&currentPosition);

@@ -9,9 +9,9 @@ public:
 	void SetDestination(const XMFLOAT3& destination);
 	void Update();
 private:
-	GameObject* parent_;
-	XMFLOAT3 destination_; // 目的地
-	float speed_; // 移動速度
+	GameObject* parent_ = nullptr;
+	XMFLOAT3 destination_ = { 0.0f, 0.0f, 0.0f }; // 目的地
+	float speed_ = 0.0; // 移動速度
 
 };
 

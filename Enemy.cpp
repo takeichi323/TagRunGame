@@ -7,7 +7,7 @@
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), hModel_(-1)
 {
-    /*TrackingAI_->Update();*/
+    TrackingAI_->Update();
 }
 
 //デストラクタ
@@ -25,16 +25,18 @@ void Enemy::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Pacplayer.fbx");
     assert(hModel_ >= 0);
+
+    //初期ポジション
+    transform_.position_ = XMFLOAT3(2.0, 0.1, 10.5);
 }
 
 //更新
 void Enemy::Update()
 {
     //if (Player_) {
-    //    //Playerの位置情報を取得
-    //    Vector3 playerPosition = Player_->GetPosition();
-
-    //   // TrackingAI_->SetDestination(playerPosition);
+   //    //Playerの位置情報を取得
+   //    Vector3 playerPosition = Player_->GetPosition();
+ //   // TrackingAI_->SetDestination(playerPosition);
     //    
 
     //    TrackingAI_->Update();

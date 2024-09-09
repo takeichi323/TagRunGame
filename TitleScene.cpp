@@ -93,7 +93,7 @@ void TitleScene::Update()
 //•`‰æ
 void TitleScene::Draw()
 {
-	Image::SetTransform(hPict_, transform_);
+	Image::SetTransform(hPict_, transformpushlog_);
 	Image::Draw(hPict_);
 
     Image::SetTransform(hTitlelog_, transformTitlelog_);

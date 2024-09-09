@@ -24,6 +24,21 @@
       <UniqueIdentifier>{47a6a3f5-8cfd-436b-8d58-beccd108f3f3}</UniqueIdentifier>
       <Extensions>hlsl</Extensions>
     </Filter>
+    <Filter Include="リソース ファイル\Scene">
+      <UniqueIdentifier>{171f8e84-6706-41a0-a755-06b0f587c568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Scene\Result">
+      <UniqueIdentifier>{50313ed1-3b05-41dd-b0cc-8fabd8832d08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Scene\Select">
+      <UniqueIdentifier>{e0a17e9e-fe81-4a33-936f-1e4200399040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Scene\Test">
+      <UniqueIdentifier>{cd13eeeb-bd9e-441e-951a-4bcd4f40fd0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Scene\Title">
+      <UniqueIdentifier>{f57a4f7a-bdbc-4b92-9092-86c028760b96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -80,7 +95,6 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Engine\Audio.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
@@ -101,11 +115,20 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="LifeGauge.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="TrackingAI.cpp" />
     <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>リソース ファイル\Scene\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectScene.cpp">
+      <Filter>リソース ファイル\Scene\Select</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>リソース ファイル\Scene\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>リソース ファイル\Scene\Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -162,7 +185,6 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h" />
     <ClInclude Include="Engine\Audio.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
@@ -183,11 +205,20 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="LifeGauge.h" />
-    <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="SelectScene.h" />
     <ClInclude Include="TrackingAI.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="ResultScene.h">
+      <Filter>リソース ファイル\Scene\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectScene.h">
+      <Filter>リソース ファイル\Scene\Select</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>リソース ファイル\Scene\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>リソース ファイル\Scene\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

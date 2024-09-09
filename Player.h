@@ -13,7 +13,10 @@ class Player : public GameObject
 {   
     //PlayerˆÚ“®‘¬“x
     const float PLAYERMOVE = 0.05f;
+    //PlayerˆÚ“®‰Á‘¬—Ê
     const float DASHPLAYERMOVE = 2.00f;
+    //Player‰ñ“]—Ê
+    const float PLAYERROYATE = 1.0f;
 
     int hModel_;    //ƒ‚ƒfƒ‹”Ô†
    

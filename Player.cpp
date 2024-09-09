@@ -294,11 +294,11 @@ void Player::PlayerMove()
 
 	if (Input::IsKey(DIK_M))
 	{
-		transform_.rotate_.y += 1.0f; ;
+		transform_.rotate_.y += PLAYERROYATE; 
 	}
 	if (Input::IsKey(DIK_N))
 	{
-		transform_.rotate_.y -= 1.0f;
+		transform_.rotate_.y -= PLAYERROYATE;
 	}
 
 	if (Input::IsKey(DIK_SPACE))

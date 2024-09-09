@@ -66,12 +66,12 @@ void SelectScene::Update()
 
     // スケール調整
     if (selectedMode_ == 0) {
-        scaleNormal = 1.2f; // ふつうの画像を拡大
-        scaleTitle = 1.0f;   // タイトル画像はそのまま
+        scaleNormal_ = 1.2f; // ふつうの画像を拡大
+        scaleTitle_ = 1.0f;   // タイトル画像はそのまま
     }
     else {
-        scaleNormal = 1.0f; // ふつうの画像はそのまま
-        scaleTitle = 1.2f;   // タイトルの画像を拡大
+        scaleNormal_ = 1.0f; // ふつうの画像はそのまま
+        scaleTitle_ = 1.2f;   // タイトルの画像を拡大
     }
 
 
@@ -91,12 +91,12 @@ void SelectScene::Update()
 void SelectScene::Draw()
 {
     // ふつうの画像の描画
-    transformNormal_.scale_ = XMFLOAT3(scaleNormal, scaleNormal, scaleNormal);
+    transformNormal_.scale_ = XMFLOAT3(scaleNormal_, scaleNormal_, scaleNormal_);
     Image::SetTransform(hPictNormal_, transformNormal_);
     Image::Draw(hPictNormal_);
 
     // タイトル画像の描画
-    transformHard_.scale_ = XMFLOAT3(scaleTitle, scaleTitle, scaleTitle);
+    transformHard_.scale_ = XMFLOAT3(scaleTitle_, scaleTitle_, scaleTitle_);
     Image::SetTransform(hPictTitle_, transformHard_);
     Image::Draw(hPictTitle_);
 }

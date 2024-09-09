@@ -14,13 +14,13 @@ void ResultScene::Initialize()
 	hResult_= Image::Load("Retry.png");
 	assert(hResult_ >= 0);
 	// 画像の位置を変更する
-    transformResultlog_.position_.x = -0.4f;
-    transformResultlog_.position_.y = -0.5f;
+    transformResultlog_.position_.x = RESULT_POS_X;
+    transformResultlog_.position_.y = RESULT_POS_Y;
 
 	hBackTitle_ = Image::Load("Title.png");
 	assert(hBackTitle_ >= 0);
-    transformTitelog_.position_.x = 0.8f;
-    transformTitelog_.position_.y = -0.5f;
+    transformTitelog_.position_.x = TITLE_POS_X;
+    transformTitelog_.position_.y = TITLE_POS_Y;
 }
 
 //更新
@@ -41,12 +41,12 @@ void ResultScene::Update()
 
     // スケール調整
     if (selectedMode_ == 0) {
-        scaleNormal = 1.2f; // ふつうの画像を拡大
-        scaleTitle = 1.0f;   // タイトル画像はそのまま
+        scaleNormal_ = IMAGE_SCALE; // ふつうの画像を拡大
+        scaleTitle_ = DEFAULT_SCALE;   // タイトル画像はそのまま
     }
     else {
-        scaleNormal = 1.0f; // ふつうの画像はそのまま
-        scaleTitle = 1.2f;   // タイトル画像を拡大
+        scaleNormal_ = DEFAULT_SCALE; // ふつうの画像はそのまま
+        scaleTitle_ = IMAGE_SCALE;   // タイトル画像を拡大
     }
 
 
@@ -66,12 +66,12 @@ void ResultScene::Update()
 //描画
 void ResultScene::Draw()
 {
-    transformResultlog_.scale_ = XMFLOAT3(scaleNormal, scaleNormal, scaleNormal);
+    transformResultlog_.scale_ = XMFLOAT3(scaleNormal_, scaleNormal_, scaleNormal_);
 	Image::SetTransform(hResult_, transformResultlog_);
 	Image::Draw(hResult_);
 
     // タイトル画像の描画
-    transformTitelog_.scale_ = XMFLOAT3(scaleTitle, scaleTitle, scaleTitle);
+    transformTitelog_.scale_ = XMFLOAT3(scaleTitle_, scaleTitle_, scaleTitle_);
 	Image::SetTransform(hBackTitle_, transformTitelog_);
 	Image::Draw(hBackTitle_);
 }

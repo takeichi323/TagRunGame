@@ -11,8 +11,8 @@ class SelectScene : public GameObject
     int selectedMode_;//0:‚Ó‚Â‚¤A1:‚Ş‚¸‚©‚µ‚¢
 
     //Šg‘å‚·‚é’l‚Ì‰Šú’l
-    float scaleNormal = 1.0f;
-    float scaleTitle = 1.0f;
+    float scaleNormal_ = 1.0f;
+    float scaleTitle_ = 1.0f;
 
    int soundSelect_;
 

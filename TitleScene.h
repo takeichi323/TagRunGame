@@ -6,10 +6,18 @@
 class TitleScene : public GameObject
 {
 private:
+	const float PUSHLOGPOS_X = 0.0f;
+	const float PUSHLOGPOS_Y = -0.6f;
+	const float TITLELOGPOS_X = 0.0f;
+	const float TITLELOGPOS_Y = 0.0f;
+	const float BLINKING_SPEED = 10.0f;//点滅速度
+	const float TRANSPARENCY_UPDATE = 5.0f;//透明度更新
+
 	int hPict_;    //画像番号
 	int hTitlelog_;//画像番号
 	int hBlack_;  // 黒い画像用
 	Transform transformTitlelog_;
+	Transform transformpushlog_;
 	Transform transformBlack_;
 
     // 現在の透明度
@@ -25,7 +33,7 @@ private:
 	// 透明度の増減速度
 	int transparencyStep_ = 5;
 	// 暗転速度を制御するための変数
-	float fadeSpeed_;  
+	float fadeSpeed_ = 150.0f;
 	
 
 public:

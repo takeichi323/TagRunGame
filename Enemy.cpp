@@ -7,7 +7,7 @@
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), hModel_(-1)
 {
-    TrackingAI_->Update();
+   /* TrackingAI_->Update();*/
 }
 
 //デストラクタ

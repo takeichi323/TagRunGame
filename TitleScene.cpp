@@ -19,20 +19,18 @@ void TitleScene::Initialize()
 	hPict_ = Image::Load("EnterPUSH logo.png");
 	assert(hPict_ >= 0);
 	// 画像の位置を変更する
-    transform_.position_.x = 0.0f;
-    transform_.position_.y =- 0.6f;
+    transformpushlog_.position_.x = PUSHLOGPOS_X;
+    transformpushlog_.position_.y = PUSHLOGPOS_Y;
 
     
     hTitlelog_ = Image::Load("TagRunGame_v2.png");
     assert(hTitlelog_ >= 0);
     // 画像の位置を変更する
-    transformTitlelog_.position_.x = 0.0f;
-    transformTitlelog_.position_.y = 0.0f;
+    transformTitlelog_.position_.x = TITLELOGPOS_X;
+    transformTitlelog_.position_.y = TITLELOGPOS_Y;
 
     hBlack_ = Image::Load("black.png"); // 黒い四角形画像のロード
     assert(hBlack_ >= 0);
-    //後で綺麗にする
-    fadeSpeed_ = 150.0f; // 暗転速度
     
 }
 
@@ -48,14 +46,14 @@ void TitleScene::Update()
     if (transitionmove_) {
         // 点滅効果
         if (increasing_) {
-            currentTransparency_ += 10; // 点滅の速度を変更したい場合はこの値を調整
+            currentTransparency_ += BLINKING_SPEED; // 点滅の速度を変更したい場合はこの値を調整
             if (currentTransparency_ >= transparencyMax_) {
                 currentTransparency_ = transparencyMax_;
                 increasing_ = false;
             }
         }
         else {
-            currentTransparency_ -= 10;
+            currentTransparency_ -= BLINKING_SPEED;
             if (currentTransparency_ <= 0) {
                 currentTransparency_ = 0;
                 increasing_ = true;
@@ -73,13 +71,13 @@ void TitleScene::Update()
     else {
         // 通常時の透明度アニメーション
         if (increasing_) {
-            currentTransparency_ += 5;//透明度を更新
+            currentTransparency_ += TRANSPARENCY_UPDATE;//透明度を更新
             if (currentTransparency_ >= transparencyMax_) {
                 increasing_ = false;
             }
         }
         else {
-            currentTransparency_ -= 5;//透明度を更新
+            currentTransparency_ -= TRANSPARENCY_UPDATE;//透明度を更新
             if (currentTransparency_ <= 0) {
                 increasing_ = true;
             }

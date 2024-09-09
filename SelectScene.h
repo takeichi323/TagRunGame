@@ -4,6 +4,14 @@
 //◆◆◆を管理するクラス
 class SelectScene : public GameObject
 {
+    const float IMAGE_SCALE = 1.2f; //画像拡大量
+    const float DEFAULT_SCALE = 1.0f;//画像拡大初期値
+    const float TITLE_POS_X = 0.0f; //タイトル画像Xポジション
+    const float TITLE_POS_Y = -0.3f; //タイトル画像Yポジション
+    const float NORMAL_POS_X = 0.0f; //ノーマル画像Xポジション
+    const float NPRMAL_POS_Y = 0.3f; //ノーマル画像Yポジション
+
+
     int hPictNormal_;//画像番号
     int hPictTitle_;//画像番号
     Transform transformNormal_;

@@ -212,7 +212,7 @@ void Player::PlayerMove()
 	XMFLOAT3 forward = Camera::GetForwardVector();
 
 	// ˆêlÌƒJƒƒ‰‚ÌÀ‘•
-#if 0
+#if 1
 	{
 		XMFLOAT3 camPosition{};
 		XMFLOAT3 camTarget{};

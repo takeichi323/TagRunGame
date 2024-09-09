@@ -22,14 +22,14 @@ void SelectScene::Initialize()
     hPictNormal_ = Image::Load("GameStart.png");
     assert(hPictNormal_ >= 0);
     // 画像の位置を変更する
-    transformNormal_.position_.x = 0.0f;
-    transformNormal_.position_.y = 0.3f;
+    transformNormal_.position_.x = NORMAL_POS_X;
+    transformNormal_.position_.y = NPRMAL_POS_Y;
 
     hPictTitle_ = Image::Load("Title.png");
     assert(hPictTitle_ >= 0);
     // 画像の位置を変更する
-    transformHard_.position_.x = 0.0f;
-    transformHard_.position_.y = -0.3f;
+    transformHard_.position_.x = TITLE_POS_X;
+    transformHard_.position_.y = TITLE_POS_Y;
 
     //サウンドデータのロード
     soundSelect_ = Audio::Load("select.wav");
@@ -66,12 +66,12 @@ void SelectScene::Update()
 
     // スケール調整
     if (selectedMode_ == 0) {
-        scaleNormal_ = 1.2f; // ふつうの画像を拡大
-        scaleTitle_ = 1.0f;   // タイトル画像はそのまま
+        scaleNormal_ = IMAGE_SCALE; // ふつうの画像を拡大
+        scaleTitle_ = DEFAULT_SCALE;   // タイトル画像はそのまま
     }
     else {
-        scaleNormal_ = 1.0f; // ふつうの画像はそのまま
-        scaleTitle_ = 1.2f;   // タイトルの画像を拡大
+        scaleNormal_ = DEFAULT_SCALE; // ふつうの画像はそのまま
+        scaleTitle_ = IMAGE_SCALE;   // タイトルの画像を拡大
     }
 
 

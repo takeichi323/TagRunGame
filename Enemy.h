@@ -7,8 +7,8 @@
 class Enemy : public GameObject
 {
     int hModel_;    //モデル番号
-    TrackingAI* TrackingAI_;
-    Player* Player_;  //プレイヤのポインタ
+    TrackingAI* trackingAI_;
+    Player* player_;  //プレイヤのポインタ
 public:
     //コンストラクタ
     Enemy(GameObject* parent);

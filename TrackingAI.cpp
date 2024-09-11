@@ -20,6 +20,7 @@ void TrackingAI::Update() {
     if (parent_ == nullptr) return;
     /*parent_,destination_,speed_の値が読み込めてないので
     　原因と対策を考える*/
+    /*ベクトルの長さ（palyerとEnmey間）を求めてその分移動するとか*/
 
     /*Vector3 currentPosition = parent_->GetPosition();
     Vector3 direction = (destination_ - currentPosition).Normalized();

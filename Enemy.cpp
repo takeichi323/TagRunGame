@@ -3,6 +3,12 @@
 #include "Player.h"
 #include <iostream>
 
+/*
+　・壁を認識して壁に当たらずに追跡できるようにする
+  ・足音を鳴らすので最初はEnemyが移動している最中に音が出るようにする
+  　→最終的には立体的に鳴らす。
+   */
+
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
@@ -49,6 +55,7 @@ void Enemy::Update()
         //プレイヤーの現在位置を取得して目的地として設定
         XMFLOAT3 playerPosition = player_->GetPosition();
 
+        //EnemyがPlayerの位置を取得できたかどうかの確認
         std::cout << "Player position:(" << playerPosition.x << "," << playerPosition.y << "," << playerPosition.z << ")" << std::endl;
         trackingAI_->SetDestination(playerPosition);
     }

@@ -32,24 +32,19 @@ void Enemy::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Pacplayer.fbx");
     assert(hModel_ >= 0);
-    //初期ポジション
+    //Enemy初期ポジション
     transform_.position_ = XMFLOAT3(2.0, 0.1, 10.5);
-
-    //プレイヤーのオブジェクト取得
-    player_ = dynamic_cast<Player*>(GetParent()->FindObject("Player"));
-    //AIの初期化
-    trackingAI_ = new TrackingAI(this,0.02f);
-
-    //プレイヤーの位置を目的地に設定
-    if (player_) {
-        trackingAI_->SetDestination(player_->GetPosition());
-    }
-
 }
 
 //更新
 void Enemy::Update()
 {
+    //プレイヤーのオブジェクト取得
+    player_ = dynamic_cast<Player*>(GetParent()->FindObject("Player"));
+
+    //AIの初期化
+    trackingAI_ = new TrackingAI(this, ENEMYMOVE);
+
     if (player_ != nullptr) {
         //プレイヤーの現在位置を取得して目的地として設定
         XMFLOAT3 playerPosition = player_->GetPosition();

@@ -68,7 +68,9 @@ void Enemy::Update()
         //追跡処理の実行
         trackingAI_->Update();
     }
-
+    // 衝突判定を呼び出す
+   // CollisionDetection();
+    
 }
 
 //描画
@@ -79,105 +81,63 @@ void Enemy::Draw()
 }
 
 //衝突判定
-void Enemy::CollisionDetection(const XMFLOAT3& playerPosition)
+void Enemy::CollisionDetection()
 {
-    XMFLOAT3 move = CalculateDirectionToPlayer(playerPosition);
-
-    //壁との判定
+    // 壁との判定のための座標
     int checkX1, checkX2;
     int checkZ1, checkZ2;
 
-    //右
+    // 壁の衝突判定（右方向）
+    checkX1 = (int)(transform_.position_.x + 0.3f);
+    checkZ1 = (int)(transform_.position_.z + 0.2f);
+
+    checkX2 = (int)(transform_.position_.x + 0.3f);
+    checkZ2 = (int)(transform_.position_.z - 0.2f);
+
+    if (pStage_->IsWall(checkX1, checkZ1) || pStage_->IsWall(checkX2, checkZ2))
     {
-        checkX1 = (int)(transform_.position_.x + 0.3f);
-        checkZ1 = (int)(transform_.position_.z + 0.2f);
-
-        checkX2 = (int)(transform_.position_.x + 0.3f);
-        checkZ2 = (int)(transform_.position_.z - 0.2f);
-
-        if (pStage_->IsWall(checkX1, checkZ1) == true || pStage_->IsWall(checkX2, checkZ2) == true)
-        {
-            transform_.position_.x = (float)((int)prevPosition_.x) + 1.0f - 0.3;
-        }
+        // 右側に壁がある場合、少し左に戻す
+        transform_.position_.x -= 0.1f;
     }
 
-    //左
+    // 左方向
+    checkX1 = (int)(transform_.position_.x - 0.3f);
+    checkZ1 = (int)(transform_.position_.z + 0.1f);
+
+    checkX2 = (int)(transform_.position_.x - 0.3f);
+    checkZ2 = (int)(transform_.position_.z - 0.1f);
+
+    if (pStage_->IsWall(checkX1, checkZ1) || pStage_->IsWall(checkX2, checkZ2))
     {
-        checkX1 = (int)(transform_.position_.x - 0.3f);
-        checkZ1 = (int)(transform_.position_.z + 0.1f);
-
-        checkX2 = (int)(transform_.position_.x - 0.3f);
-        checkZ2 = (int)(transform_.position_.z - 0.1f);
-
-        if (pStage_->IsWall(checkX1, checkZ1) == true ||
-            pStage_->IsWall(checkX2, checkZ2) == true)
-        {
-            transform_.position_.x = (float)((int)prevPosition_.x) + 0.3;
-        }
+        // 左側に壁がある場合、少し右に戻す
+        transform_.position_.x += 0.1f;
     }
 
-    //奥
+    // 奥方向
+    checkX1 = (int)(transform_.position_.x + 0.1f);
+    checkZ1 = (int)(transform_.position_.z + 0.3f);
+
+    checkX2 = (int)(transform_.position_.x - 0.1f);
+    checkZ2 = (int)(transform_.position_.z + 0.3f);
+
+    if (pStage_->IsWall(checkX1, checkZ1) || pStage_->IsWall(checkX2, checkZ2))
     {
-        checkX1 = (int)(transform_.position_.x + 0.1f);
-        checkZ1 = (int)(transform_.position_.z + 0.3f);
-
-        checkX2 = (int)(transform_.position_.x - 0.1f);
-        checkZ2 = (int)(transform_.position_.z + 0.3f);
-
-        if (pStage_->IsWall(checkX1, checkZ1) == true ||
-            pStage_->IsWall(checkX2, checkZ2) == true)
-        {
-            transform_.position_.z = (float)((int)prevPosition_.z) + 1.0f - 0.3;
-        }
+        // 奥に壁がある場合、少し手前に戻す
+        transform_.position_.z -= 0.1f;
     }
 
-    //手前
+    // 手前方向
+    checkX1 = (int)(transform_.position_.x + 0.1f);
+    checkZ1 = (int)(transform_.position_.z - 0.3f);
+
+    checkX2 = (int)(transform_.position_.x - 0.1f);
+    checkZ2 = (int)(transform_.position_.z - 0.3f);
+
+    if (pStage_->IsWall(checkX1, checkZ1) || pStage_->IsWall(checkX2, checkZ2))
     {
-        checkX1 = (int)(transform_.position_.x + 0.1f);
-        checkZ1 = (int)(transform_.position_.z - 0.3f);
-
-        checkX2 = (int)(transform_.position_.x - 0.1f);
-        checkZ2 = (int)(transform_.position_.z - 0.3f);
-
-        if (pStage_->IsWall(checkX1, checkZ1) == true ||
-            pStage_->IsWall(checkX2, checkZ2) == true)
-        {
-            transform_.position_.z = (float)((int)prevPosition_.z) + 0.3;
-        }
+        // 手前に壁がある場合、少し奥に戻す
+        transform_.position_.z += 0.1f;
     }
-
-
-
-    ////壁の衝突判定
-    ////int checkX1, checkZ1, checkX2, checkZ2;
-
-    //// 右方向の壁判定
-    ////checkX1 = static_cast<int>(transform_.position_.x + move.x + colliderRadius);
-    ////checkZ1 = static_cast<int>(transform_.position_.z + move.z);
-    ////if (pStage_->IsWall(checkX1, checkZ1)) {
-    ////    move.x = 0; // 右に移動できない
-    ////}
-
-    //// 左方向の壁判定
-    ////checkX2 = static_cast<int>(transform_.position_.x - move.x - colliderRadius);
-    ////checkZ2 = static_cast<int>(transform_.position_.z + move.z);
-    ////if (pStage_->IsWall(checkX2, checkZ2)) {
-    ////    move.x = 0; // 左に移動できない
-    ////}
-
-    //// 前方向の壁判定
-    ////checkX1 = static_cast<int>(transform_.position_.x);
-    ////checkZ1 = static_cast<int>(transform_.position_.z + move.z + colliderRadius);
-    ////if (pStage_->IsWall(checkX1, checkZ1)) {
-    ////    move.z = 0; // 前に移動できない
-    ////}
-
-    //// 後方向の壁判定
-    ////checkX2 = static_cast<int>(transform_.position_.x);
-    ////checkZ2 = static_cast<int>(transform_.position_.z - move.z - colliderRadius);
-    ////if (pStage_->IsWall(checkX2, checkZ2)) {
-    ////    move.z = 0; // 後ろに移動できない
-    ////}
 }
 
 //プレイヤー方向の計算
